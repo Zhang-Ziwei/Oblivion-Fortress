@@ -10,6 +10,8 @@
 /[Bb]uilds/
 /[Uu]nityGenerated/
 /[Ll]ocal[Cc]ache/
+/Assets/TextMesh Pro/
+/Assets/TowerGamePack/
 
 # Auto-generated Visual Studio or MonoDevelop solution and project files
 *.csproj
@@ -27,10 +29,13 @@
 *.svd
 *.pdb
 *.opendb
+*.log
+*.dwlt
 
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
+*.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
