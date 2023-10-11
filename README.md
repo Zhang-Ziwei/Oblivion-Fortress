@@ -1,5 +1,5 @@
 # Oblivion-Fortress Update Log
-## 10/11 form kyle-ko
+## 10/11 from kyle-ko
 - 完成項目
   - 防禦塔建造&攻擊
     - 放置地基時顯示射程
