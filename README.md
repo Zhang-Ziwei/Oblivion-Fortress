@@ -4,6 +4,9 @@
   - 修正tilemap
   - 修正UI及canva位置
   - 修正鏡頭
+- 砍樹機制 (./Player/CollectResource)
+  - 在樹旁邊長按F鍵可以砍樹
+  - 未完成:砍完樹後掉落木材
 
 ## 10/11 from kyle-ko
 - 完成項目
