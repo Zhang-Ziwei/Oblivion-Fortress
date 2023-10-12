@@ -1,4 +1,10 @@
 # Oblivion-Fortress Update Log
+## 10/12 fron sankonsky
+- Debug
+  - 修正tilemap
+  - 修正UI及canva位置
+  - 修正鏡頭
+
 ## 10/11 from kyle-ko
 - 完成項目
   - 防禦塔建造&攻擊
@@ -22,9 +28,9 @@
   - GameData 這個 script 中有一些跟距離有關的 function，可能會有用
   - Button 是為了方便暫時放在中間
 
-## 10/9 from Sankonsky
+## 10/9 from sankonsky
 - 地圖邊界
 - 樹&碰撞區塊
 
-## 10/8 from Sankonsky
+## 10/8 from sankonsky
 - 建立isometric tilemap遊戲場景
