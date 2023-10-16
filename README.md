@@ -3,6 +3,7 @@
 - 完成關卡流程的設置
   - 關卡流程的設置在`Assets/Scripts/Level/LevelManager.cs`
   - 關卡敵人的資料在`Assets/Resources/Enemies/EnemyLevelData`中
+  - 目前共有2關，2關結束後會直接結束遊戲
 - 完成敵人外殼與基本動畫
   - Skeleton (ID: 1)
   - Goblin (ID: 2)
