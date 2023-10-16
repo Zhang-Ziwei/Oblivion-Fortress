@@ -16,22 +16,28 @@ public class LevelManager : MonoBehaviour
 
     public List<Transform> PathLocations;
 
-    Tilemap GroundMap;
-    Grid grid;
+    // Tilemap GroundMap;
+    // Grid grid;
 
     private static Queue<int> EnemyToSummon;  // enemy ID
     private static Queue<Enemy> EnemyToRemove;  // enemy object
 
+    private static EnemyLevelData[] enemyLevelDatas;
+
+    private int NowLevel;
+
     void Awake() {
         Instance = this;
 
-        // get tilemap of ground
-        GroundMap = Ground.GetComponent<Tilemap>();
+        // // get tilemap of ground
+        // GroundMap = Ground.GetComponent<Tilemap>();
 
-        // get grid
-        grid = Grid.GetComponent<Grid>();
+        // // get grid
+        // grid = Grid.GetComponent<Grid>();
 
         IsGameOver = false;
+
+        NowLevel = 1;
 
 
         // get path locations
@@ -55,24 +61,65 @@ public class LevelManager : MonoBehaviour
         EnemyToSummon = new Queue<int>();
         EnemyToRemove = new Queue<Enemy>();
 
+        // get all enemy level data
+        enemyLevelDatas = Resources.LoadAll<EnemyLevelData>("Enemies/EnemyLevelData");
 
-        EnemyToSummon.Enqueue(1);
+        // reset enemies left
+        foreach (EnemyLevelData enemyLevelData in enemyLevelDatas) {
+            enemyLevelData.EnemiesLeft = enemyLevelData.enemiesIDs.Count;
+        }
 
-        // start game loop
-        StartCoroutine(GameLoop());
+        StartCoroutine(LoadLevel());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // check whether LoadLevel is finished
+        if (enemyLevelDatas[NowLevel - 1].EnemiesLeft == 0 && EnemySummon.EnemiesInGame.Count == 0) {
+            if (NowLevel == enemyLevelDatas.Length) {
+                IsGameOver = true;
+                Debug.Log("Game Over");
+                Application.Quit();
+            } else {
+                Debug.Log("Load Next Level");
+                NowLevel ++;
+                StartCoroutine(LoadLevel());
+            }
+        }
+    }
+
+    IEnumerator LoadLevel() {
+        EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
+
+        if (enemyLevelData == null) {
+            Debug.Log("LevelManager.cs: enemyLevelData is null");
+        }
+
+        // if interval is 0, debug log and return
+        if (enemyLevelData.spawnInterval == 0) {
+            Debug.Log("LevelManager.cs: spawnInterval is 0");
+        }
+
+        StartCoroutine(GameLoop());
+
+        foreach (int enemyID in enemyLevelData.enemiesIDs) {
+            EnqueEnemyToSummon(enemyID);
+            // decrease enemies left
+            enemyLevelData.EnemiesLeft --;
+            yield return new WaitForSeconds(enemyLevelData.spawnInterval);
+        }
+
+        yield return null;
     }
 
     IEnumerator GameLoop() {
         // while game is not over
         while(!IsGameOver) {
-            // spawn enemies
+            // EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
+            // StartCoroutine(SpawnEnemy(enemyLevelData));
+
             for (int i = 0; i < EnemyToSummon.Count; i++) {
                 int enemyID = EnemyToSummon.Dequeue();
                 EnemySummon.SummonEnemy(enemyID);
@@ -90,7 +137,6 @@ public class LevelManager : MonoBehaviour
                 Enemy enemyToRemove = EnemyToRemove.Dequeue();
                 EnemySummon.RemoveEnemy(enemyToRemove);
             }
-
 
             yield return null;
         }

@@ -8,25 +8,34 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float maxHealth;
-    public float health;
+    private float health;
     public float damage;
     public float speed;
-    public int ID;
+    private int ID;
 
     public Slider healthBar;
 
     private Vector3 DefaultDirection = new Vector3(-1, -0.5f, 0).normalized;
 
-    private int PathIndex = 1;
+    private int PathIndex;
 
     private Transform target;
 
     public void Init(int enemyID)
     {
-        maxHealth = 5;
+        PathIndex = 1;
         health = maxHealth;
         ID = enemyID;
         healthBar.value = health / maxHealth;
+
+        // if maxhealth == 0, debug log
+        if (maxHealth == 0)
+        {
+            Debug.Log("Enemy.cs: maxHealth is 0.");
+        }
+        
+        // set enemy to the first path location
+        transform.position = LevelManager.Instance.PathLocations[0].position;
 
         target = LevelManager.Instance.PathLocations[PathIndex];
     }
@@ -37,12 +46,26 @@ public class Enemy : MonoBehaviour
         healthBar.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
+    public int GetID() {
+        return ID;
+    }
+
     void Update()
     {
 
         Vector2 direction = (target.position - transform.position).normalized;
 
-        // Vector2 direction = new Vector2(-100, 0).normalized;
+        // if x is negative, flip the sprite of the child object
+        GameObject Skin = transform.GetChild(0).gameObject;
+        if (direction.x < 0)
+        {
+            Skin.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            Skin.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
 
         // move towards the target
         transform.Translate(direction * speed * Time.deltaTime);

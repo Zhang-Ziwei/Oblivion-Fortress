@@ -40,10 +40,14 @@ public class EnemySummon : MonoBehaviour
         if (EnemyPrefabs.ContainsKey(enemyID)) {
             Queue<Enemy> ReferencedQueue = EnemyObjectPools[enemyID];
 
+
+            // Debug.Log(ReferencedQueue.Count);
             if (ReferencedQueue.Count > 0) {
-                // if there's already eenemies, dequeue and instantiate
+                // if there's already eenemies, dequeue and set active
                 SummonedEnemy = ReferencedQueue.Dequeue();
+
                 SummonedEnemy.gameObject.SetActive(true);
+                
             } else {
 
                 // if no, instantiate
@@ -64,7 +68,7 @@ public class EnemySummon : MonoBehaviour
         EnemiesInGame.Remove(enemyToRemove);
 
         // put the enemy back to the queue
-        EnemyObjectPools[enemyToRemove.ID].Enqueue(enemyToRemove);
+        EnemyObjectPools[enemyToRemove.GetID()].Enqueue(enemyToRemove);
         enemyToRemove.gameObject.SetActive(false);
     }
 }
