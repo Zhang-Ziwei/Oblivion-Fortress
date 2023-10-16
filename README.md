@@ -1,7 +1,7 @@
 # Oblivion-Fortress Update Log
 ## 10/16 from henryhuang920712
 - 完成關卡流程的設置
-  - 關卡流程的設置在`Assets/Scripts/Level/LevelManager.cs`
+  - 關卡流程的設置在`Assets/Scripts/LevelManager.cs`
   - 關卡敵人的資料在`Assets/Resources/Enemies/EnemyLevelData`中
   - 目前共有2關，2關結束後會直接結束遊戲
 - 完成敵人外殼與基本動畫
