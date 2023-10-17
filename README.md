@@ -1,4 +1,8 @@
 # Oblivion-Fortress Update Log
+
+##10/17 from sankonsky
+- 合併branch
+
 ## 10/16 from henryhuang920712
 - 完成關卡流程的設置
   - 關卡流程的設置在`Assets/Scripts/LevelManager.cs`
@@ -11,6 +15,9 @@
   - `unity ArgumentNullException: Value cannot be null. Parameter name: _unity_self`
   - 解決方法：reload the scene
 
+## 10/15 from Zhang-Ziwei
+- 摄像头随人物移动而移动
+- 人物冲刺
 
 ## 10/12 fron sankonsky
 - Debug
