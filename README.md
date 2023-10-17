@@ -1,6 +1,6 @@
 # Oblivion-Fortress Update Log
 ## 10/18 from kyleko56
-- 簡單版物資蒐集
+- 簡單版物資蒐集 (砍掉便獲得物資，沒有掉落物)
 - 關卡設計
 
 ## 10/17 from kyleko56
