@@ -13,20 +13,24 @@ public class Base : MonoBehaviour
     public int MaxStone = 3;
     public int Stone = 0;
     private TMP_Text Text_Pro;
+
     void Start()
     {
         Text_Pro = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         changeUI();
     }
 
-    private void changeUI(){
+    private void changeUI()
+    {
         Text_Pro.text = String.Format("W {0}/{1}\nS {2}/{3}", Wood, MaxWood, Stone, MaxStone);
     }
 
-    public int depositWood(int depositNum) {
+    public int depositWood(int depositNum) 
+    {
         int remainNum = Math.Max(depositNum + Wood - MaxWood, 0);
         Wood += depositNum - remainNum;
-        if ((Wood == MaxWood) && (Stone == MaxStone)){
+        if ((Wood == MaxWood) && (Stone == MaxStone))
+        {
             Instantiate(tower, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
@@ -34,10 +38,12 @@ public class Base : MonoBehaviour
         return remainNum;
     }
 
-    public int depositStone(int depositNum) {
+    public int depositStone(int depositNum) 
+    {
         int remainNum = Math.Max(depositNum + Stone - MaxStone, 0);
         Stone += depositNum - remainNum;
-        if ((Wood == MaxWood) && (Stone == MaxStone)){
+        if ((Wood == MaxWood) && (Stone == MaxStone))
+        {
             Instantiate(tower, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

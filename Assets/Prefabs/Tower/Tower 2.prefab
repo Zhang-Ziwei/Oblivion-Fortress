@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 3917331970953962006, guid: f6cb5aa96e2a44346a34dbd611c565a1, type: 3}
+  m_Sprite: {fileID: -3135400367628516014, guid: 8c49825ed79e3ce478f71d74bf03465a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7911506217708809573}
   - component: {fileID: 6983001774519358236}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: Tower 2
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,11 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095ee8b7b0764da41a8828937838fbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5
-  Damage: 2
+  attackRange: 3
+  Damage: 0.5
   Tag: Enemy
-  attackInterval: 1
-  attackType: Single
+  attackInterval: 0.5
+  attackType: Area
 --- !u!120 &7462953453726178600
 LineRenderer:
   serializedVersion: 2

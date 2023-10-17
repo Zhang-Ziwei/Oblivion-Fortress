@@ -35,15 +35,24 @@ public class ButtonSetBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), new List<Collider2D>()) > 0)
+        {
+            Square.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
+        else
+        {
+            Square.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        }
         if(isBaseSetting && Input.GetMouseButtonDown(0))
         {
             // Check if the collider of new base overlapping with other colliders 
+            
             if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), new List<Collider2D>()) == 0)
             {
                 Instantiate(Base, GameData.nearestVertex(GameData.getMousePos()), Quaternion.identity);
-                isBaseSetting = false;
-                Square.SetActive(false);
             }
+            isBaseSetting = false;
+            Square.SetActive(false);
         }
     }
 }

@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour
     }
 
     public static Vector3 getMousePos(){
-        Vector3 cameraMousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+        Vector3 cameraMousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane+2);
         return Camera.main.ScreenToWorldPoint(cameraMousePos);
     }
 
@@ -31,19 +31,28 @@ public class GameData : MonoBehaviour
     public static float distanceRec(Vector3 Pos1, Vector3 Pos2){
         return Vector3.Distance(transformToRec(Pos1), transformToRec(Pos2));
     }
+
     // Get nearest object with tag after transform to rectangular coordinate system
-    public static GameObject getNearestObjectWithTag(Vector3 selfPos, string Tag){
+    public static GameObject getNearestObjectWithTag(Vector3 selfPos, string Tag)
+    {
         float minDistance = float.MaxValue;
         GameObject nearestObject = null;
         GameObject[] objects = GameObject.FindGameObjectsWithTag(Tag);
 
-        foreach(GameObject o in objects){
+        foreach(GameObject o in objects)
+        {
             float distance = distanceRec(selfPos, o.transform.position);
-            if(distance < minDistance){
+            if(distance < minDistance)
+            {
                 minDistance = distance;
                 nearestObject = o;
             }
         }
         return nearestObject;
+    }
+
+    public static GameObject[] getInRangeObjectWithTag(Vector3 selfPos, string Tag, float Range){
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(Tag);
+        return Array.FindAll(objects ,o => distanceRec(selfPos, o.transform.position) <= Range);
     }
 }
