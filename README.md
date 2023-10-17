@@ -1,10 +1,6 @@
 # Oblivion-Fortress Update Log
-## 10/18 from kyleko56
-- 簡單版物資蒐集 (砍掉便獲得物資，沒有掉落物)
-- 關卡設計
-
 ## 10/18 from sankonsky
-### FIRST DEMO VERSION
+### first demo version
 - 調整鍵盤配置:
   - Ctrl:衝刺
   - Space:採集
@@ -15,6 +11,10 @@
   - 衝刺的時間在測試版及網頁版也相差極大，很可能也是幀數不同造成的問題
   - 衝刺會無視collision衝出地圖外
 
+## 10/18 from kyleko56
+- 簡單版物資蒐集 (砍掉便獲得物資，沒有掉落物)
+- 關卡設計
+- 
 ## 10/17 from kyleko56
 - 防禦塔外觀、攻擊動畫
 - 新增一種防禦塔
