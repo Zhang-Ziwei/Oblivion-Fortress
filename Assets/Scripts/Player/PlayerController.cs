@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     // ���һ�ξ���
     private void rush()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             update_temptime = update_totaltime;
             movespeed = movespeed * 10;
