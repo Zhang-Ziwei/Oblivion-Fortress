@@ -1,6 +1,6 @@
 # Oblivion-Fortress Update Log
 
-##10/17 from sankonsky
+## 10/17 from sankonsky
 - 合併branch
 
 ## 10/16 from henryhuang920712
