@@ -1,4 +1,8 @@
 # Oblivion-Fortress Update Log
+## 10/18 from kyleko56
+- 簡單版物資蒐集
+- 關卡設計
+
 ## 10/17 from kyleko56
 - 防禦塔外觀、攻擊動畫
 - 新增一種防禦塔
