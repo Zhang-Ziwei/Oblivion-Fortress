@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
-
+## 10/17 from kyleko56
+- 防禦塔外觀、攻擊動畫
+- 新增一種防禦塔
+- 刪除防禦塔、地基按鈕
+  
 ## 10/17 from sankonsky
 - 合併branch
 
@@ -28,7 +32,7 @@
   - 在樹旁邊長按F鍵可以砍樹
   - 未完成:砍完樹後掉落木材
 
-## 10/11 from kyle-ko
+## 10/11 from kyleko56
 - 完成項目
   - 防禦塔建造&攻擊
     - 放置地基時顯示射程
