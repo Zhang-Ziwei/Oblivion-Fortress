@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CollectResource : MonoBehaviour
 {
     int count = 0;
     GameObject Tree;
+    public int wood = 0;
+    public int woodLimit = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class CollectResource : MonoBehaviour
                 count ++;
                 if(count > 500){
                     Debug.Log("cut tree");
+                    wood = Math.Min(woodLimit, wood + 2);
                     count = 0;
                     Destroy(Tree);
                 }

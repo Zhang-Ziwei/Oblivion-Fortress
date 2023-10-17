@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
-  Damage: 0.5
+  Damage: 0.4
   Tag: Enemy
   attackInterval: 0.5
   attackType: Area

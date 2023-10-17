@@ -50,7 +50,7 @@ MonoBehaviour:
   tower: {fileID: 8598278846631442000, guid: d28b262d72546bd429bc414cab279afd, type: 3}
   MaxWood: 3
   Wood: 0
-  MaxStone: 3
+  MaxStone: 0
   Stone: 0
 --- !u!60 &7828430219067810825
 PolygonCollider2D:
