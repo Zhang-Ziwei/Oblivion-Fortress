@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Player/Hero Knight - Pixel Art/Animations/HeroKnight_ax.anim.meta
 guid: 427e5869c003d674ca3309d619ca2a22
 NativeFormatImporter:
+========
+guid: 0468fee696c12314db3ed16e0fe24363
+DefaultImporter:
+>>>>>>>> 874b7f628553a5132de5d18f750fe008f53fd466:Assets/Scenes/Menu.unity.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 
