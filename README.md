@@ -1,6 +1,6 @@
 # Oblivion-Fortress Update Log
 ## 10/18 from kyleko56
-- 讓 UI 能在不同解析度遊玩
+- 讓 UI 能在不同解析度顯示
 - 增加開始畫面、restart按鈕
   
 ## 10/18 from sankonsky
