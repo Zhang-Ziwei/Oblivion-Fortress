@@ -22,8 +22,11 @@ public class DepositMaterial : MonoBehaviour
             GameObject nearestBase = GameData.getNearestObjectWithTag(transform.position, Tag);
             if(nearestBase && GameData.distanceRec(transform.position, nearestBase.transform.position) < depositRange)
             {
-                nearestBase.GetComponent<Base>().depositWood(1);
-                nearestBase.GetComponent<Base>().depositStone(1);
+                if(GetComponent<CollectResource>().wood > 0){
+                    GetComponent<CollectResource>().wood = nearestBase.GetComponent<Base>().depositWood(GetComponent<CollectResource>().wood);
+                }
+                
+                //nearestBase.GetComponent<Base>().depositStone(1);
             }
         }
         

@@ -101,7 +101,7 @@ public class LevelManager : MonoBehaviour
         if (enemyLevelData.spawnInterval == 0) {
             Debug.Log("LevelManager.cs: spawnInterval is 0");
         }
-
+        yield return new WaitForSeconds(0);
         StartCoroutine(GameLoop());
 
         foreach (int enemyID in enemyLevelData.enemiesIDs) {
