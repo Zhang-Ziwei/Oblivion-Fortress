@@ -135,7 +135,7 @@ public class HeroKnight : MonoBehaviour {
 
         else if (Input.GetMouseButtonUp(1))
             m_animator.SetBool("IdleBlock", false);
-
+        /*
         // Roll
         else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
         {
@@ -143,8 +143,8 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
-            
-
+        */    
+        /*
         //Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
         {
@@ -154,7 +154,8 @@ public class HeroKnight : MonoBehaviour {
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
             m_groundSensor.Disable(0.2f);
         }
-
+        */
+        /*
         //Run
         else if (Mathf.Abs(inputX) > Mathf.Epsilon)
         {
@@ -162,7 +163,7 @@ public class HeroKnight : MonoBehaviour {
             m_delayToIdle = 0.05f;
             m_animator.SetInteger("AnimState", 1);
         }
-
+        */
         //Idle
         else
         {
