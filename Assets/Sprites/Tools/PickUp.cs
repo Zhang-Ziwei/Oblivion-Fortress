@@ -18,7 +18,10 @@ public class PickUp : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        UnityEngine.Debug.Log("持续碰撞:");
+        if (Input.GetKey(KeyCode.Space))
+        {
+            //UnityEngine.Debug.Log("持续碰撞:");
+            this.gameObject.SetActive(false);
+        }
     }
-
 }

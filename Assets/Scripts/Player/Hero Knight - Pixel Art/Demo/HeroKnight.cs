@@ -193,4 +193,17 @@ public class HeroKnight : MonoBehaviour {
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
     }
+
+    //捡起斧头
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        UnityEngine.Debug.Log("持续碰撞:");
+        if (Input.GetKey(KeyCode.Space))
+        {
+            m_animator.SetBool("axe", true);
+            m_animator.SetTrigger("HeroKnight_ax");
+
+        }    
+    }
+        
 }
