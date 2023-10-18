@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public float movespeed = 1f;
     public Camera maincamera;
     private Animation animate;
-    private int rush_cyclenum = 40;
-    private int update_totaltime = 41;// ����С�ڳ�̵�ʱ�䣬��Ȼ�ж�ʱ���ʱ��һ��ʼ�Ͱ��ٶȽ�Ϊʮ��֮һ
+    private int rush_cyclenum = 50;
+    private int update_totaltime = 51;// ����С�ڳ�̵�ʱ�䣬��Ȼ�ж�ʱ���ʱ��һ��ʼ�Ͱ��ٶȽ�Ϊʮ��֮һ
     private int update_temptime = 0;
     // Start is called before the first frame update
     void Start()
@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             update_temptime = update_totaltime;
-            movespeed = movespeed * 10;
+            movespeed = movespeed * 5;
         }
         if (update_totaltime-update_temptime == rush_cyclenum)
         {
-            movespeed = movespeed / 10;
+            movespeed = movespeed / 5;
         }
     }
 

@@ -25,6 +25,7 @@ public class HeroKnight : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
+    private string toolstype;
 
 
     // Use this for initialization
@@ -202,7 +203,8 @@ public class HeroKnight : MonoBehaviour {
         {
             m_animator.SetBool("axe", true);
             m_animator.SetTrigger("HeroKnight_ax");
-
+            toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
+            UnityEngine.Debug.Log(toolstype);
         }    
     }
         

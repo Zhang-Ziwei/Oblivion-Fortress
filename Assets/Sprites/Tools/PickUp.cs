@@ -6,6 +6,8 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string toolstype = "";
+
     void Start()
     {
         
