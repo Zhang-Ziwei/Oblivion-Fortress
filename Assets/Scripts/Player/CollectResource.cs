@@ -5,7 +5,7 @@ using System;
 
 public class CollectResource : MonoBehaviour
 {
-    int count = 0;
+    float count = 0;
     GameObject Tree;
     public int wood = 0;
     public int woodLimit = 2;
@@ -20,9 +20,9 @@ public class CollectResource : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space)){
             if(Tree != null){
-                count ++;
-                //bug 暫時將count計量500->50
-                if(count > 50){
+                count += Time.deltaTime;
+                Debug.Log(count);
+                if(count > 2){
                     Debug.Log("cut tree");
                     wood = Math.Min(woodLimit, wood + 2);
                     count = 0;

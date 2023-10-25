@@ -4,25 +4,31 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class SettingButton : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Button mybutton;
+    private Button RestartButton;
 
     void Start()
     {
-        mybutton = GetComponent<Button>();
-        mybutton.onClick.AddListener(TaskOnClick);
-    }
 
-    void TaskOnClick()
-    {
-        SceneManager.LoadScene(1);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+
+    public void QuitGame()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 }

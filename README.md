@@ -1,4 +1,15 @@
 # Oblivion-Fortress Update Log
+
+## 10/18 from sankonsky
+- 新增封面圖
+- 新增角色空手/拿斧頭圖片
+- 新增主堡判定區域(還沒放圖)
+- 新增暫停選單，按Esc觸發
+
+## 10/18 from kyleko56
+- 讓 UI 能在不同解析度顯示
+- 增加開始畫面、restart按鈕
+  
 ## 10/18 from sankonsky
 ### first demo version
 - 調整鍵盤配置:
@@ -7,7 +18,7 @@
   - E:撿起/放下
 - 已知問題:
   - Enemy.cs的using UnityEditor.UI會造成遊戲無法輸出，先暫時改為註解處理，目前在遊戲中正常
-  - CollectResource.cs的長按鍵計時器在測試版及網頁版相差極大，暫時先把count由500調成50，可能是幀數不同造成的問題
+  - (已修復)CollectResource.cs的長按鍵計時器在測試版及網頁版相差極大，暫時先把count由500調成50，可能是幀數不同造成的問題
   - 衝刺的時間在測試版及網頁版也相差極大，很可能也是幀數不同造成的問題
   - 衝刺會無視collision衝出地圖外
 
