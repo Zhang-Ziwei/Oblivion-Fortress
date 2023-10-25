@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 10/25 from sankonsky
+- 新增石頭
+- 把樹和石頭從tilemap座標系改成一般座標系
+
 ## 10/25 from Zhang-Ziwei
 - 衝刺出地圖修復
 - 撿起斧頭動畫修復
