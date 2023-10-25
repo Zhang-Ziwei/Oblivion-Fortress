@@ -31,8 +31,8 @@ public class HeroKnight : MonoBehaviour {
     public float movespeed = 1f;
     public Camera maincamera;
     private Animation animate;
-    private int rush_cyclenum = 90;
-    private int update_totaltime = 91;// must more than rush_cyclenum
+    private int rush_cyclenum = 100;
+    private int update_totaltime = 101;// must more than rush_cyclenum
     private int update_temptime = 0;
     private bool PauseEnable = false;
     private bool isRush = false;
@@ -66,7 +66,7 @@ public class HeroKnight : MonoBehaviour {
         {
             movespeed = movespeed / 3;
         }
-        if (update_totaltime - update_temptime == rush_cyclenum + 30)
+        if (update_totaltime - update_temptime == rush_cyclenum + 50)
         {
             isRush = false;
         }
