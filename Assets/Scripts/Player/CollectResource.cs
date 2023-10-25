@@ -7,6 +7,7 @@ public class CollectResource : MonoBehaviour
 {
     float count = 0;
     GameObject Tree;
+    GameObject Stone;
     public int wood = 0;
     public int woodLimit = 2;
     // Start is called before the first frame update
@@ -21,12 +22,19 @@ public class CollectResource : MonoBehaviour
         if(Input.GetKey(KeyCode.Space)){
             if(Tree != null){
                 count += Time.deltaTime;
-                Debug.Log(count);
                 if(count > 2){
-                    Debug.Log("cut tree");
+                    Debug.Log("remove tree");
                     wood = Math.Min(woodLimit, wood + 2);
                     count = 0;
                     Destroy(Tree);
+                }
+            }
+            else if(Stone != null){
+                count += Time.deltaTime;
+                if(count > 2){
+                    Debug.Log("remove stone");
+                    count = 0;
+                    Destroy(Stone);
                 }
             }
         }
@@ -39,11 +47,17 @@ public class CollectResource : MonoBehaviour
         if(other.gameObject.name == "TreeCollider"){
             Tree = other.gameObject;
         }
+        else if(other.gameObject.name == "StoneCollider"){
+            Stone = other.gameObject;
+        }
     }
  
     void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.name == "TreeCollider"){
             Tree = null;
+        }
+        else if(other.gameObject.name == "StoneCollider"){
+            Stone = null;
         }
     }
 }

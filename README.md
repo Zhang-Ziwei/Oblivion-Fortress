@@ -1,5 +1,15 @@
 # Oblivion-Fortress Update Log
 
+## 10/25 from sankonsky
+- 新增石頭
+- 把樹和石頭從tilemap座標系改成一般座標系
+
+## 10/25 from Zhang-Ziwei
+- 衝刺出地圖修復
+- 撿起斧頭動畫修復
+- 新增衝刺動畫
+- 連續衝刺速度過快修復，目前只有一次衝刺完成后才能進行下一次衝刺
+  
 ## 10/18 from sankonsky
 - 新增封面圖
 - 新增角色空手/拿斧頭圖片
