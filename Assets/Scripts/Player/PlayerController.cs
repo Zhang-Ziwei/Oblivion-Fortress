@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour
     public Camera maincamera;
     private Animation animate;
     private int rush_cyclenum = 50;
-    private int update_totaltime = 51;// ����С�ڳ�̵�ʱ�䣬��Ȼ�ж�ʱ���ʱ��һ��ʼ�Ͱ��ٶȽ�Ϊʮ��֮һ
+    private int update_totaltime = 51;// must more than rush_cyclenum
     private int update_temptime = 0;
     private bool PauseEnable = false;
+    private bool isRush = false;
     public GameObject pauseUI;
     // Start is called before the first frame update
     void Start()
@@ -32,14 +33,19 @@ public class PlayerController : MonoBehaviour
     // ���һ�ξ���
     private void rush()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isRush==false)
         {
             update_temptime = update_totaltime;
             movespeed = movespeed * 5;
+            isRush = true;
         }
         if (update_totaltime-update_temptime == rush_cyclenum)
         {
             movespeed = movespeed / 5;
+        }
+        if (update_totaltime - update_temptime == rush_cyclenum+20)
+        {
+            isRush=false;
         }
     }
 

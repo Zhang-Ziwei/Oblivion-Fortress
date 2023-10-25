@@ -27,6 +27,17 @@ public class HeroKnight : MonoBehaviour {
     private float               m_rollCurrentTime;
     private string toolstype;
 
+    // walk and rush in playcontroller
+    public float movespeed = 1f;
+    public Camera maincamera;
+    private Animation animate;
+    private int rush_cyclenum = 90;
+    private int update_totaltime = 91;// must more than rush_cyclenum
+    private int update_temptime = 0;
+    private bool PauseEnable = false;
+    private bool isRush = false;
+    public GameObject pauseUI;
+
 
     // Use this for initialization
     void Start ()
@@ -40,9 +51,91 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
     }
 
+    // walk and rush in playcontroller
+    private void rush()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isRush == false)
+        {
+            update_temptime = update_totaltime;
+            movespeed = movespeed * 3;
+            m_animator.SetTrigger("Roll");
+            m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
+            isRush = true;
+        }
+        if (update_totaltime - update_temptime == rush_cyclenum)
+        {
+            movespeed = movespeed / 3;
+        }
+        if (update_totaltime - update_temptime == rush_cyclenum + 30)
+        {
+            isRush = false;
+        }
+    }
+
+    private void Move()
+    {
+        Vector3 dir = Vector2.zero;
+        if (Input.GetKey(KeyCode.D))
+        {
+            dir += new Vector3(movespeed * Time.deltaTime, 0, 0);
+            transform.Translate(movespeed * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            dir += new Vector3(-movespeed * Time.deltaTime, 0, 0);
+            transform.Translate(-movespeed * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            dir += new Vector3(0, movespeed * Time.deltaTime, 0);
+            transform.Translate(0, movespeed * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            dir += new Vector3(0, -movespeed * Time.deltaTime, 0);
+            transform.Translate(0, -movespeed * Time.deltaTime, 0);
+        }
+        transform.position += dir;
+    }
+
+    private void LateUpdate()
+    {
+        if (maincamera != null)
+        {
+            maincamera.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2.0f);
+        }
+    }
+
+    void pausegame()
+    {
+        //pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseEnable == false)
+            {
+                PauseEnable = true;
+                Time.timeScale = 0;
+                pauseUI.SetActive(true);
+            }
+            else if (PauseEnable == true)
+            {
+                PauseEnable = false;
+                Time.timeScale = 1;
+                pauseUI.SetActive(false);
+            }
+        }
+    }
+    // walk and rush in playcontroller
+
+
     // Update is called once per frame
     void Update ()
     {
+        // walk and rush in playcontroller
+        update_totaltime++;
+        Move();
+        rush();
+        pausegame();
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
 
@@ -138,13 +231,13 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("IdleBlock", false);
         /*
         // Roll
-        else if (Input.GetKeyDown("left shift") && !m_rolling && !m_isWallSliding)
+        else if (Input.GetKeyDown("left ctrl") && !m_rolling && !m_isWallSliding)
         {
             m_rolling = true;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
         }
-        */    
+        */
         /*
         //Jump
         else if (Input.GetKeyDown("space") && m_grounded && !m_rolling)
