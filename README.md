@@ -5,7 +5,7 @@
   - Mushroom (ID: 3)
   - Flying eyes (ID: 4)
 - 完成追蹤玩家相關程式
-  - 玩家追蹤範圍 (Detect Range)、攻擊範圍 (Attack Range)
+  - 可以到`Assets/Resources/Enemies/`當中設定每個敵人的玩家追蹤範圍 (Detect Range)、攻擊範圍 (Attack Range)
   - 攻擊動畫、被攻擊動畫、死亡動畫
 
 ## 10/25 from sankonsky
