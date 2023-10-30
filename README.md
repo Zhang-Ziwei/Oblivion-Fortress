@@ -1,5 +1,13 @@
 # Oblivion-Fortress Update Log
 
+## 10/30 from henryhuang920712
+- 新增兩種敵人
+  - Mushroom (ID: 3)
+  - Flying eyes (ID: 4)
+- 完成追蹤玩家相關程式
+  - 玩家追蹤範圍 (Detect Range)、攻擊範圍 (Attack Range)
+  - 攻擊動畫、被攻擊動畫、死亡動畫
+
 ## 10/25 from sankonsky
 - 新增石頭
 - 把樹和石頭從tilemap座標系改成一般座標系
