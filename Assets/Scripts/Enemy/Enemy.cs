@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     private float health;
     public float damage;
     public float speed;
+    private float originSpeed;
+    private float SlowDownTimer;
 
     public float attackRange;
 
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         ID = enemyID;
         healthBar.value = health / maxHealth;
+        originSpeed = speed;
 
         actionMode = 1;
 
@@ -90,6 +93,11 @@ public class Enemy : MonoBehaviour
         if (health <= 0) {
             StartCoroutine(DeathAnimation());
         }
+    }
+
+    public void SlowDownEnemy(float rate, float seconds) {
+        speed = rate * originSpeed;
+        SlowDownTimer = seconds;
     }
 
     private IEnumerator DeathAnimation() {
@@ -205,7 +213,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
+        if (SlowDownTimer > 0) {
+            SlowDownTimer -= Time.deltaTime;
+            if (SlowDownTimer <= 0) {
+                speed = originSpeed;
+            }
+        }
         if (player != null) {
             if (Vector3.Distance(transform.position, playerGround.position) <= attackRange) {
                 AttackPlayer();
