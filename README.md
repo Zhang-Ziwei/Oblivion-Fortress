@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 11/5 from kyleko56
+- 新增緩速防禦塔
+- 更新防禦塔外觀、攻擊動畫
+
 ## 10/30 from henryhuang920712
 - 新增兩種敵人
   - Mushroom (ID: 3)
