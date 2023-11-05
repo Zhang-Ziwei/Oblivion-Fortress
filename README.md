@@ -1,5 +1,8 @@
 # Oblivion-Fortress Update Log
 
+## First Demo 測試回饋
+- https://docs.google.com/forms/d/1vdaiac8mL2BVGx3HF-6avDuczlM2sxjXHwt9O9j7L4s/edit#responses
+
 ## 11/5 from sankonsky
 - 新增主堡外觀
 - 衝刺鍵由Ctrl改成Shift
