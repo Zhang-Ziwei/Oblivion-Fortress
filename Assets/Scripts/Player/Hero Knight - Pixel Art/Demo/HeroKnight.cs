@@ -189,16 +189,18 @@ public class HeroKnight : MonoBehaviour {
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
 
+        // WHAT IS THIS CODE FUCKING DOING???
         //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
+        if (Input.GetKeyDown("o") && !m_rolling)
         {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
         }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
+        else if (Input.GetKeyDown("p") && !m_rolling)
             m_animator.SetTrigger("Hurt");
+
 
         //Attack
         else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
@@ -289,6 +291,7 @@ public class HeroKnight : MonoBehaviour {
     }
 
     //捡起斧头
+    /*
     private void OnTriggerStay2D(Collider2D collision)
     {
         UnityEngine.Debug.Log("持续碰撞:");
@@ -300,5 +303,6 @@ public class HeroKnight : MonoBehaviour {
             UnityEngine.Debug.Log(toolstype);
         }    
     }
+    */
         
 }

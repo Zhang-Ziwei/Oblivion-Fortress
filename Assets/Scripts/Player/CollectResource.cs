@@ -8,11 +8,10 @@ public class CollectResource : MonoBehaviour
     float count = 0;
     public GameObject Tree;
     public GameObject Stone;
-    public GameObject wooden;
+    public GameObject wood;
     public GameObject rock;
-    public int wood = 0;
-    public int woodLimit = 2;
     public Transform parent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,21 +22,24 @@ public class CollectResource : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.Space)){
-            if(Tree != null){
+            if((Tree != null) && (GetComponent<PickupSystem>().type == 1)) //if collide tree and holding axe
+            {
                 count += Time.deltaTime;
-                if(count > 2){
+                if(count > 2)
+                {
                     // collection competed
-                    wood = Math.Min(woodLimit, wood + 2);
                     count = 0;
                     Vector3 Pos = Tree.transform.position;
                     // generate wood
-                    Instantiate(wooden, new Vector3(Pos.x,Pos.y,0), Quaternion.identity, parent);
+                    Instantiate(wood, new Vector3(Pos.x,Pos.y,0), Quaternion.identity, parent);
                     Destroy(Tree);
                 }
             }
-            else if(Stone != null){
+            else if(Stone != null && (GetComponent<PickupSystem>().type == 2)) //if collide stone and holding pickaxe
+            {
                 count += Time.deltaTime;
-                if(count > 2){
+                if(count > 2)
+                {
                     // collection competed
                     count = 0;
                     Vector3 Pos = Stone.transform.position;

@@ -1,5 +1,15 @@
 # Oblivion-Fortress Update Log
 
+## 11/6 from sankonsky
+- 撿起系統 PickupSystem.cs
+  - 持有狀態: 0空手/1斧/2鎬/3木頭/4石頭
+  - 須持對應工具才可採集
+  - 目前持有物品顯示在左上角，之後再改成以動畫呈現
+  - 若角色在建築物地基上，放下材料會直接放入地基
+- 移除DepositMaterial.cs，功能合併至撿起系統
+- 待解決問題:撿起與放下會同時判定，暫時先分開成兩個按鍵，E撿起R放下
+- 修復問題:原本按E角色會直接躺平，目前把躺平鍵移到O，但還不知道如何移除躺平功能...
+
 ## First Demo 測試回饋
 - https://docs.google.com/forms/d/1vdaiac8mL2BVGx3HF-6avDuczlM2sxjXHwt9O9j7L4s/edit#responses
 
