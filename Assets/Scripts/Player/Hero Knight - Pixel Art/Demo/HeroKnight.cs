@@ -54,7 +54,7 @@ public class HeroKnight : MonoBehaviour {
     // walk and rush in playcontroller
     private void rush()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isRush == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isRush == false)
         {
             update_temptime = update_totaltime;
             movespeed = movespeed * 3;

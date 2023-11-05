@@ -1,5 +1,12 @@
 # Oblivion-Fortress Update Log
 
+## 11/5 from sankonsky
+- 新增主堡外觀
+- 衝刺鍵由Ctrl改成Shift
+- 建造防禦塔UI
+- 採集後會掉落對應材料，樹->木材，石頭->石塊
+  - 石塊外觀還沒找到適合的
+
 ## 11/5 from kyleko56
 - 新增緩速防禦塔
 - 更新防禦塔外觀、攻擊動畫
