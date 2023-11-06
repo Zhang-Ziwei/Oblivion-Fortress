@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour
 
     private int NowLevel;
 
+    private bool inLevel;
+
     void Awake() {
         Instance = this;
 
@@ -37,7 +39,9 @@ public class LevelManager : MonoBehaviour
 
         IsGameOver = false;
 
-        NowLevel = 1;
+        NowLevel = 0;
+
+        inLevel = false;
 
 
         // get path locations
@@ -64,26 +68,18 @@ public class LevelManager : MonoBehaviour
         // get all enemy level data
         enemyLevelDatas = Resources.LoadAll<EnemyLevelData>("Enemies/EnemyLevelData");
 
-        // reset enemies left
-        foreach (EnemyLevelData enemyLevelData in enemyLevelDatas) {
-            enemyLevelData.EnemiesLeft = enemyLevelData.enemiesIDs.Count;
-        }
-
-        StartCoroutine(LoadLevel());
-
     }
 
     // Update is called once per frame
     void Update()
     {
         // check whether LoadLevel is finished
-        if (enemyLevelDatas[NowLevel - 1].EnemiesLeft == 0 && EnemySummon.EnemiesInGame.Count == 0) {
+        if (!inLevel) {
             if (NowLevel == enemyLevelDatas.Length) {
                 IsGameOver = true;
                 Debug.Log("Game Over");
                 Application.Quit();
             } else {
-                Debug.Log("Load Next Level");
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             }
@@ -91,6 +87,8 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator LoadLevel() {
+        inLevel = true;
+
         EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
 
         if (enemyLevelData == null) {
@@ -101,20 +99,22 @@ public class LevelManager : MonoBehaviour
         if (enemyLevelData.spawnInterval == 0) {
             Debug.Log("LevelManager.cs: spawnInterval is 0");
         }
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(enemyLevelData.beforeSpawnInterval);
         StartCoroutine(GameLoop());
 
         foreach (int enemyID in enemyLevelData.enemiesIDs) {
             EnqueEnemyToSummon(enemyID);
-            // decrease enemies left
-            enemyLevelData.EnemiesLeft --;
+
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
         }
+
+        inLevel = false;
 
         yield return null;
     }
 
     IEnumerator GameLoop() {
+        Debug.Log("Load Level " + NowLevel);        
         // while game is not over
         while(!IsGameOver) {
             // EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];

@@ -38,6 +38,10 @@ public class HeroKnight : MonoBehaviour {
     private bool isRush = false;
     public GameObject pauseUI;
 
+    public float AttackRange;
+
+    public float Damage;
+
 
     // Use this for initialization
     void Start ()
@@ -128,6 +132,18 @@ public class HeroKnight : MonoBehaviour {
     // walk and rush in playcontroller
 
 
+    // detect whether the player hurt the enemy when attack
+    private void HurtEnemy() {
+        // if we could find the enemy in the attack range
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, AttackRange);
+        foreach (Collider2D enemy in hitEnemies) {
+            if (enemy.tag == "Enemy") {
+                // hurt the enemy
+                enemy.GetComponent<Enemy>().DeductHealth(Damage);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update ()
     {
@@ -217,6 +233,9 @@ public class HeroKnight : MonoBehaviour {
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+
+            // hurt enemy
+            HurtEnemy();
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
