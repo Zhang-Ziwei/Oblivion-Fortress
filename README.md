@@ -1,5 +1,15 @@
 # Oblivion-Fortress Update Log
 
+## 11/6 from henryhuang920712
+- 敵人攻擊主堡
+    - 主堡血量設定
+- 玩家攻擊敵人
+    - 玩家攻擊力、攻擊範圍設定
+- 關卡開始前讀秒 (Before Spawn Interval)
+    - 設定在`Assets/Resources/Enemies/EnemyLevelData`中
+- 新敵人
+    - Bringer Of Death (ID: 5)
+
 ## 11/6 from sankonsky
 - 撿起系統 PickupSystem.cs
   - 持有狀態: 0空手/1斧/2鎬/3木頭/4石頭
