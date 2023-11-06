@@ -1,5 +1,8 @@
 # Oblivion-Fortress Update Log
 
+## 11/6 from sankonsky
+- 新增GameOverUI
+
 ## 11/6 from henryhuang920712
 - 敵人攻擊主堡
     - 主堡血量設定
