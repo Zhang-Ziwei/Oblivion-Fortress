@@ -26,6 +26,7 @@ public class PickupSystem : MonoBehaviour
 
     public string Tag = "Base";
     public float depositRange = 3;
+    bool locking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,22 +37,23 @@ public class PickupSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("r") && (type == 1 || type == 2)) //put down tool
+        if (Input.GetKeyDown("e") && (type == 1 || type == 2)) //put down tool
         {
             if (type == 1) //put down axe
             {
                 Instantiate(axe, transform.position, Quaternion.identity, parent);
                 tempicon_axe.SetActive(false);
             }
-            if (type == 2) //put down axe
+            else if (type == 2) //put down axe
             {
                 Instantiate(pickaxe, transform.position, Quaternion.identity, parent);
                 tempicon_pickaxe.SetActive(false);
             }
             type = 0;
+            locking = true;
         }
 
-        else if (Input.GetKeyDown("r") && (type == 3 || type == 4)) //put down material
+        else if (Input.GetKeyDown("e") && (type == 3 || type == 4)) //put down material
         {
             GameObject nearestBase = GameData.getNearestObjectWithTag(transform.position, Tag);
 
@@ -82,12 +84,17 @@ public class PickupSystem : MonoBehaviour
                 }
             }
             type = 0;
+            locking = true;
+        }
+        if (Input.GetKeyUp("e"))
+        {
+            locking = false;
         }
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey("e") & type == 0) //pick up
+        if (Input.GetKey("e") && type == 0 && !(locking)) //pick up
         {
             if (collision.gameObject.tag == "axe") //pick up axe
             {
