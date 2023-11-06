@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 8598278846631442000, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
-  MaxWood: 4
+  MaxWood: 2
   Wood: 0
-  MaxStone: 0
+  MaxStone: 2
   Stone: 0
 --- !u!60 &7828430219067810825
 PolygonCollider2D:

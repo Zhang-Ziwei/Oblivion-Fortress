@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     public bool IsGameOver;
+    public GameObject WinUI;
 
     public GameObject Ground;
     public GameObject Grid;
@@ -77,8 +78,10 @@ public class LevelManager : MonoBehaviour
         if (!inLevel) {
             if (NowLevel == enemyLevelDatas.Length) {
                 IsGameOver = true;
-                Debug.Log("Game Over");
+                Debug.Log("WIN");
                 Application.Quit();
+                Time.timeScale = 0;
+                WinUI.SetActive(true);
             } else {
                 NowLevel ++;
                 StartCoroutine(LoadLevel());

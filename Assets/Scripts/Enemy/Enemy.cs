@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     private GameObject player;
 
+    private HPControl playerHP;
+
     private Transform playerGround;
 
     private int actionMode;
@@ -74,6 +76,9 @@ public class Enemy : MonoBehaviour
 
         // find the castle
         castle = GameObject.Find("castle").GetComponent<Castle>();
+
+        // find the player HP controller
+        playerHP = GameObject.Find("Player").GetComponent<HPControl>();
 
         // find castle ground
         castleGround = castle.transform.Find("GroundSensor");
@@ -195,6 +200,7 @@ public class Enemy : MonoBehaviour
         }
 
         StartCoroutine(AttackAnimation());
+        playerHP.DeductHP(damage);
     }
 
     private void AttackCastle() {

@@ -1,7 +1,14 @@
 # Oblivion-Fortress Update Log
 
-## 11/6 from sankonsky
-- 新增GameOverUI
+## 11/7 from sankonsky
+- 新增GameOverUI/WinUI
+- 新增採集量條，顯示目前採集進度
+- 道路判定:現在防禦塔無法蓋在道路上
+- 玩家血量機制 HPControl.cs
+  - 血量量條
+  - 敵人攻擊玩家會扣血
+  - 目前不會復活，血量歸零即結束遊戲
+- 待解決問題:最後一波進攻到一半系統就判定獲勝，且獲勝後若重新進行遊戲不會生成怪物(死亡後重新開始不會有問題)
 
 ## 11/6 from henryhuang920712
 - 敵人攻擊主堡

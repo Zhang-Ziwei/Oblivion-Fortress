@@ -15,9 +15,9 @@ public class Castle : MonoBehaviour
 
     public void GameOver() {
         Debug.Log("Game Over");
+        Application.Quit();
         Time.timeScale = 0;
         GameOverUI.SetActive(true);
-
     }
 
     public void DeductHealth(float damage) {
