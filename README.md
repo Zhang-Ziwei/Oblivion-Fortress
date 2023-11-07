@@ -1,5 +1,10 @@
 # Oblivion-Fortress Update Log
 
+## 11/7 from kyleko56
+- 關卡設計
+- 將資源、敵人、玩家、工具、主堡的 display layer 都設成 5
+- 目前波數 UI
+
 ## 11/7 from sankonsky
 - 新增GameOverUI/WinUI
 - 新增採集量條，顯示目前採集進度

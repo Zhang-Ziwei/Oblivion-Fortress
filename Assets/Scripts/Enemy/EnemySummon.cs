@@ -46,6 +46,8 @@ public class EnemySummon : MonoBehaviour
                 // if there's already eenemies, dequeue and set active
                 SummonedEnemy = ReferencedQueue.Dequeue();
 
+                Debug.Log(SummonedEnemy);
+
                 SummonedEnemy.gameObject.SetActive(true);
                 
             } else {
