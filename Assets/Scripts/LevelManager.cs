@@ -54,12 +54,6 @@ public class LevelManager : MonoBehaviour
             PathLocations.Add(Locs[i]);
             // Debug.Log(Locs[i].position);
         }
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         
         // initialize enemy summoner
         EnemySummon.Init();
@@ -67,6 +61,12 @@ public class LevelManager : MonoBehaviour
         // initialize enemy queues
         EnemyToSummon = new Queue<int>();
         EnemyToRemove = new Queue<Enemy>();
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
 
         // get all enemy level data
         enemyLevelDatas = Resources.LoadAll<EnemyLevelData>("Enemies/EnemyLevelData");

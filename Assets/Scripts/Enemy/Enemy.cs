@@ -267,10 +267,10 @@ public class Enemy : MonoBehaviour
         if (player != null) {
             if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
                 AttackCastle();
-                Debug.Log("Enemy.cs: AttackCastle() called.");
+                // Debug.Log("Enemy.cs: AttackCastle() called.");
             } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval) {
                 AttackPlayer();
-                Debug.Log("Enemy.cs: AttackPlayer() called.");
+                // Debug.Log("Enemy.cs: AttackPlayer() called.");
             } else if (Vector3.Distance(transform.position, playerGround.position) <= detectRange) {
                 ChasePlayer();
             } else {
