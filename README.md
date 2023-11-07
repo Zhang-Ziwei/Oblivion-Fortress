@@ -4,6 +4,8 @@
 - 關卡設計
 - 將資源、敵人、玩家、工具、主堡的 display layer 都設成 5
 - 目前波數 UI
+- 修復 bug: rush 時間不一致 & 東西會撿起來馬上放下
+- 已知 bug: 蓋塔時向左右跑會讓玩家血量顯示異常
 
 ## 11/7 from sankonsky
 - 新增GameOverUI/WinUI
