@@ -37,7 +37,7 @@ public class PickupSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e") && (type == 1 || type == 2)) //put down tool
+        if (Input.GetKeyDown("e") && (type == 1 || type == 2) && (!locking)) //put down tool
         {
             if (type == 1) //put down axe
             {
@@ -53,7 +53,7 @@ public class PickupSystem : MonoBehaviour
             locking = true;
         }
 
-        else if (Input.GetKeyDown("e") && (type == 3 || type == 4)) //put down material
+        else if (Input.GetKeyDown("e") && (type == 3 || type == 4) && (!locking)) //put down material
         {
             GameObject nearestBase = GameData.getNearestObjectWithTag(transform.position, Tag);
 
@@ -121,6 +121,7 @@ public class PickupSystem : MonoBehaviour
                 tempicon_rock.SetActive(true);
                 Destroy(collision.gameObject);
             }
+            locking = true;
         }
     }
 

@@ -38,6 +38,11 @@ public class HeroKnight : MonoBehaviour {
     private bool isRush = false;
     public GameObject pauseUI;
 
+    private float rushTime = 0.5f;
+    private float rushTimer = 0;
+    private float rushCoolDownTimer = 0;   
+    private bool isSpeedUp = false;
+
     public float AttackRange;
 
     public float Damage;
@@ -59,19 +64,25 @@ public class HeroKnight : MonoBehaviour {
     // walk and rush in playcontroller
     private void rush()
     {
+        rushTimer -= Time.deltaTime;
+        rushCoolDownTimer -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.LeftShift) && isRush == false)
         {
-            update_temptime = update_totaltime;
+            //update_temptime = update_totaltime;
+            rushTimer = rushTime / 3 * 2;
+            rushCoolDownTimer = rushTime;
             movespeed = movespeed * 3;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             isRush = true;
+            isSpeedUp = true;
         }
-        if (update_totaltime - update_temptime == rush_cyclenum)
+        if (isSpeedUp && (rushTimer < 0))//update_totaltime - update_temptime == rush_cyclenum)
         {
             movespeed = movespeed / 3;
+            isSpeedUp = false;
         }
-        if (update_totaltime - update_temptime == rush_cyclenum + 50)
+        if (isRush && (rushCoolDownTimer < 0))//update_totaltime - update_temptime == rush_cyclenum + 50)
         {
             isRush = false;
         }
