@@ -101,12 +101,14 @@ public class PickupSystem : MonoBehaviour
                 type = 1;
                 tempicon_axe.SetActive(true);
                 Destroy(collision.gameObject);
+                locking = true;
             }
             else if (collision.gameObject.tag == "pickaxe") //pick up pickaxe
             {
                 type = 2;
                 tempicon_pickaxe.SetActive(true);
                 Destroy(collision.gameObject);
+                locking = true;
             }
 
             else if (collision.gameObject.tag == "wood") //pick up wood
@@ -114,14 +116,15 @@ public class PickupSystem : MonoBehaviour
                 type = 3;
                 tempicon_wood.SetActive(true);
                 Destroy(collision.gameObject);
+                locking = true;
             }
             else if (collision.gameObject.tag == "rock") //pick up rock
             {
                 type = 4;
                 tempicon_rock.SetActive(true);
                 Destroy(collision.gameObject);
+                locking = true;
             }
-            locking = true;
         }
     }
 
