@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public GameObject Path;
 
     public List<Transform> PathLocations;
+    public GameObject NowLevelText;
 
     // Tilemap GroundMap;
     // Grid grid;
@@ -117,7 +119,8 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator GameLoop() {
-        Debug.Log("Load Level " + NowLevel);        
+        Debug.Log("Load Level " + NowLevel);
+        NowLevelText.GetComponent<Text>().text = "Level: " + NowLevel;
         // while game is not over
         while(!IsGameOver) {
             // EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];

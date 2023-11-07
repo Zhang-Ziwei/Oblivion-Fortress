@@ -134,10 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095ee8b7b0764da41a8828937838fbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 100
-  Damage: 0.4
+  attackRange: 10
+  Damage: 20
+  slowDownRate: 0.5
+  slowDownTime: 5
   Tag: Enemy
-  attackInterval: 0.5
+  attackInterval: 5
   attackType: Lightning
 --- !u!120 &7462953453726178600
 LineRenderer:

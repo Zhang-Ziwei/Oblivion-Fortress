@@ -48,10 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 8598278846631442000, guid: 48ef08db084b5f74e9f338eb595dbfde, type: 3}
-  MaxWood: 3
+  MaxWood: 1
   Wood: 0
-  MaxStone: 1
+  MaxStone: 2
   Stone: 0
+  DebugMode: 0
 --- !u!60 &7828430219067810825
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0.8627451}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -413,7 +414,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &6680221366789557983
 MonoBehaviour:

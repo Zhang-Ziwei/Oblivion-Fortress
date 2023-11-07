@@ -375,7 +375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4944230376442633554, guid: c66c074d6c7ca294a96d7f5d8269c643, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -535,7 +535,7 @@ MonoBehaviour:
   speed: 2
   attackRange: 1
   detectRange: 2
-  attackInterval: 0
+  attackInterval: 1
   healthBar: {fileID: 5113885311150809645}
 --- !u!70 &6947253346254741246
 CapsuleCollider2D:

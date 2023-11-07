@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Level1_Enemies
   m_EditorClassIdentifier: 
   enemiesIDs: 0200000001000000
-  spawnInterval: 3
-  beforeSpawnInterval: 10
+  spawnInterval: 4.5
+  beforeSpawnInterval: 20

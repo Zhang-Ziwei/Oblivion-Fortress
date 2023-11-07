@@ -41,6 +41,7 @@ public class HeroKnight : MonoBehaviour {
     public float AttackRange;
 
     public float Damage;
+    public float AttackInterval = 0.5f;
 
 
     // Use this for initialization
@@ -219,7 +220,7 @@ public class HeroKnight : MonoBehaviour {
 
 
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling)
         {
             m_currentAttack++;
 
