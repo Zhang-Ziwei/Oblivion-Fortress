@@ -12,10 +12,16 @@ public class Base : MonoBehaviour
     public int Wood = 0;
     public int MaxStone = 3;
     public int Stone = 0;
+    public bool DebugMode = false;
     private TMP_Text Text_Pro;
 
     void Start()
     {
+        if(DebugMode) {
+            Instantiate(tower, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            return;
+        }
         Text_Pro = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         changeUI();
     }

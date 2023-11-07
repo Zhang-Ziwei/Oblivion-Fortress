@@ -38,6 +38,16 @@ public class HeroKnight : MonoBehaviour {
     private bool isRush = false;
     public GameObject pauseUI;
 
+    private float rushTime = 0.5f;
+    private float rushTimer = 0;
+    private float rushCoolDownTimer = 0;   
+    private bool isSpeedUp = false;
+
+    public float AttackRange;
+
+    public float Damage;
+    public float AttackInterval = 0.5f;
+
 
     // Use this for initialization
     void Start ()
@@ -54,19 +64,25 @@ public class HeroKnight : MonoBehaviour {
     // walk and rush in playcontroller
     private void rush()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isRush == false)
+        rushTimer -= Time.deltaTime;
+        rushCoolDownTimer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isRush == false)
         {
-            update_temptime = update_totaltime;
+            //update_temptime = update_totaltime;
+            rushTimer = rushTime / 3 * 2;
+            rushCoolDownTimer = rushTime;
             movespeed = movespeed * 3;
             m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             isRush = true;
+            isSpeedUp = true;
         }
-        if (update_totaltime - update_temptime == rush_cyclenum)
+        if (isSpeedUp && (rushTimer < 0))//update_totaltime - update_temptime == rush_cyclenum)
         {
             movespeed = movespeed / 3;
+            isSpeedUp = false;
         }
-        if (update_totaltime - update_temptime == rush_cyclenum + 50)
+        if (isRush && (rushCoolDownTimer < 0))//update_totaltime - update_temptime == rush_cyclenum + 50)
         {
             isRush = false;
         }
@@ -127,6 +143,18 @@ public class HeroKnight : MonoBehaviour {
     }
     // walk and rush in playcontroller
 
+
+    // detect whether the player hurt the enemy when attack
+    private void HurtEnemy() {
+        // if we could find the enemy in the attack range
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, AttackRange);
+        foreach (Collider2D enemy in hitEnemies) {
+            if (enemy.tag == "Enemy") {
+                // hurt the enemy
+                enemy.GetComponent<Enemy>().DeductHealth(Damage);
+            }
+        }
+    }
 
     // Update is called once per frame
     void Update ()
@@ -189,19 +217,21 @@ public class HeroKnight : MonoBehaviour {
         m_isWallSliding = (m_wallSensorR1.State() && m_wallSensorR2.State()) || (m_wallSensorL1.State() && m_wallSensorL2.State());
         m_animator.SetBool("WallSlide", m_isWallSliding);
 
+        // WHAT IS THIS CODE FUCKING DOING???
         //Death
-        if (Input.GetKeyDown("e") && !m_rolling)
+        if (Input.GetKeyDown("o") && !m_rolling)
         {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
         }
             
         //Hurt
-        else if (Input.GetKeyDown("q") && !m_rolling)
+        else if (Input.GetKeyDown("p") && !m_rolling)
             m_animator.SetTrigger("Hurt");
 
+
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling)
         {
             m_currentAttack++;
 
@@ -215,6 +245,9 @@ public class HeroKnight : MonoBehaviour {
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+
+            // hurt enemy
+            HurtEnemy();
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -289,6 +322,7 @@ public class HeroKnight : MonoBehaviour {
     }
 
     //捡起斧头
+    /*
     private void OnTriggerStay2D(Collider2D collision)
     {
         UnityEngine.Debug.Log("持续碰撞:");
@@ -300,5 +334,6 @@ public class HeroKnight : MonoBehaviour {
             UnityEngine.Debug.Log(toolstype);
         }    
     }
+    */
         
 }

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a478a7b656ca61e448767629340c2dcb, type: 3}
   m_Name: Level1_Enemies
   m_EditorClassIdentifier: 
-  enemiesIDs: 01000000020000000300000004000000
-  spawnInterval: 3
+  enemiesIDs: 0200000001000000
+  spawnInterval: 4.5
+  beforeSpawnInterval: 20
+  isActive: 1

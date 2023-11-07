@@ -8,12 +8,17 @@ public class EnemyLevelData: ScriptableObject
     public List<int> enemiesIDs;
     public float spawnInterval;
 
-    private int enemiesLeft;
+    public float beforeSpawnInterval;
 
-    // define getter and setter for enemiesLeft
-    public int EnemiesLeft
+    public bool isActive;
+
+    private float timer;
+
+    // getter and setter of timer
+    public float Timer
     {
-        get { return enemiesLeft; }
-        set { enemiesLeft = value; }
+        get { return timer; }
+        set { timer = value; }
     }
+
 }

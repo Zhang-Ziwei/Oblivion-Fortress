@@ -1,5 +1,56 @@
 # Oblivion-Fortress Update Log
 
+## 11/7 from kyleko56
+- 關卡設計
+- 將資源、敵人、玩家、工具、主堡的 display layer 都設成 5
+- 目前波數 UI
+- 修復 bug: rush 時間不一致 & 東西會撿起來馬上放下
+- 已知 bug: 蓋塔時向左右跑會讓玩家血量顯示異常
+
+## 11/7 from sankonsky
+- 新增GameOverUI/WinUI
+- 新增採集量條，顯示目前採集進度
+- 道路判定:現在防禦塔無法蓋在道路上
+- 玩家血量機制 HPControl.cs
+  - 血量量條
+  - 敵人攻擊玩家會扣血
+  - 目前不會復活，血量歸零即結束遊戲
+- 待解決問題:最後一波進攻到一半系統就判定獲勝，且獲勝後若重新進行遊戲不會生成怪物(死亡後重新開始不會有問題)
+
+## 11/6 from henryhuang920712
+- 敵人攻擊主堡
+    - 主堡血量設定
+- 玩家攻擊敵人
+    - 玩家攻擊力、攻擊範圍設定
+- 關卡開始前讀秒 (Before Spawn Interval)
+    - 設定在`Assets/Resources/Enemies/EnemyLevelData`中
+- 新敵人
+    - Bringer Of Death (ID: 5)
+
+## 11/6 from sankonsky
+- 撿起系統 PickupSystem.cs
+  - 持有狀態: 0空手/1斧/2鎬/3木頭/4石頭
+  - 須持對應工具才可採集
+  - 目前持有物品顯示在左上角，之後再改成以動畫呈現
+  - 若角色在建築物地基上，放下材料會直接放入地基
+- 移除DepositMaterial.cs，功能合併至撿起系統
+- (已修復)~~待解決問題:撿起與放下會同時判定，暫時先分開成兩個按鍵，E撿起R放下~~
+- 修復問題:原本按E角色會直接躺平，目前把躺平鍵移到O，但還不知道如何移除躺平功能...
+
+## First Demo 測試回饋
+- https://docs.google.com/forms/d/1vdaiac8mL2BVGx3HF-6avDuczlM2sxjXHwt9O9j7L4s/edit#responses
+
+## 11/5 from sankonsky
+- 新增主堡外觀
+- 衝刺鍵由Ctrl改成Shift
+- 建造防禦塔UI
+- 採集後會掉落對應材料，樹->木材，石頭->石塊
+  - 石塊外觀還沒找到適合的
+
+## 11/5 from kyleko56
+- 新增緩速防禦塔
+- 更新防禦塔外觀、攻擊動畫
+
 ## 10/30 from henryhuang920712
 - 新增兩種敵人
   - Mushroom (ID: 3)

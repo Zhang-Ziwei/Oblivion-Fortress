@@ -6,8 +6,13 @@ TagManager:
   tags:
   - Base
   - Enemy
-  - Tree
   - Tower
+  - wood
+  - rock
+  - axe
+  - pickaxe
+  - tree
+  - stone
   layers:
   - Default
   - TransparentFX
