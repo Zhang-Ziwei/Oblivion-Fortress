@@ -26455,7 +26455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 629053154}
-  maxHealth: 5
+  maxHealth: 15
+  health: 0
   GameOverUI: {fileID: 1651409615}
 --- !u!1 &1647778608
 GameObject:

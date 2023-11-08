@@ -1,5 +1,16 @@
 # Oblivion-Fortress Update Log
 
+## mid demo 測試回饋 
+- https://docs.google.com/forms/d/1XlGyXq3QoD98YvhbscSh1o9Opyu7uBL1_A-EkI56SDc/edit#responses
+
+## 11/8 from sankonsky
+### mid demo version
+- 修改城堡及蝙蝠血量
+- 已修復bug:
+  - 重新遊戲後怪物無法正常生成
+  - 進攻回合無法正常運作
+  - 網頁版gameover後遊戲卡死
+
 ## 11/7 from kyleko56
 - 關卡設計
 - 將資源、敵人、玩家、工具、主堡的 display layer 都設成 5

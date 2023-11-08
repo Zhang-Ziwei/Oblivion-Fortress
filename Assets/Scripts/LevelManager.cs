@@ -110,7 +110,6 @@ public class LevelManager : MonoBehaviour
 
     private void GameWin() {
         Debug.Log("WIN");
-        Application.Quit();
         Time.timeScale = 0;
         WinUI.SetActive(true);
     }
