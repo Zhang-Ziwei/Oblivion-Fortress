@@ -141,7 +141,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        EnemySummon.RemoveEnemy(this);
+        LevelManager.Instance.EnqueEnemyToRemove(this);
         yield return null;
     }
 
