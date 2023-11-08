@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 11/9 from kyleko56
+- 新增防禦塔資訊 UI
+- 已修復bug: 玩家斜向速度較快
+  
 ## mid demo 測試回饋 
 - https://docs.google.com/forms/d/1XlGyXq3QoD98YvhbscSh1o9Opyu7uBL1_A-EkI56SDc/edit#responses
 
