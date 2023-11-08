@@ -140,7 +140,7 @@ MonoBehaviour:
   slowDownTime: 5
   Tag: Enemy
   attackInterval: 5
-  attackType: Slow
+  attackType: AreaSlow
 --- !u!120 &7462953453726178600
 LineRenderer:
   serializedVersion: 2

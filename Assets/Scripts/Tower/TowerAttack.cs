@@ -33,12 +33,12 @@ public class TowerAttack : MonoBehaviour
             area = gameObject.transform.GetChild(2).gameObject;
             //area.transform.localScale = new Vector3(attackRange, attackRange, 1);
         }
-        else if (attackType == "Lightning")
+        else if (attackType == "Single_L")
         {
             lightningEnd = gameObject.transform.GetChild(2).gameObject.transform.GetChild(1).gameObject;
             lightningEndAtStart = lightningEnd.transform.position;
         }
-        else if (attackType == "Slow")
+        else if (attackType == "AreaSlow")
         {
             area = gameObject.transform.GetChild(2).gameObject;
             //area.transform.localScale = new Vector3(attackRange, attackRange, 1);
@@ -55,7 +55,7 @@ public class TowerAttack : MonoBehaviour
         {
             area.SetActive(false);
         }
-        else if (attackType == "Lightning")
+        else if (attackType == "Single_L")
         {
             lightningEnd.transform.position = lightningEndAtStart;
         }
@@ -103,7 +103,7 @@ public class TowerAttack : MonoBehaviour
                 }
             }
 
-            else if (attackType == "Lightning")
+            else if (attackType == "Single_L")
             {
                 GameObject nearestEnemy = GameData.getNearestObjectWithTag(transform.position, Tag);
                 if(nearestEnemy && GameData.distanceRec(transform.position, nearestEnemy.transform.position) < attackRange)
@@ -114,7 +114,7 @@ public class TowerAttack : MonoBehaviour
                 }
             }
 
-            else if (attackType == "Slow")
+            else if (attackType == "AreaSlow")
             {
                 GameObject[] enemies = GameData.getInRangeObjectWithTag(transform.position, Tag, attackRange);
                 if(enemies.Length > 0)

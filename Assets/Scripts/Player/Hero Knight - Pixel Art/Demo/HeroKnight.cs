@@ -28,7 +28,7 @@ public class HeroKnight : MonoBehaviour {
     private string toolstype;
 
     // walk and rush in playcontroller
-    public float movespeed = 1f;
+    public float movespeed = 2f;
     public Camera maincamera;
     private Animation animate;
     private int rush_cyclenum = 100;
@@ -93,25 +93,25 @@ public class HeroKnight : MonoBehaviour {
         Vector3 dir = Vector2.zero;
         if (Input.GetKey(KeyCode.D))
         {
-            dir += new Vector3(movespeed * Time.deltaTime, 0, 0);
-            transform.Translate(movespeed * Time.deltaTime, 0, 0);
+            dir += new Vector3(1, 0, 0);
+            //transform.Translate(movespeed * Time.deltaTime, 0, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            dir += new Vector3(-movespeed * Time.deltaTime, 0, 0);
-            transform.Translate(-movespeed * Time.deltaTime, 0, 0);
+            dir += new Vector3(-1, 0, 0);
+            //transform.Translate(-movespeed * Time.deltaTime, 0, 0);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            dir += new Vector3(0, movespeed * Time.deltaTime, 0);
-            transform.Translate(0, movespeed * Time.deltaTime, 0);
+            dir += new Vector3(0, 1, 0);
+            //transform.Translate(0, movespeed * Time.deltaTime, 0);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            dir += new Vector3(0, -movespeed * Time.deltaTime, 0);
-            transform.Translate(0, -movespeed * Time.deltaTime, 0);
+            dir += new Vector3(0, -1, 0);
+            //transform.Translate(0, -movespeed * Time.deltaTime, 0);
         }
-        transform.position += dir;
+        transform.position += dir.normalized * movespeed * Time.deltaTime;
     }
 
     private void LateUpdate()
