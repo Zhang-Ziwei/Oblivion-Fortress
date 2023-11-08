@@ -101,7 +101,9 @@ public class LevelManager : MonoBehaviour
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             } else {
-                GameWin();
+                if (enemiesLeft == 0) {
+                    GameWin();
+                }
             }
         } 
     }
