@@ -15,4 +15,4 @@ MonoBehaviour:
   enemiesIDs: 01000000010000000100000001000000010000000100000001000000010000000100000001000000
   spawnInterval: 0.5
   beforeSpawnInterval: 40
-  isActive: 0
+  isActive: 1
