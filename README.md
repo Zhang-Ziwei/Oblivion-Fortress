@@ -1,20 +1,19 @@
 # Oblivion-Fortress Update Log
 
-## 11/9 from kyleko56
-- 新增防禦塔資訊 UI
-- 已修復bug: 玩家斜向速度較快
-  
 ## mid demo 測試回饋 
 - https://docs.google.com/forms/d/1XlGyXq3QoD98YvhbscSh1o9Opyu7uBL1_A-EkI56SDc/edit#responses
 
 ## mid demo version
+
+## 11/9 from kyleko56
+- 新增防禦塔資訊 UI
+- 已修復bug: 玩家斜向速度較快
 
 ## 11/8 from sankonsky
 - 修改城堡及蝙蝠血量
 - 已修復bug:
   - 網頁版gameover後遊戲卡死
   - 蓋塔時玩家血量顯示異常
-
 
 ## 11/8 from henryhuang920712
 - 已修復bug:
