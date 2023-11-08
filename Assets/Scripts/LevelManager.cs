@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     public Text timerText;
 
-    public Text enemiesLeftText;
+    public Text enemiesLeaveText;
 
     public GameObject Path;
 
@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         UpdateTimerText();
-        UpdateEnemiesLeftText();
+        UpdateEnemiesLeaveText();
         // check whether LoadLevel is finished
         if (!inLevel) {
             if (NowLevel < enemyLevelDatas.Count)  {
@@ -123,8 +123,8 @@ public class LevelManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
 
-    private void UpdateEnemiesLeftText() {
-        enemiesLeftText.text =  enemiesLeft + " Enemies Left";
+    private void UpdateEnemiesLeaveText() {
+        enemiesLeaveText.text =  enemiesLeft + " Enemies Leave";
     }
 
     IEnumerator LoadLevel() {

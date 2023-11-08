@@ -3,14 +3,20 @@
 ## mid demo 測試回饋 
 - https://docs.google.com/forms/d/1XlGyXq3QoD98YvhbscSh1o9Opyu7uBL1_A-EkI56SDc/edit#responses
 
+## mid demo version
+
 ## 11/8 from sankonsky
-### mid demo version
 - 修改城堡及蝙蝠血量
+- 已修復bug:
+  - 網頁版gameover後遊戲卡死的
+  - 蓋塔時玩家血量顯示異常
+
+
+## 11/8 from henryhuang920712
 - 已修復bug:
   - 重新遊戲後怪物無法正常生成
   - 進攻回合無法正常運作
-  - 網頁版gameover後遊戲卡死
-
+  
 ## 11/7 from kyleko56
 - 關卡設計
 - 將資源、敵人、玩家、工具、主堡的 display layer 都設成 5
@@ -90,17 +96,18 @@
 - 讓 UI 能在不同解析度顯示
 - 增加開始畫面、restart按鈕
   
-## 10/18 from sankonsky
-### first demo version
-- 調整鍵盤配置:
-  - Ctrl:衝刺
-  - Space:採集
-  - E:撿起/放下
+## first demo version
 - 已知問題:
   - Enemy.cs的using UnityEditor.UI會造成遊戲無法輸出，先暫時改為註解處理，目前在遊戲中正常
   - (已修復)CollectResource.cs的長按鍵計時器在測試版及網頁版相差極大，暫時先把count由500調成50，可能是幀數不同造成的問題
   - 衝刺的時間在測試版及網頁版也相差極大，很可能也是幀數不同造成的問題
   - 衝刺會無視collision衝出地圖外
+
+## 10/18 from sankonsky
+- 調整鍵盤配置:
+  - Ctrl:衝刺
+  - Space:採集
+  - E:撿起/放下
 
 ## 10/18 from kyleko56
 - 簡單版物資蒐集 (砍掉便獲得物資，沒有掉落物)
