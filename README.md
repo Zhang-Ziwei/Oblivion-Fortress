@@ -8,7 +8,7 @@
 ## 11/8 from sankonsky
 - 修改城堡及蝙蝠血量
 - 已修復bug:
-  - 網頁版gameover後遊戲卡死的
+  - 網頁版gameover後遊戲卡死
   - 蓋塔時玩家血量顯示異常
 
 
