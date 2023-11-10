@@ -536,7 +536,9 @@ MonoBehaviour:
   attackRange: 1
   detectRange: 2
   attackInterval: 1
+  critChance: 0
   healthBar: {fileID: 5113885311150809645}
+  enemyBuffIDs: 0000000000000000
 --- !u!70 &6947253346254741246
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

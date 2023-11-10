@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEditor;
 
 //using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 
 // custom class for enemy
 public class Enemy : MonoBehaviour
@@ -23,9 +28,19 @@ public class Enemy : MonoBehaviour
 
     public float attackInterval;
 
-    private int ID;
+    public float critChance;
 
     public Slider healthBar;
+
+    public List<int> enemyBuffIDs;
+
+    private List<UnityEvent<object, GameObject>> attackEvents;
+
+    private Dictionary<int, object> enemyBuffDatas;
+
+    private EnemyBuff enemyBuff;
+
+    private int ID;
 
     private Castle castle;
 
@@ -48,6 +63,10 @@ public class Enemy : MonoBehaviour
     private string isAttacking = "IsAttacking";
     private string isAttacked = "IsAttacked";
     private string isDead = "IsDead";
+
+    private string isWalking = "IsWalking";
+
+    private string isCrit = "IsCrit";
 
     // private string isMoving = "IsMoving";
 
@@ -74,6 +93,9 @@ public class Enemy : MonoBehaviour
         // get the animator in the first child
         animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
+        // get enemy buff
+        enemyBuff = GetComponent<EnemyBuff>();
+
         // find the castle
         castle = GameObject.Find("castle").GetComponent<Castle>();
 
@@ -95,13 +117,52 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy.cs: attackRange is larger than detectRange.");
         }
 
+        if (critChance > 1 || critChance < 0) {
+            Debug.Log("Enemy.cs: critChance error.");
+        }
+
+        animator.SetBool(isWalking, false);
+        animator.SetFloat(isCrit, 0);
+
         // set enemy to the first path location
         transform.position = LevelManager.Instance.PathLocations[0].position;
 
         nextPath = LevelManager.Instance.PathLocations[PathIndex];
+
+        attackEvents = new List<UnityEvent<object, GameObject>>();
+
+        enemyBuffDatas = new Dictionary<int, object>();
+
+        // find all the enemy buff datas in resources
+        object[] temp = Resources.LoadAll("Enemies/EnemyBuffData");
+        for (int i = 0; i < temp.Length; i++) {
+            if (temp[i] is EnemyBuffData) {
+                EnemyBuffData enemyBuffData = (EnemyBuffData)temp[i];
+                enemyBuffData.IsBuffed = false;
+                enemyBuffDatas.Add(enemyBuffData.ID, enemyBuffData);
+            }
+        }
+
+        enemyBuff.AssignAttackEvents(this);
+
     }
     public int GetID() {
         return ID;
+    }
+
+    // add to attackEvents
+    public void AddAttackEvent(UnityEvent<object, GameObject> attackEvent) {
+        attackEvents.Add(attackEvent);
+    }
+
+    // decide whether the enemy is crit or not
+    public void SetIsCrit() {
+        float random = Random.Range(0f, 1f);
+        if (random <= critChance) {
+            animator.SetFloat(isCrit, 1);
+        } else {
+            animator.SetFloat(isCrit, 0);
+        }
     }
 
     public void DeductHealth(float damage) {
@@ -122,6 +183,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator AttackAnimation() {
         inAttackInterval = true;
+        SetIsCrit();
         animator.SetTrigger(isAttacking);
 
         while (animator.GetCurrentAnimatorStateInfo(0).IsName(isAttacking)) {
@@ -163,11 +225,12 @@ public class Enemy : MonoBehaviour
     }
 
     private void Move(Transform target) {
-        // animator.SetTrigger(isMoving);
 
         Vector2 direction = (target.position - transform.position).normalized;
         // if x is negative, flip the sprite of the child object
         GameObject Skin = transform.GetChild(0).gameObject;
+
+        animator.SetBool(isWalking, true);
 
         // if y is negative, layer order is -1; else, layer order is 1
         if (direction.y < 0)
@@ -198,9 +261,16 @@ public class Enemy : MonoBehaviour
             // end moving to target
             actionMode = -1;
         }
+        animator.SetBool(isWalking, false);
 
         StartCoroutine(AttackAnimation());
         playerHP.DeductHP(damage);
+
+        // invoke the slowness event
+        for(int i = 0; i < attackEvents.Count; i++) {
+            attackEvents[i]?.Invoke(enemyBuffDatas[enemyBuffIDs[i]], player);
+        }
+
     }
 
     private void AttackCastle() {
@@ -268,6 +338,7 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
                 AttackCastle();
                 // Debug.Log("Enemy.cs: AttackCastle() called.");
+    
             } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval) {
                 AttackPlayer();
                 // Debug.Log("Enemy.cs: AttackPlayer() called.");
@@ -277,7 +348,6 @@ public class Enemy : MonoBehaviour
                 MoveToPath();
             }
         }    
-
     }
     IEnumerator Test() {
         while(true) {

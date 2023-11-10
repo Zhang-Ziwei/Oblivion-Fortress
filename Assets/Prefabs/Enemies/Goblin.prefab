@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 442151645582083089}
   - component: {fileID: 5138254762449886513}
   - component: {fileID: 8879944933993915532}
+  - component: {fileID: 7867272815890300087}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Enemy
@@ -252,8 +253,10 @@ MonoBehaviour:
   speed: 1.5
   attackRange: 1
   detectRange: 2
-  attackInterval: 1
+  attackInterval: 3
+  critChance: 1
   healthBar: {fileID: 8006671188524515060}
+  enemyBuffIDs: 0000000001000000
 --- !u!70 &8879944933993915532
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -289,6 +292,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6, y: 0.1}
   m_Direction: 1
+--- !u!114 &7867272815890300087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653141657298196938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4afed623897d04faa10542cd85bd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6220515784665755022
 GameObject:
   m_ObjectHideFlags: 0

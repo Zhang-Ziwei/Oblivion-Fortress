@@ -106,6 +106,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         } 
+
     }
 
     private void GameWin() {

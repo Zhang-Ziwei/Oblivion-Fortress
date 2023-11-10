@@ -1,5 +1,14 @@
 # Oblivion-Fortress Update Log
 
+## 11/11 from henryhuang920712
+- 新增敵人
+  - Evil Wizard (ID: 6)
+- 新增Debuff基本功能
+  - 中毒持續扣血 (ID: 0)
+  - 緩速玩家 (ID: 1)
+  - 相關設定在`Assets/Resources/Enemies/EnemyBuffData`中
+  - 可以到`Assets/Prefabs/Enemies`中設定每個敵人的Debuff
+  
 ## mid demo 測試回饋 
 - https://docs.google.com/forms/d/1XlGyXq3QoD98YvhbscSh1o9Opyu7uBL1_A-EkI56SDc/edit#responses
 
