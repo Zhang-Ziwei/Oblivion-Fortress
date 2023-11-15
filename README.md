@@ -1,7 +1,7 @@
 # Oblivion-Fortress Update Log
 ## 11/14 from Zhang-Ziwei
 -工具重叠修復
-  撿起放下系統工具已無法重叠
+  -撿起放下系統工具已無法重叠
 -衝刺出地圖修復
 -新增持斧動畫
   -持斧休息（無按鍵）
