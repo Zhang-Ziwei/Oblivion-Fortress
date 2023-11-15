@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
 
     public Text timerText;
 
+    public Text enemiesLeaveText;
+
     public GameObject Path;
 
     public List<Transform> PathLocations;
@@ -34,6 +36,8 @@ public class LevelManager : MonoBehaviour
     private bool inLevel;
 
     private float timer;
+
+    private int enemiesLeft;
 
     void Awake() {
         Instance = this;
@@ -66,6 +70,8 @@ public class LevelManager : MonoBehaviour
         EnemyToSummon = new Queue<int>();
         EnemyToRemove = new Queue<Enemy>();
 
+        StartCoroutine(GameLoop());
+
     }
 
     // Start is called before the first frame update
@@ -82,33 +88,31 @@ public class LevelManager : MonoBehaviour
                 enemyLevelDatas.Add(enemyLevelData);
             }
         }
-
-    }
+    }   
 
     // Update is called once per frame
     void Update()
     {
         UpdateTimerText();
+        UpdateEnemiesLeaveText();
         // check whether LoadLevel is finished
         if (!inLevel) {
             if (NowLevel < enemyLevelDatas.Count)  {
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             } else {
-                if (EnemySummon.EnemiesInGame.Count == 0) {
+                if (enemiesLeft == 0) {
                     GameWin();
                 }
             }
         } 
+
     }
 
     private void GameWin() {
-        if (!IsGameOver) {
-            Debug.Log("WIN");
-            Application.Quit();
-            Time.timeScale = 0;
-            WinUI.SetActive(true);
-        }
+        Debug.Log("WIN");
+        Time.timeScale = 0;
+        WinUI.SetActive(true);
     }
 
     private void UpdateTimerText()
@@ -120,8 +124,13 @@ public class LevelManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
 
+    private void UpdateEnemiesLeaveText() {
+        enemiesLeaveText.text =  enemiesLeft + " Enemies Leave";
+    }
+
     IEnumerator LoadLevel() {
         inLevel = true;
+        Debug.Log("Load Level " + NowLevel);
 
         EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
 
@@ -139,19 +148,27 @@ public class LevelManager : MonoBehaviour
         // set color of timer text to red
         timerText.color = Color.red;
 
+        timerText.gameObject.SetActive(true);
+
         // while timer is not 0, update timer and timer text
         while (timer > 0) {
             timer -= Time.deltaTime;
             yield return null;
         }
 
-        StartCoroutine(GameLoop());
+        NowLevelText.GetComponent<Text>().text = "Level: " + NowLevel;
+        timer = 0;
 
-        foreach (int enemyID in enemyLevelData.enemiesIDs) {
-            EnqueEnemyToSummon(enemyID);
+        // set timertext to inactive
+        timerText.gameObject.SetActive(false);
 
+        // spawn the enemies
+        enemiesLeft += enemyLevelData.enemiesIDs.Count;
+        foreach (int enemyIndx in enemyLevelData.enemiesIDs) {
+            EnqueEnemyToSummon(enemyIndx);
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
         }
+        
 
         inLevel = false;
 
@@ -159,19 +176,8 @@ public class LevelManager : MonoBehaviour
     }
 
     IEnumerator GameLoop() {
-        Debug.Log("Load Level " + NowLevel);
-        NowLevelText.GetComponent<Text>().text = "Level: " + NowLevel;
-
-        // set timer to 0
-        timer = 0;
-        // set color of timer text to black
-        timerText.color = Color.black;
-
         // while game is not over
         while(!IsGameOver) {
-            // EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
-            // StartCoroutine(SpawnEnemy(enemyLevelData));
-
             for (int i = 0; i < EnemyToSummon.Count; i++) {
                 int enemyID = EnemyToSummon.Dequeue();
                 EnemySummon.SummonEnemy(enemyID);
@@ -183,17 +189,15 @@ public class LevelManager : MonoBehaviour
                 EnemySummon.RemoveEnemy(enemyToRemove);
             }
 
-            // update timer
-            timer += Time.deltaTime;
-
             yield return null;
         }
     }
 
-    void EnqueEnemyToSummon(int enemyID) {  // add new enemies to enemytosummon
+    public void EnqueEnemyToSummon(int enemyID) {  // add new enemies to enemytosummon
         EnemyToSummon.Enqueue(enemyID);
     }
-    void EnqueEnemyToRemove(Enemy enemyToRemove) {  // add new enemies to enemytoremove
+    public void EnqueEnemyToRemove(Enemy enemyToRemove) {  // add new enemies to enemytoremove
         EnemyToRemove.Enqueue(enemyToRemove);
+        enemiesLeft --;
     }
 }

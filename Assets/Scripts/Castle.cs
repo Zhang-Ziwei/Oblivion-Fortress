@@ -9,7 +9,7 @@ public class Castle : MonoBehaviour
     public Slider healthBar;
 
     public float maxHealth;
-    private float health;
+    public float health;
 
     public GameObject GameOverUI;
 

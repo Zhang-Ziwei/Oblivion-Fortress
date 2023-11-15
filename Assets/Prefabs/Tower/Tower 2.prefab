@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3.5
-  Damage: 0.3
+  Damage: 0.4
   slowDownRate: 0.5
   slowDownTime: 5
   Tag: Enemy

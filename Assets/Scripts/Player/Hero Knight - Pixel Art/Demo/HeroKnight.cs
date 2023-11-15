@@ -28,7 +28,7 @@ public class HeroKnight : MonoBehaviour {
     private int toolstype = 0;
 
     // walk and rush in playcontroller
-    public float movespeed = 1f;
+    public float movespeed = 2f;
     public Camera maincamera;
     private Animation animate;
     private int rush_cyclenum = 100;
@@ -189,7 +189,6 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("Run", false);
             }
         }
-        
     }
 
     private void LateUpdate()

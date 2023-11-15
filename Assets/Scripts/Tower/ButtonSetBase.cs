@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-public class ButtonSetBase : MonoBehaviour
+public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
     private Button mybutton;
@@ -13,24 +14,47 @@ public class ButtonSetBase : MonoBehaviour
     private Collider2D BaseCollider;
     private bool isBaseSetting = false;
     private float attackRange;
+    private GameObject towerInfo;
+    private GameObject Tower;
 
     void Start()
     {
         mybutton = GetComponent<Button>();
         mybutton.onClick.AddListener(TaskOnClick);
+
+        //Set base UI
         Square = Instantiate(Square);
         Square.SetActive(false);
         BaseCollider = Square.GetComponent<PolygonCollider2D>();
-        attackRange = Base.GetComponent<Base>().tower.GetComponent<TowerAttack>().attackRange;
+
+        //Get correspond tower of base
+        Tower = Base.GetComponent<Base>().tower;
+        attackRange = Tower.GetComponent<TowerAttack>().attackRange;
         attackField = Instantiate(attackField);
         attackField.transform.localScale = new Vector3(attackRange, attackRange, 1);
         attackField.transform.parent = Square.transform;
+
+        //Modify UI with tower information
+        towerInfo = transform.GetChild(1).gameObject;
+        towerInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxWood;
+        towerInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxStone;
+        towerInfo.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().Damage;
+        towerInfo.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackInterval;
+        towerInfo.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackRange;
+        towerInfo.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackType;
     }
 
     void TaskOnClick()
     {
         isBaseSetting = true;
         Square.SetActive(true);
+    }
+    public void OnPointerEnter(PointerEventData eventData){
+        towerInfo.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData){
+        towerInfo.SetActive(false);
     }
     // Update is called once per frame
     void Update()

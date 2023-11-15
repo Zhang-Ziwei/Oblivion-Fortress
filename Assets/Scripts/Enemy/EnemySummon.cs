@@ -8,29 +8,24 @@ public class EnemySummon : MonoBehaviour
     public static Dictionary<int, GameObject> EnemyPrefabs;
     public static Dictionary<int, Queue<Enemy>> EnemyObjectPools;
 
-    private static bool isInitialized = false;
-
     public static void Init()
     {
-        if (!isInitialized)
+        EnemyPrefabs = new Dictionary<int, GameObject>();
+
+        // the design of this is to reduce the use of Instantiate
+        EnemyObjectPools = new Dictionary<int, Queue<Enemy>>();
+
+        EnemiesInGame = new List<Enemy>();
+
+        EnemySummonData[] enemies = Resources.LoadAll<EnemySummonData>("Enemies");
+
+
+        foreach (EnemySummonData enemy in enemies)
         {
-            EnemyPrefabs = new Dictionary<int, GameObject>();
-
-            // the design of this is to reduce the use of Instantiate
-            EnemyObjectPools = new Dictionary<int, Queue<Enemy>>();
-
-            EnemiesInGame = new List<Enemy>();
-
-            EnemySummonData[] enemies = Resources.LoadAll<EnemySummonData>("Enemies");
-
-
-            foreach (EnemySummonData enemy in enemies)
-            {
-                EnemyPrefabs.Add(enemy.EnemyID, enemy.EnemyPrefab);
-                EnemyObjectPools.Add(enemy.EnemyID, new Queue<Enemy>());
-            }
-            isInitialized = true;
+            EnemyPrefabs.Add(enemy.EnemyID, enemy.EnemyPrefab);
+            EnemyObjectPools.Add(enemy.EnemyID, new Queue<Enemy>());
         }
+
     }
 
     public static Enemy SummonEnemy(int enemyID)
