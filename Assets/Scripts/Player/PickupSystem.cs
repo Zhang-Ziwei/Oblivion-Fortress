@@ -94,16 +94,16 @@ public class PickupSystem : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey("e") && type == 0 && !(locking)) //pick up
+        if (Input.GetKeyDown("e") && type == 0 && !(locking)) //pick up
         {
-            if (collision.gameObject.tag == "axe") //pick up axe
+            if (collision.gameObject.tag == "axe" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "wood") && !(collision.gameObject.tag == "rock")) //pick up axe
             {
                 type = 1;
                 tempicon_axe.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
             }
-            else if (collision.gameObject.tag == "pickaxe") //pick up pickaxe
+            else if (collision.gameObject.tag == "pickaxe" && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "wood") && !(collision.gameObject.tag == "rock")) //pick up pickaxe
             {
                 type = 2;
                 tempicon_pickaxe.SetActive(true);
@@ -111,14 +111,14 @@ public class PickupSystem : MonoBehaviour
                 locking = true;
             }
 
-            else if (collision.gameObject.tag == "wood") //pick up wood
+            else if (collision.gameObject.tag == "wood" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "rock")) //pick up wood
             {
                 type = 3;
                 tempicon_wood.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
             }
-            else if (collision.gameObject.tag == "rock") //pick up rock
+            else if (collision.gameObject.tag == "rock" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "wood")) //pick up rock
             {
                 type = 4;
                 tempicon_rock.SetActive(true);

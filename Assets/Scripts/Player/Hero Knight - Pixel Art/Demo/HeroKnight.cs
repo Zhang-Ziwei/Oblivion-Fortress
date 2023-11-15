@@ -25,7 +25,7 @@ public class HeroKnight : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
-    private string toolstype;
+    private int toolstype = 0;
 
     // walk and rush in playcontroller
     public float movespeed = 1f;
@@ -62,20 +62,27 @@ public class HeroKnight : MonoBehaviour {
     }
 
     // walk and rush in playcontroller
-    private void rush()
+    private void rush(int toolstype)
     {
         rushTimer -= Time.deltaTime;
         rushCoolDownTimer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isRush == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isRush == false && !Input.GetMouseButton(0))
         {
             //update_temptime = update_totaltime;
             rushTimer = rushTime / 3 * 2;
             rushCoolDownTimer = rushTime;
             movespeed = movespeed * 3;
-            m_animator.SetTrigger("Roll");
             m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             isRush = true;
             isSpeedUp = true;
+            if(toolstype == 0)
+                m_animator.SetTrigger("Roll");
+            if (toolstype == 1)
+                m_animator.SetTrigger("Roll_ax");
+                m_animator.SetBool("Attack_stop", false);
+            if (toolstype == 2)
+                m_animator.SetTrigger("Roll_ham");
+                m_animator.SetBool("Attack_stop", false);
         }
         if (isSpeedUp && (rushTimer < 0))//update_totaltime - update_temptime == rush_cyclenum)
         {
@@ -88,30 +95,101 @@ public class HeroKnight : MonoBehaviour {
         }
     }
 
-    private void Move()
+    private void Move(int toolstype)
     {
+        // UnityEngine.Debug.Log(toolstype);
         Vector3 dir = Vector2.zero;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !Input.GetKeyDown(KeyCode.E))
         {
             dir += new Vector3(movespeed * Time.deltaTime, 0, 0);
             transform.Translate(movespeed * Time.deltaTime, 0, 0);
+            if (toolstype == 0)
+                m_animator.SetBool("Run", true);
+            if (toolstype == 1)
+            {
+                m_animator.SetBool("Run_ax", true);
+                m_animator.SetBool("axe", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 2)
+            {
+                m_animator.SetBool("Run_ham", true);
+                m_animator.SetBool("ham", false);
+                m_animator.SetBool("Run", false);
+            }
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !Input.GetKeyDown(KeyCode.E))
         {
             dir += new Vector3(-movespeed * Time.deltaTime, 0, 0);
             transform.Translate(-movespeed * Time.deltaTime, 0, 0);
+            if (toolstype == 0)
+                m_animator.SetBool("Run", true);
+            if (toolstype == 1) { 
+                m_animator.SetBool("Run_ax", true);
+                m_animator.SetBool("axe", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 2)
+            {
+                m_animator.SetBool("Run_ham", true);
+                m_animator.SetBool("ham", false);
+                m_animator.SetBool("Run", false);
+            }
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && !Input.GetKeyDown(KeyCode.E))
         {
             dir += new Vector3(0, movespeed * Time.deltaTime, 0);
             transform.Translate(0, movespeed * Time.deltaTime, 0);
+            if (toolstype == 0)
+                m_animator.SetBool("Run", true);
+            if (toolstype == 1) { 
+                m_animator.SetBool("Run_ax", true);
+                m_animator.SetBool("axe", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 2)
+            {
+                m_animator.SetBool("Run_ham", true);
+                m_animator.SetBool("ham", false);
+                m_animator.SetBool("Run", false);
+            }
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && !Input.GetKeyDown(KeyCode.E))
         {
             dir += new Vector3(0, -movespeed * Time.deltaTime, 0);
             transform.Translate(0, -movespeed * Time.deltaTime, 0);
+            if (toolstype == 0)
+                m_animator.SetBool("Run", true);
+            if (toolstype == 1) { 
+                m_animator.SetBool("Run_ax", true);
+                m_animator.SetBool("axe", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 2)
+            {
+                m_animator.SetBool("Run_ham", true);
+                m_animator.SetBool("ham", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         transform.position += dir;
+        if(!Input.GetKey(KeyCode.D)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.S) && !Input.GetMouseButton(0))
+        {
+            if (toolstype == 0)
+                m_animator.SetBool("Run", false);
+            if (toolstype == 1) { 
+                m_animator.SetBool("Run_ax", false);
+                //m_animator.SetBool("axe", true);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 2)
+            {
+                m_animator.SetBool("Run_ham", false);
+                //m_animator.SetBool("ham", true);
+                m_animator.SetBool("Run", false);
+            }
+        }
+        
     }
 
     private void LateUpdate()
@@ -161,8 +239,9 @@ public class HeroKnight : MonoBehaviour {
     {
         // walk and rush in playcontroller
         update_totaltime++;
-        Move();
-        rush();
+        toolstype = GetComponent<PickupSystem>().type;
+        Move(toolstype);
+        rush(toolstype);
         pausegame();
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
@@ -224,14 +303,14 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
         }
-            
+
         //Hurt
         else if (Input.GetKeyDown("p") && !m_rolling)
             m_animator.SetTrigger("Hurt");
 
 
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling)
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 0)
         {
             m_currentAttack++;
 
@@ -252,6 +331,62 @@ public class HeroKnight : MonoBehaviour {
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
+
+        //Attack_ax
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 1)
+        {
+            m_currentAttack++;
+            m_animator.SetBool("Attack_stop", false);
+            m_animator.SetBool("axe", false);
+            // Loop back to one after third attack
+            if (m_currentAttack > 3)
+                m_currentAttack = 1;
+
+            // Reset Attack combo if time since last attack is too large
+            if (m_timeSinceAttack > 1.0f)
+                m_currentAttack = 1;
+
+            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+            m_animator.SetTrigger("Attack" + m_currentAttack + "_ax");
+
+            // hurt enemy
+            HurtEnemy();
+
+            // Reset timer
+            m_timeSinceAttack = 0.0f;
+
+            // delay the attack when hero did not move
+            //Invoke("delayOpen", 2f); //5秒后调用 delayOpen () 函数  ，只调用一次  do not need to goto hero_ax again
+        }
+
+        //Attack_ham
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 2)
+        {
+            m_currentAttack++;
+            m_animator.SetBool("Attack_stop", false);
+            m_animator.SetBool("ham", false);
+            // Loop back to one after third attack
+            if (m_currentAttack > 3)
+                m_currentAttack = 1;
+
+            // Reset Attack combo if time since last attack is too large
+            if (m_timeSinceAttack > 1.0f)
+                m_currentAttack = 1;
+
+            // Call one of three attack animations "Attack1", "Attack2", "Attack3"
+            m_animator.SetTrigger("Attack" + m_currentAttack + "_ham");
+
+            // hurt enemy
+            HurtEnemy();
+
+            // Reset timer
+            m_timeSinceAttack = 0.0f;
+
+            // delay the attack when hero did not move
+            //Invoke("delayOpen", 2f); //5秒后调用 delayOpen () 函数  ，只调用一次  do not need to goto hero_ax again
+        }
+
+
 
         // Block
         else if (Input.GetMouseButtonDown(1) && !m_rolling)
@@ -292,6 +427,7 @@ public class HeroKnight : MonoBehaviour {
         }
         */
         //Idle
+        /*
         else
         {
             // Prevents flickering transitions to idle
@@ -299,6 +435,8 @@ public class HeroKnight : MonoBehaviour {
                 if(m_delayToIdle < 0)
                     m_animator.SetInteger("AnimState", 0);
         }
+        */
+        
     }
 
     // Animation Events
@@ -321,19 +459,49 @@ public class HeroKnight : MonoBehaviour {
         }
     }
 
-    //捡起斧头
-    /*
+    //捡起
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
-        UnityEngine.Debug.Log("持续碰撞:");
-        if (Input.GetKey(KeyCode.Space))
+        //捡起斧头
+        // UnityEngine.Debug.Log("持续碰撞:"+collision.gameObject.tag);
+        toolstype = GetComponent<PickupSystem>().type;
+        if (collision.gameObject.tag == "axe" && toolstype==1)
         {
             m_animator.SetBool("axe", true);
-            m_animator.SetTrigger("HeroKnight_ax");
-            toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
-            UnityEngine.Debug.Log(toolstype);
-        }    
+            m_animator.SetBool("Attack_stop", true);
+            m_animator.SetInteger("Tool_type", 1);
+            m_animator.SetBool("ham", false);
+            //toolstype = 1;
+            //m_animator.SetTrigger("HeroKnight_ax");
+            //toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
+            //UnityEngine.Debug.Log(toolstype);
+        }
+        //捡起锤子
+        if (collision.gameObject.tag == "pickaxe" && toolstype == 2)
+        {
+            m_animator.SetBool("ham", true);
+            m_animator.SetBool("Attack_stop", true);
+            m_animator.SetInteger("Tool_type", 2);
+            m_animator.SetBool("axe", false);
+            //toolstype = 2;
+        }
+
+        //丢下工具
+        if (toolstype==0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
+        {
+            m_animator.SetBool("ham", false);
+            m_animator.SetBool("axe", false);
+            m_animator.SetBool("Attack_stop", false);
+            m_animator.SetInteger("Tool_type", 0);
+            
+        }
     }
-    */
-        
+
+    void delayOpen()
+    {
+        m_animator.SetBool("Attack_stop", true);
+        m_animator.SetBool("axe", true);
+    }
+
 }

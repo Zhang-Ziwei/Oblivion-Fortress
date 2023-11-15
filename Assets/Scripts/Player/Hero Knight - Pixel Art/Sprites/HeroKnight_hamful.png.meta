@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0852d8260a0ddac4cbebe39372158058
+guid: c90ca486d2d0e6a4187e1b1bab604b81
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeroKnight_axful_0
+      name: HeroKnight_hamful_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d916dd6267262ce49af4a2c611f50906
-      internalID: -2024828941
+      spriteID: beefa072baecc79479114380c22c9fb3
+      internalID: 1354619307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_1
+      name: HeroKnight_hamful_1
       rect:
         serializedVersion: 2
         x: 100
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05e2e3dd10a8e984abdb8dfef287ad63
-      internalID: -1065406188
+      spriteID: 02a07892495133b40924f3ac4f7caaa0
+      internalID: 1430707024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_2
+      name: HeroKnight_hamful_2
       rect:
         serializedVersion: 2
         x: 200
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df29cec216275934aaac24f6d6897553
-      internalID: 20546727
+      spriteID: 36cd21d954923c049b076d86aaa6f595
+      internalID: 2135784237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_3
+      name: HeroKnight_hamful_3
       rect:
         serializedVersion: 2
         x: 300
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afad99434023427428182cf4939289d9
-      internalID: -276263243
+      spriteID: 10b160aa1cc8cb747b3d8da7da535d4f
+      internalID: -2082575806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_4
+      name: HeroKnight_hamful_4
       rect:
         serializedVersion: 2
         x: 400
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49eea12bbb218e547804487f1e02d999
-      internalID: 1039461957
+      spriteID: 1d533ecab9514a4429868d451dcae00a
+      internalID: -67992195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_5
+      name: HeroKnight_hamful_5
       rect:
         serializedVersion: 2
         x: 500
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8b7c2cc1cbced44ca4297ad4d4c2d2f
-      internalID: 1574434095
+      spriteID: 646750da47d412042bb41f44075994a3
+      internalID: -404347792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_6
+      name: HeroKnight_hamful_6
       rect:
         serializedVersion: 2
         x: 600
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be7e2367e1a8b6144aaccae530b8e800
-      internalID: -1497990074
+      spriteID: 7d2d17c8d52346042b54da16590550a3
+      internalID: -1675051255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_7
+      name: HeroKnight_hamful_7
       rect:
         serializedVersion: 2
         x: 700
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd7a7617877a9aa4bb47e91da0841586
-      internalID: -569474678
+      spriteID: 700d4ebdd14f50d49b98cf15baad19ef
+      internalID: 108757344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_8
+      name: HeroKnight_hamful_8
       rect:
         serializedVersion: 2
         x: 800
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93c2872334c9ae3459bbacb4b75500e7
-      internalID: 312989380
+      spriteID: fe5f588336df0f74eb6cb6912c3321d0
+      internalID: -1613288540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_9
+      name: HeroKnight_hamful_9
       rect:
         serializedVersion: 2
         x: 900
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97cf2363e4fecf94a86a6d522864746c
-      internalID: 321981347
+      spriteID: dc4b404721ec11f4d8fc34cb0da7b033
+      internalID: 666170842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_10
+      name: HeroKnight_hamful_10
       rect:
         serializedVersion: 2
         x: 0
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b152b0cfc9e217c40b09e90243b432d8
-      internalID: 733970143
+      spriteID: 668762017782cd84897a0264c251ac7e
+      internalID: -592368811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_11
+      name: HeroKnight_hamful_11
       rect:
         serializedVersion: 2
         x: 100
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a76489c384e83f40a6e0c9870b0a8ce
-      internalID: -2063022190
+      spriteID: 371d40afff7c6954cae96865bd37af52
+      internalID: -710741489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_12
+      name: HeroKnight_hamful_12
       rect:
         serializedVersion: 2
         x: 200
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a49401e2420e4442bf737b29fda431d
-      internalID: -1038464260
+      spriteID: ee8e79d8357957d47b2201958258576c
+      internalID: -1434704874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_13
+      name: HeroKnight_hamful_13
       rect:
         serializedVersion: 2
         x: 300
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a380058cc2c2ed84fb74eff2458f0b98
-      internalID: 1352009841
+      spriteID: ddc228cf5fa6e6040afadec84cc7508e
+      internalID: 242714248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_14
+      name: HeroKnight_hamful_14
       rect:
         serializedVersion: 2
         x: 400
@@ -418,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a2f04b56f06e974eb909a9083e4228d
-      internalID: 46026358
+      spriteID: 719cfd686222e74498255c9cc23d1cf5
+      internalID: -949967732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_15
+      name: HeroKnight_hamful_15
       rect:
         serializedVersion: 2
         x: 500
@@ -439,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdeca90af91ba594fb9430bd9f016183
-      internalID: 1425921482
+      spriteID: 496a708699970404aaeec997416bcfdb
+      internalID: 253367971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_16
+      name: HeroKnight_hamful_16
       rect:
         serializedVersion: 2
         x: 600
@@ -460,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4408c5033a4cc489b0c25387cd9d16
-      internalID: 1490189625
+      spriteID: 50e3d3ef7fff38d44ae72f0c52b475dd
+      internalID: -77921161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_17
+      name: HeroKnight_hamful_17
       rect:
         serializedVersion: 2
         x: 700
@@ -481,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eab82a931b119e4e96c94f8acde122e
-      internalID: -1072163046
+      spriteID: 898131f0f6c436b48a5670d0d1bfb129
+      internalID: 465454202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_18
+      name: HeroKnight_hamful_18
       rect:
         serializedVersion: 2
         x: 800
@@ -502,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22f8ee098030f184ba2d0ac288c13731
-      internalID: 1694533413
+      spriteID: 06a9c048105c53b4ebacfd8d9a76379f
+      internalID: -430198242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_19
+      name: HeroKnight_hamful_19
       rect:
         serializedVersion: 2
         x: 900
@@ -523,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6e58d059da6f284cb286f73555dfe8e
-      internalID: 1886660687
+      spriteID: 11b03be320d05a04bbf501b7cfd879d9
+      internalID: -1442663884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_20
+      name: HeroKnight_hamful_20
       rect:
         serializedVersion: 2
         x: 0
@@ -544,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5060912ba99897e4b87f60605521ac55
-      internalID: 699255249
+      spriteID: d4a1b00a4c1d614438ec868e4d45360c
+      internalID: -130715754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_21
+      name: HeroKnight_hamful_21
       rect:
         serializedVersion: 2
         x: 100
@@ -565,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 288ec01c4bbae094fbebfa1a1c72dab1
-      internalID: -360389740
+      spriteID: e5b29cce3f129374c83c08303d4e0baf
+      internalID: -856123958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_22
+      name: HeroKnight_hamful_22
       rect:
         serializedVersion: 2
         x: 200
@@ -586,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbe6cec359bc07c4b8a0b29ef2325efa
-      internalID: -1629988850
+      spriteID: 2961f436fcfa00e4d9a09b3f71574e57
+      internalID: 1188658523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_23
+      name: HeroKnight_hamful_23
       rect:
         serializedVersion: 2
         x: 300
@@ -607,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5d6ef5f0b6adf2499d18254d4b5eeb7
-      internalID: -1267521034
+      spriteID: 38e1f8f46ff74314e95f1e7247a9f74e
+      internalID: -754420653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_24
+      name: HeroKnight_hamful_24
       rect:
         serializedVersion: 2
         x: 400
@@ -628,14 +628,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb13b1012445b3b408ba7640102404cf
-      internalID: -1136131560
+      spriteID: 81e112f7ea75af14e90da72ada165b68
+      internalID: -81496659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_25
+      name: HeroKnight_hamful_25
       rect:
         serializedVersion: 2
         x: 500
@@ -649,14 +649,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a0e9692fd50da146b51802e6b5705a6
-      internalID: 278429946
+      spriteID: b3584f79b0d836746ab7ba6534aa95b3
+      internalID: 289734425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_26
+      name: HeroKnight_hamful_26
       rect:
         serializedVersion: 2
         x: 600
@@ -670,14 +670,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 665a6f357a62b4d4ebe497a3259adb07
-      internalID: 1299762333
+      spriteID: 4396f62ed1e3fdb498768494abd87e9b
+      internalID: -2012351290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_27
+      name: HeroKnight_hamful_27
       rect:
         serializedVersion: 2
         x: 700
@@ -691,18 +691,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e944ade672c12f64bb8d9a199e46e647
-      internalID: -629845897
+      spriteID: 187712aed3062ab46bd17ddbd771321b
+      internalID: 954624115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_28
+      name: HeroKnight_hamful_28
       rect:
         serializedVersion: 2
-        x: 803
-        y: 333
+        x: 800
+        y: 330
         width: 100
         height: 55
       alignment: 7
@@ -712,14 +712,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4796b50178d55b64db6a188a3ebb06ed
-      internalID: 752520721
+      spriteID: 52ac2819db4fac244844541777435c54
+      internalID: -2017884929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_29
+      name: HeroKnight_hamful_29
       rect:
         serializedVersion: 2
         x: 900
@@ -733,14 +733,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b71836a06640e4da051e352dd814c2
-      internalID: 1415493522
+      spriteID: 5e49edcd293afa942a3cb1d50542b949
+      internalID: -1662111647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_30
+      name: HeroKnight_hamful_30
       rect:
         serializedVersion: 2
         x: 0
@@ -754,14 +754,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5bc3e5ce94e70543acdb8affd4996c0
-      internalID: 1818381577
+      spriteID: 51ae1994035d30b4f8db75148061b18b
+      internalID: -1568034894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_31
+      name: HeroKnight_hamful_31
       rect:
         serializedVersion: 2
         x: 100
@@ -775,14 +775,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e86ed1c75e5b674f98d8eee85fcf6bc
-      internalID: -930176320
+      spriteID: 8793f965cfbd7694aaef1460fddd9c9c
+      internalID: -35695879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_32
+      name: HeroKnight_hamful_32
       rect:
         serializedVersion: 2
         x: 200
@@ -796,14 +796,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd6081472ae4ea44da932200b09263cf
-      internalID: -1917602476
+      spriteID: f75ef28eddf92c044a854fcd010161a1
+      internalID: 1734587482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_33
+      name: HeroKnight_hamful_33
       rect:
         serializedVersion: 2
         x: 300
@@ -817,14 +817,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9963477dbbce70b44a64e3cb5a258cc8
-      internalID: -234704129
+      spriteID: a029b0299309bc2408664c3177e896ed
+      internalID: -55043452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_34
+      name: HeroKnight_hamful_34
       rect:
         serializedVersion: 2
         x: 400
@@ -838,14 +838,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12e286a3a8ab1214ab2b2221339bdda7
-      internalID: -740283650
+      spriteID: 848a67e1a428b944282696f1fa5f0e77
+      internalID: -1802027977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_35
+      name: HeroKnight_hamful_35
       rect:
         serializedVersion: 2
         x: 500
@@ -859,14 +859,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c207d1278f23c4419a07b7a3ebb6738
-      internalID: 2062794544
+      spriteID: 93e30e15a02776044aea4135fb0c9b8d
+      internalID: 1225703396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_36
+      name: HeroKnight_hamful_36
       rect:
         serializedVersion: 2
         x: 600
@@ -880,14 +880,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f86d85d0c7a65984d9b7696a3ace1d69
-      internalID: -996876427
+      spriteID: 78fe95855c3f94b4b88110cca84665a8
+      internalID: -1649351133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_37
+      name: HeroKnight_hamful_37
       rect:
         serializedVersion: 2
         x: 700
@@ -901,14 +901,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 028d631616e4a644b92414885d5620ff
-      internalID: 676592139
+      spriteID: 1baba1e029efb9a40b134daa25d80909
+      internalID: 662807333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_38
+      name: HeroKnight_hamful_38
       rect:
         serializedVersion: 2
         x: 800
@@ -922,14 +922,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48cecefe479e721428c7d31ce50e9de8
-      internalID: 364406788
+      spriteID: 035c1ff123b63af47914200f7bcf0660
+      internalID: -1629739938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_39
+      name: HeroKnight_hamful_39
       rect:
         serializedVersion: 2
         x: 900
@@ -943,14 +943,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f95b8561903c9c145b1989b14098b4a2
-      internalID: 1011556287
+      spriteID: 9df0f067995f36d4a814527f5acae941
+      internalID: 1279471627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_40
+      name: HeroKnight_hamful_40
       rect:
         serializedVersion: 2
         x: 0
@@ -964,14 +964,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c023b5af2858778458950eb148ec0012
-      internalID: 455632931
+      spriteID: dcaf5f7f28f7f144480a331dcba5ee20
+      internalID: 1134570579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_41
+      name: HeroKnight_hamful_41
       rect:
         serializedVersion: 2
         x: 100
@@ -985,14 +985,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3700de6537285bf4e98e350f7aaaefe0
-      internalID: -305832091
+      spriteID: 564d9acd8dfdbb045b1b61a82c18d885
+      internalID: -932451822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_42
+      name: HeroKnight_hamful_42
       rect:
         serializedVersion: 2
         x: 200
@@ -1006,14 +1006,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed4c92cb5a675b043b3dfab75a6db112
-      internalID: -2493823
+      spriteID: 234878511f23b4c49bad15bcf5553626
+      internalID: -32433903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_43
+      name: HeroKnight_hamful_43
       rect:
         serializedVersion: 2
         x: 300
@@ -1027,14 +1027,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3ce952335f2e046867e25cc082e78d
-      internalID: -1856403311
+      spriteID: ff068ba51d0e80f4fba5bcc938b41b62
+      internalID: 1528632770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_44
+      name: HeroKnight_hamful_44
       rect:
         serializedVersion: 2
         x: 400
@@ -1048,14 +1048,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4668cdbce3364fc4e994736a4627c166
-      internalID: -938780696
+      spriteID: 1fb2368164cbed14b95ad9b6510304ea
+      internalID: 481527361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_45
+      name: HeroKnight_hamful_45
       rect:
         serializedVersion: 2
         x: 500
@@ -1069,14 +1069,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57dc0bae6d27fc3438750375494ad1b2
-      internalID: 669543308
+      spriteID: bb7b23a0791613c4599341643e97a07e
+      internalID: 513266778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_46
+      name: HeroKnight_hamful_46
       rect:
         serializedVersion: 2
         x: 600
@@ -1090,14 +1090,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f488ded5c9c3cd41844fe5ae09b1910
-      internalID: -1911028511
+      spriteID: 0270c23150834aa47b0ffdeae58abc0e
+      internalID: -2011720704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_47
+      name: HeroKnight_hamful_47
       rect:
         serializedVersion: 2
         x: 700
@@ -1111,14 +1111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4cd0ac60493b18438518e53b61229cf
-      internalID: 536051627
+      spriteID: 386fef0b67999c14a9734026c8f21d3f
+      internalID: -1081027753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_48
+      name: HeroKnight_hamful_48
       rect:
         serializedVersion: 2
         x: 800
@@ -1132,14 +1132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8dc71a49a6c562747865ebebb2cdf09d
-      internalID: 1437335970
+      spriteID: e86d2bfa9341c7c43aada471cea0db4f
+      internalID: -1387615092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_49
+      name: HeroKnight_hamful_49
       rect:
         serializedVersion: 2
         x: 900
@@ -1153,14 +1153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe61b4a3cbac9846b3051f9288bbbbd
-      internalID: 981352342
+      spriteID: 958098c391f5c4a4ba6a3d3e00e42752
+      internalID: -968453989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_50
+      name: HeroKnight_hamful_50
       rect:
         serializedVersion: 2
         x: 0
@@ -1174,14 +1174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a7680dc7e9c15c48ad8b37588fed5ec
-      internalID: 1772270048
+      spriteID: 50ca344ec4fa6d0429e2300d282cca48
+      internalID: 1945547261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_51
+      name: HeroKnight_hamful_51
       rect:
         serializedVersion: 2
         x: 100
@@ -1195,14 +1195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c14dfb91223db044a1e184ba18f3c4b
-      internalID: 164649285
+      spriteID: efef349fbbe8a044683a805e9eaa4c87
+      internalID: -2080979750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_52
+      name: HeroKnight_hamful_52
       rect:
         serializedVersion: 2
         x: 200
@@ -1216,14 +1216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 843d57b918aafc9489c7188e763d4a65
-      internalID: 516676686
+      spriteID: 74e8227ec8488254eb353c77d7dbe114
+      internalID: -1976643220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_53
+      name: HeroKnight_hamful_53
       rect:
         serializedVersion: 2
         x: 300
@@ -1237,14 +1237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8582f7c6c962bd4aa7edaaf7b6f6fb0
-      internalID: -931025551
+      spriteID: 63f1a17fad4a3a14484a6b8dab4cf3d7
+      internalID: 545208554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_54
+      name: HeroKnight_hamful_54
       rect:
         serializedVersion: 2
         x: 400
@@ -1258,14 +1258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b246582cac1e60d40a32970279fbebfb
-      internalID: 1961544218
+      spriteID: fc719d4f245dcf2419b6baa3b8c4fabf
+      internalID: 1497007143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_55
+      name: HeroKnight_hamful_55
       rect:
         serializedVersion: 2
         x: 500
@@ -1279,14 +1279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 851e71556cbd8474a911f029933ee164
-      internalID: -81656523
+      spriteID: 3d314075056a1d84582740307ca2ec1d
+      internalID: -697930783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_56
+      name: HeroKnight_hamful_56
       rect:
         serializedVersion: 2
         x: 600
@@ -1300,14 +1300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77db8d3ace8fb01428354f2b75eada66
-      internalID: -185615054
+      spriteID: 362b3d475d48ed34c87211071f390d85
+      internalID: -1697437281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_57
+      name: HeroKnight_hamful_57
       rect:
         serializedVersion: 2
         x: 700
@@ -1321,14 +1321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd5474ed63e307b44ba05756d2965777
-      internalID: 188153731
+      spriteID: a58420b90518a004b8dc3650ca6aa4e6
+      internalID: 1565071921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_58
+      name: HeroKnight_hamful_58
       rect:
         serializedVersion: 2
         x: 800
@@ -1342,14 +1342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74eb4bdd3af973f4a8608ba645de61c5
-      internalID: 1742867198
+      spriteID: a2b9e78cafc5aaa46acb10338f139dad
+      internalID: -552874434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_59
+      name: HeroKnight_hamful_59
       rect:
         serializedVersion: 2
         x: 900
@@ -1363,14 +1363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd047afdbc1ba2b438788096ccb4771f
-      internalID: -434668140
+      spriteID: ca4854b3305ac5e4f99d93e39616170d
+      internalID: -1536937515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_60
+      name: HeroKnight_hamful_60
       rect:
         serializedVersion: 2
         x: 0
@@ -1384,14 +1384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b87e9bbeefe9b8409ffacb2d4fcdc5a
-      internalID: -751268965
+      spriteID: 2665413dc8f2f814c85e6aafcaca9cf0
+      internalID: -2091002522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_61
+      name: HeroKnight_hamful_61
       rect:
         serializedVersion: 2
         x: 100
@@ -1405,14 +1405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a61640db033587244a6eead0c64c7aa9
-      internalID: -222409894
+      spriteID: abd9f59dcd8bf5a4ca9b9e13ac309dfa
+      internalID: -136976392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_62
+      name: HeroKnight_hamful_62
       rect:
         serializedVersion: 2
         x: 200
@@ -1426,14 +1426,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c163bd7657e8a142bb882cd837a089c
-      internalID: -1654033615
+      spriteID: f6e92b6419e57664badcddd3e86c6ef9
+      internalID: -1896909789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_63
+      name: HeroKnight_hamful_63
       rect:
         serializedVersion: 2
         x: 300
@@ -1447,14 +1447,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98a5fe9f596850e4296c6f4eb110763f
-      internalID: 885805393
+      spriteID: 1c4cbf042dd2aa44bbf52937e8307895
+      internalID: 1378030214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_64
+      name: HeroKnight_hamful_64
       rect:
         serializedVersion: 2
         x: 400
@@ -1468,14 +1468,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 740d7b7a3a2d37f47b93c58cd2afcdab
-      internalID: 394111118
+      spriteID: 56cfe32040cbd9e4f91360c7f0601976
+      internalID: 1312426857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_65
+      name: HeroKnight_hamful_65
       rect:
         serializedVersion: 2
         x: 500
@@ -1489,14 +1489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1d376e5567ab754fb59776cad04109b
-      internalID: -1786302846
+      spriteID: 97d8bbd7b8e707f41ba69a8db1b98f44
+      internalID: 922330656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_66
+      name: HeroKnight_hamful_66
       rect:
         serializedVersion: 2
         x: 600
@@ -1510,14 +1510,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 199fc83fe9c6a294d99e84cb420d4e9d
-      internalID: -1940660714
+      spriteID: d99312ccb562c1d4d9ed7ba89e01bb1a
+      internalID: -1114070894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_67
+      name: HeroKnight_hamful_67
       rect:
         serializedVersion: 2
         x: 700
@@ -1531,14 +1531,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2acfbdc327a2e744b7cff864ea01963
-      internalID: 1427589249
+      spriteID: 95bc12f75ce80034c95ae46f4e6ad37b
+      internalID: 947465544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_68
+      name: HeroKnight_hamful_68
       rect:
         serializedVersion: 2
         x: 800
@@ -1552,14 +1552,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d73bc6edd68647747bcf11ecc0bff58e
-      internalID: -606578181
+      spriteID: f038e1a827cfda64182770872a4f99e3
+      internalID: -755736594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_69
+      name: HeroKnight_hamful_69
       rect:
         serializedVersion: 2
         x: 900
@@ -1573,14 +1573,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1321370bf61eff24499e4c377a791458
-      internalID: -1435985087
+      spriteID: f705c71d272896f42bc77304b01e2df7
+      internalID: -1525523656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_70
+      name: HeroKnight_hamful_70
       rect:
         serializedVersion: 2
         x: 0
@@ -1594,14 +1594,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cdf41c209701d448a8e4168f0562832
-      internalID: 1172200813
+      spriteID: 0c2ae257aadfe5b47900570d55349f03
+      internalID: 996433572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_71
+      name: HeroKnight_hamful_71
       rect:
         serializedVersion: 2
         x: 100
@@ -1615,14 +1615,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c8c10b9b86ac645b3a8e02ddab9073
-      internalID: -295583156
+      spriteID: d2c7c32ad4f836f4db22cb8cf41d895e
+      internalID: -1365545798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_72
+      name: HeroKnight_hamful_72
       rect:
         serializedVersion: 2
         x: 200
@@ -1636,14 +1636,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a242a8b82594b74ebf5c27704fc8e6c
-      internalID: 1998171184
+      spriteID: 815592ebd39612b488dbe259d696dd99
+      internalID: -1720679080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_73
+      name: HeroKnight_hamful_73
       rect:
         serializedVersion: 2
         x: 300
@@ -1657,14 +1657,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac0fa24f0c6db1f4bb2f98629ad02db6
-      internalID: 1496114308
+      spriteID: b5ae98713336dd942882858592b879ab
+      internalID: 1939457423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_74
+      name: HeroKnight_hamful_74
       rect:
         serializedVersion: 2
         x: 400
@@ -1678,14 +1678,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8442ee4e264a7984ca4fee8405934506
-      internalID: 766888006
+      spriteID: a8a8993a65f075048b987c09e4d0d57d
+      internalID: -554723454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_75
+      name: HeroKnight_hamful_75
       rect:
         serializedVersion: 2
         x: 500
@@ -1699,14 +1699,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e558bc7e29a6574f894ddfe0e91f9ed
-      internalID: -2101211248
+      spriteID: 6128ef60df1825c46aee41ae581f7f48
+      internalID: 1008162088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_76
+      name: HeroKnight_hamful_76
       rect:
         serializedVersion: 2
         x: 600
@@ -1720,14 +1720,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71ce9e0bf39b36b429fa0b49173dac63
-      internalID: -1959117457
+      spriteID: 6cc0e81ad585bc144b1eff41ec6923e4
+      internalID: 587419753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_77
+      name: HeroKnight_hamful_77
       rect:
         serializedVersion: 2
         x: 700
@@ -1741,14 +1741,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3fc13843c0ab1d469e6ffa960b9d9be
-      internalID: 1837856852
+      spriteID: 6a9b8214bfa0a554f944486726d0f6a4
+      internalID: 788912724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_78
+      name: HeroKnight_hamful_78
       rect:
         serializedVersion: 2
         x: 800
@@ -1762,14 +1762,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e6b1eb1d386ae04d91f408932d1f20d
-      internalID: 1145572333
+      spriteID: d808216510d4f64478cc1cb12e708a9f
+      internalID: 1398839713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_79
+      name: HeroKnight_hamful_79
       rect:
         serializedVersion: 2
         x: 900
@@ -1783,14 +1783,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e43a1aae1bb43ae4da02269a81e93c4b
-      internalID: -331122138
+      spriteID: eacc5c16e16a6a244baf7b7f61233826
+      internalID: 630942458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_80
+      name: HeroKnight_hamful_80
       rect:
         serializedVersion: 2
         x: 0
@@ -1804,14 +1804,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35c9d90776895c14f80d6a8d0a05c8e0
-      internalID: 1229881011
+      spriteID: 66d58da8c6e92004fb5b3a7fb458692f
+      internalID: -1001505686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_81
+      name: HeroKnight_hamful_81
       rect:
         serializedVersion: 2
         x: 100
@@ -1825,14 +1825,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c51993c94ff86594d95e785193b6a343
-      internalID: -720444648
+      spriteID: 881954c3142b475489d6d2367da6fc05
+      internalID: -1839321474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_82
+      name: HeroKnight_hamful_82
       rect:
         serializedVersion: 2
         x: 200
@@ -1846,14 +1846,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e1d04555862b324cbc9a2b16e78d141
-      internalID: 1453276901
+      spriteID: 7077a6b54e5294a4dbb1bb4fb0502a3a
+      internalID: 980144829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_83
+      name: HeroKnight_hamful_83
       rect:
         serializedVersion: 2
         x: 300
@@ -1867,14 +1867,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79ca9dd279045794fa56ebbd1b0f22e6
-      internalID: 2043521782
+      spriteID: fdab42eec9262d94e86eb5d8d21d6bd5
+      internalID: 1040332804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_84
+      name: HeroKnight_hamful_84
       rect:
         serializedVersion: 2
         x: 400
@@ -1888,14 +1888,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bc8eb7f96f112e4fbd3763ae50f1af9
-      internalID: 42604780
+      spriteID: df3440f9ac757604b835a8bf51abb5bf
+      internalID: -304860583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_85
+      name: HeroKnight_hamful_85
       rect:
         serializedVersion: 2
         x: 500
@@ -1909,14 +1909,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c915ad5caa7aa49b936b92a91004fa
-      internalID: 1888291031
+      spriteID: 4fb0addde9277e749a75adab79daca6e
+      internalID: 899585864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_86
+      name: HeroKnight_hamful_86
       rect:
         serializedVersion: 2
         x: 600
@@ -1930,14 +1930,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82164d0168335474e93b62a8ee81bd59
-      internalID: 152659814
+      spriteID: 096f4550e75584e4681b848b4be5cd17
+      internalID: -1117678044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_87
+      name: HeroKnight_hamful_87
       rect:
         serializedVersion: 2
         x: 700
@@ -1951,14 +1951,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1102da1768b835e47af7a59d398ab1e9
-      internalID: 448434507
+      spriteID: b889ea808956d0d41b8a1229a5626467
+      internalID: 1154045704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_88
+      name: HeroKnight_hamful_88
       rect:
         serializedVersion: 2
         x: 800
@@ -1972,14 +1972,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c89544e07a71764482650e0b166039f
-      internalID: 813613530
+      spriteID: fc6f080944235354d8af0f116d83a746
+      internalID: 360204616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroKnight_axful_89
+      name: HeroKnight_hamful_89
       rect:
         serializedVersion: 2
         x: 900
@@ -1993,8 +1993,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bef2d479320be44eb83f966b8eef17d
-      internalID: -1565968482
+      spriteID: 6c5410f63acd1cd4eaba63fdfe9cd3ed
+      internalID: -537292588
       vertices: []
       indices: 
       edges: []
@@ -2010,96 +2010,96 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeroKnight_axful_0: -2024828941
-      HeroKnight_axful_1: -1065406188
-      HeroKnight_axful_10: 733970143
-      HeroKnight_axful_11: -2063022190
-      HeroKnight_axful_12: -1038464260
-      HeroKnight_axful_13: 1352009841
-      HeroKnight_axful_14: 46026358
-      HeroKnight_axful_15: 1425921482
-      HeroKnight_axful_16: 1490189625
-      HeroKnight_axful_17: -1072163046
-      HeroKnight_axful_18: 1694533413
-      HeroKnight_axful_19: 1886660687
-      HeroKnight_axful_2: 20546727
-      HeroKnight_axful_20: 699255249
-      HeroKnight_axful_21: -360389740
-      HeroKnight_axful_22: -1629988850
-      HeroKnight_axful_23: -1267521034
-      HeroKnight_axful_24: -1136131560
-      HeroKnight_axful_25: 278429946
-      HeroKnight_axful_26: 1299762333
-      HeroKnight_axful_27: -629845897
-      HeroKnight_axful_28: 752520721
-      HeroKnight_axful_29: 1415493522
-      HeroKnight_axful_3: -276263243
-      HeroKnight_axful_30: 1818381577
-      HeroKnight_axful_31: -930176320
-      HeroKnight_axful_32: -1917602476
-      HeroKnight_axful_33: -234704129
-      HeroKnight_axful_34: -740283650
-      HeroKnight_axful_35: 2062794544
-      HeroKnight_axful_36: -996876427
-      HeroKnight_axful_37: 676592139
-      HeroKnight_axful_38: 364406788
-      HeroKnight_axful_39: 1011556287
-      HeroKnight_axful_4: 1039461957
-      HeroKnight_axful_40: 455632931
-      HeroKnight_axful_41: -305832091
-      HeroKnight_axful_42: -2493823
-      HeroKnight_axful_43: -1856403311
-      HeroKnight_axful_44: -938780696
-      HeroKnight_axful_45: 669543308
-      HeroKnight_axful_46: -1911028511
-      HeroKnight_axful_47: 536051627
-      HeroKnight_axful_48: 1437335970
-      HeroKnight_axful_49: 981352342
-      HeroKnight_axful_5: 1574434095
-      HeroKnight_axful_50: 1772270048
-      HeroKnight_axful_51: 164649285
-      HeroKnight_axful_52: 516676686
-      HeroKnight_axful_53: -931025551
-      HeroKnight_axful_54: 1961544218
-      HeroKnight_axful_55: -81656523
-      HeroKnight_axful_56: -185615054
-      HeroKnight_axful_57: 188153731
-      HeroKnight_axful_58: 1742867198
-      HeroKnight_axful_59: -434668140
-      HeroKnight_axful_6: -1497990074
-      HeroKnight_axful_60: -751268965
-      HeroKnight_axful_61: -222409894
-      HeroKnight_axful_62: -1654033615
-      HeroKnight_axful_63: 885805393
-      HeroKnight_axful_64: 394111118
-      HeroKnight_axful_65: -1786302846
-      HeroKnight_axful_66: -1940660714
-      HeroKnight_axful_67: 1427589249
-      HeroKnight_axful_68: -606578181
-      HeroKnight_axful_69: -1435985087
-      HeroKnight_axful_7: -569474678
-      HeroKnight_axful_70: 1172200813
-      HeroKnight_axful_71: -295583156
-      HeroKnight_axful_72: 1998171184
-      HeroKnight_axful_73: 1496114308
-      HeroKnight_axful_74: 766888006
-      HeroKnight_axful_75: -2101211248
-      HeroKnight_axful_76: -1959117457
-      HeroKnight_axful_77: 1837856852
-      HeroKnight_axful_78: 1145572333
-      HeroKnight_axful_79: -331122138
-      HeroKnight_axful_8: 312989380
-      HeroKnight_axful_80: 1229881011
-      HeroKnight_axful_81: -720444648
-      HeroKnight_axful_82: 1453276901
-      HeroKnight_axful_83: 2043521782
-      HeroKnight_axful_84: 42604780
-      HeroKnight_axful_85: 1888291031
-      HeroKnight_axful_86: 152659814
-      HeroKnight_axful_87: 448434507
-      HeroKnight_axful_88: 813613530
-      HeroKnight_axful_89: -1565968482
-      HeroKnight_axful_9: 321981347
+      HeroKnight_hamful_0: 1354619307
+      HeroKnight_hamful_1: 1430707024
+      HeroKnight_hamful_10: -592368811
+      HeroKnight_hamful_11: -710741489
+      HeroKnight_hamful_12: -1434704874
+      HeroKnight_hamful_13: 242714248
+      HeroKnight_hamful_14: -949967732
+      HeroKnight_hamful_15: 253367971
+      HeroKnight_hamful_16: -77921161
+      HeroKnight_hamful_17: 465454202
+      HeroKnight_hamful_18: -430198242
+      HeroKnight_hamful_19: -1442663884
+      HeroKnight_hamful_2: 2135784237
+      HeroKnight_hamful_20: -130715754
+      HeroKnight_hamful_21: -856123958
+      HeroKnight_hamful_22: 1188658523
+      HeroKnight_hamful_23: -754420653
+      HeroKnight_hamful_24: -81496659
+      HeroKnight_hamful_25: 289734425
+      HeroKnight_hamful_26: -2012351290
+      HeroKnight_hamful_27: 954624115
+      HeroKnight_hamful_28: -2017884929
+      HeroKnight_hamful_29: -1662111647
+      HeroKnight_hamful_3: -2082575806
+      HeroKnight_hamful_30: -1568034894
+      HeroKnight_hamful_31: -35695879
+      HeroKnight_hamful_32: 1734587482
+      HeroKnight_hamful_33: -55043452
+      HeroKnight_hamful_34: -1802027977
+      HeroKnight_hamful_35: 1225703396
+      HeroKnight_hamful_36: -1649351133
+      HeroKnight_hamful_37: 662807333
+      HeroKnight_hamful_38: -1629739938
+      HeroKnight_hamful_39: 1279471627
+      HeroKnight_hamful_4: -67992195
+      HeroKnight_hamful_40: 1134570579
+      HeroKnight_hamful_41: -932451822
+      HeroKnight_hamful_42: -32433903
+      HeroKnight_hamful_43: 1528632770
+      HeroKnight_hamful_44: 481527361
+      HeroKnight_hamful_45: 513266778
+      HeroKnight_hamful_46: -2011720704
+      HeroKnight_hamful_47: -1081027753
+      HeroKnight_hamful_48: -1387615092
+      HeroKnight_hamful_49: -968453989
+      HeroKnight_hamful_5: -404347792
+      HeroKnight_hamful_50: 1945547261
+      HeroKnight_hamful_51: -2080979750
+      HeroKnight_hamful_52: -1976643220
+      HeroKnight_hamful_53: 545208554
+      HeroKnight_hamful_54: 1497007143
+      HeroKnight_hamful_55: -697930783
+      HeroKnight_hamful_56: -1697437281
+      HeroKnight_hamful_57: 1565071921
+      HeroKnight_hamful_58: -552874434
+      HeroKnight_hamful_59: -1536937515
+      HeroKnight_hamful_6: -1675051255
+      HeroKnight_hamful_60: -2091002522
+      HeroKnight_hamful_61: -136976392
+      HeroKnight_hamful_62: -1896909789
+      HeroKnight_hamful_63: 1378030214
+      HeroKnight_hamful_64: 1312426857
+      HeroKnight_hamful_65: 922330656
+      HeroKnight_hamful_66: -1114070894
+      HeroKnight_hamful_67: 947465544
+      HeroKnight_hamful_68: -755736594
+      HeroKnight_hamful_69: -1525523656
+      HeroKnight_hamful_7: 108757344
+      HeroKnight_hamful_70: 996433572
+      HeroKnight_hamful_71: -1365545798
+      HeroKnight_hamful_72: -1720679080
+      HeroKnight_hamful_73: 1939457423
+      HeroKnight_hamful_74: -554723454
+      HeroKnight_hamful_75: 1008162088
+      HeroKnight_hamful_76: 587419753
+      HeroKnight_hamful_77: 788912724
+      HeroKnight_hamful_78: 1398839713
+      HeroKnight_hamful_79: 630942458
+      HeroKnight_hamful_8: -1613288540
+      HeroKnight_hamful_80: -1001505686
+      HeroKnight_hamful_81: -1839321474
+      HeroKnight_hamful_82: 980144829
+      HeroKnight_hamful_83: 1040332804
+      HeroKnight_hamful_84: -304860583
+      HeroKnight_hamful_85: 899585864
+      HeroKnight_hamful_86: -1117678044
+      HeroKnight_hamful_87: 1154045704
+      HeroKnight_hamful_88: 360204616
+      HeroKnight_hamful_89: -537292588
+      HeroKnight_hamful_9: 666170842
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
