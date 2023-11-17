@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         playerGround = player.transform.Find("GroundSensor");
 
         // get the animator in the child named "Skin"
-        animator = transform.Find("skin").GetComponent<Animator>();
+        animator = transform.Find("Skin").GetComponent<Animator>();
 
         // find the castle
         castle = GameObject.Find("castle").GetComponent<Castle>();
@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
 
         Vector2 direction = (target.position - transform.position).normalized;
         // if x is negative, flip the sprite of the child object
-        GameObject Skin = transform.GetChild(0).gameObject;
+        GameObject Skin = transform.Find("Skin").gameObject;
 
         animator.SetBool(isWalking, true);
 
