@@ -242,6 +242,8 @@ GameObject:
   - component: {fileID: 3344396613917031263}
   - component: {fileID: 827579835455497310}
   - component: {fileID: 6145687875906654770}
+  - component: {fileID: -537113755320819423}
+  - component: {fileID: -4854952023695547456}
   m_Layer: 0
   m_Name: BringerOfDeath
   m_TagString: Enemy
@@ -278,13 +280,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ba8f1eb94f1234b819bf04eef98306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 25
   damage: 2
   speed: 1
   attackRange: 1.5
   detectRange: 2
   attackInterval: 1
-  critChance: 0
+  critChance: 1
   healthBar: {fileID: 8333273286471713930}
 --- !u!70 &6145687875906654770
 CapsuleCollider2D:
@@ -321,6 +323,35 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.75, y: 0.1}
   m_Direction: 1
+--- !u!114 &-537113755320819423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983025356698328478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8dda885a6dca745bcca56de08df761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  duration: 2
+  interval: 0.5
+--- !u!114 &-4854952023695547456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983025356698328478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ca0b4c4034cb94d80d1682c0c5bfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: 1
+  duration: 3
 --- !u!1 &7049548902468871762
 GameObject:
   m_ObjectHideFlags: 0

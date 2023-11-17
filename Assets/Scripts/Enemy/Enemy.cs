@@ -129,7 +129,10 @@ public class Enemy : MonoBehaviour
         // add all enemy buffs to attackEvents
         attackEvents = new List<UnityEvent>();
         foreach (EnemyBuff enemyBuff in enemyBuffs) {
-            attackEvents.Add(enemyBuff.NowEvent);
+            UnityEvent nowEvent = new UnityEvent();
+            nowEvent.AddListener(enemyBuff.Buff);
+            attackEvents.Add(nowEvent);
+            
         }
     }
     public int GetID() {
@@ -249,7 +252,7 @@ public class Enemy : MonoBehaviour
 
         // invoke all enemy buffs
         foreach (UnityEvent attackEvent in attackEvents) {
-            attackEvent.Invoke();
+            attackEvent?.Invoke();
         }
 
     }
