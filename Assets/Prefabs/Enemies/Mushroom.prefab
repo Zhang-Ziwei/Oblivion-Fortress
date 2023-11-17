@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 7085779230219840823}
   - component: {fileID: 4508100243794399755}
   m_Layer: 0
-  m_Name: Run_0
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +397,7 @@ Animator:
   m_GameObject: {fileID: 7564598279307648513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 651eb85da665aac4b9a2fa0688ff7f85, type: 2}
+  m_Controller: {fileID: 9100000, guid: f044c67ef0e2d6841a2802854530b299, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -514,8 +514,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6580446992785286534}
   - {fileID: 5925298531887387673}
+  - {fileID: 6580446992785286534}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6776771912946975515
@@ -538,7 +538,6 @@ MonoBehaviour:
   attackInterval: 1
   critChance: 0
   healthBar: {fileID: 5113885311150809645}
-  enemyBuffIDs: 0000000000000000
 --- !u!70 &6947253346254741246
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

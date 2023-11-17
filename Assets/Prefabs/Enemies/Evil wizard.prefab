@@ -142,8 +142,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2443422850606884690}
   - {fileID: 7322970375809913780}
+  - {fileID: 2443422850606884690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2251077344869952214
@@ -164,6 +164,7 @@ MonoBehaviour:
   attackRange: 1.2
   detectRange: 2.5
   attackInterval: 1
+  critChance: 0
   healthBar: {fileID: 3463029789909533881}
 --- !u!70 &6247291402382981186
 CapsuleCollider2D:
@@ -389,8 +390,8 @@ GameObject:
   - component: {fileID: 7043908794686163928}
   - component: {fileID: 7370881977395678711}
   m_Layer: 0
-  m_Name: Flight_0
-  m_TagString: Untagged
+  m_Name: Skin
+  m_TagString: Enemy Appearance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +473,7 @@ Animator:
   m_GameObject: {fileID: 8377367541589651028}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b68956e1233b5754a95fa05b58d5050f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9179d05cf64ecaa4ab3e548c64e61799, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -518,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.845}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 109.6238, y: 23.4735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3463029789909533881

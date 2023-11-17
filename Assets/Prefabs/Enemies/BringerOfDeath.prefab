@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 410387611356121015}
   - component: {fileID: 8315045827091115580}
   m_Layer: 0
-  m_Name: Bringer-of-Death-SpritSheet_0
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,9 +116,9 @@ Transform:
   m_GameObject: {fileID: 3183732175495385085}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.721, z: 0}
-  m_LocalScale: {x: -2.6, y: 2.6, z: 2.6}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.098, y: 0.966, z: 0}
+  m_LocalScale: {x: -2.3, y: 2.3, z: 2.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3344396613917031263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,12 +163,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -750047184722822154, guid: e05b99cf0943f2248ba17b8426bd7eef, type: 3}
+  m_Sprite: {fileID: -1303453690, guid: ac70680e4ddc6294eb462e72e39dc53f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4, y: 0.54}
+  m_Size: {x: 1.4, y: 0.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -184,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 3183732175495385085}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccee253ff083e9e45ac8d4d553de6318, type: 2}
+  m_Controller: {fileID: 9100000, guid: e1a229da1466d254a94bad5394bbf25d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -262,8 +262,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5156874316575965104}
   - {fileID: 5884849995966400035}
+  - {fileID: 5156874316575965104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &827579835455497310
@@ -284,6 +284,7 @@ MonoBehaviour:
   attackRange: 1.5
   detectRange: 2
   attackInterval: 1
+  critChance: 0
   healthBar: {fileID: 8333273286471713930}
 --- !u!70 &6145687875906654770
 CapsuleCollider2D:

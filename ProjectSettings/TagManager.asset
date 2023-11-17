@@ -13,6 +13,7 @@ TagManager:
   - pickaxe
   - tree
   - stone
+  - Enemy Appearance
   layers:
   - Default
   - TransparentFX

@@ -142,8 +142,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2443422850606884690}
   - {fileID: 7322970375809913780}
+  - {fileID: 2443422850606884690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2251077344869952214
@@ -164,6 +164,7 @@ MonoBehaviour:
   attackRange: 1.2
   detectRange: 2.5
   attackInterval: 1
+  critChance: 0
   healthBar: {fileID: 3463029789909533881}
 --- !u!70 &6247291402382981186
 CapsuleCollider2D:
@@ -389,7 +390,7 @@ GameObject:
   - component: {fileID: 7043908794686163928}
   - component: {fileID: 7370881977395678711}
   m_Layer: 0
-  m_Name: Flight_0
+  m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,7 +473,7 @@ Animator:
   m_GameObject: {fileID: 8377367541589651028}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4834e816bb5aeda4e97ef22674452693, type: 2}
+  m_Controller: {fileID: 9100000, guid: 38afed64a85f63548bda611c4fe913b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

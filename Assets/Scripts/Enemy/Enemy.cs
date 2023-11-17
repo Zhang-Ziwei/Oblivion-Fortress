@@ -32,14 +32,6 @@ public class Enemy : MonoBehaviour
 
     public Slider healthBar;
 
-    public List<int> enemyBuffIDs;
-
-    private List<UnityEvent<object, GameObject>> attackEvents;
-
-    private Dictionary<int, object> enemyBuffDatas;
-
-    private EnemyBuff enemyBuff;
-
     private int ID;
 
     private Castle castle;
@@ -72,6 +64,10 @@ public class Enemy : MonoBehaviour
 
     private bool inAttackInterval;
 
+    private EnemyBuff[] enemyBuffs;
+
+    private List<UnityEvent> attackEvents;
+
     public void Init(int enemyID)
     {
         PathIndex = 1;
@@ -90,11 +86,8 @@ public class Enemy : MonoBehaviour
         // playerground is the transform of the player's child when name "GroundSensor"
         playerGround = player.transform.Find("GroundSensor");
 
-        // get the animator in the first child
-        animator = transform.GetChild(0).gameObject.GetComponent<Animator>();
-
-        // get enemy buff
-        enemyBuff = GetComponent<EnemyBuff>();
+        // get the animator in the child named "Skin"
+        animator = transform.Find("skin").GetComponent<Animator>();
 
         // find the castle
         castle = GameObject.Find("castle").GetComponent<Castle>();
@@ -129,30 +122,18 @@ public class Enemy : MonoBehaviour
 
         nextPath = LevelManager.Instance.PathLocations[PathIndex];
 
-        attackEvents = new List<UnityEvent<object, GameObject>>();
 
-        enemyBuffDatas = new Dictionary<int, object>();
+        // find all enemy buffs attach to this enemy
+        enemyBuffs = GetComponents<EnemyBuff>();
 
-        // find all the enemy buff datas in resources
-        object[] temp = Resources.LoadAll("Enemies/EnemyBuffData");
-        for (int i = 0; i < temp.Length; i++) {
-            if (temp[i] is EnemyBuffData) {
-                EnemyBuffData enemyBuffData = (EnemyBuffData)temp[i];
-                enemyBuffData.IsBuffed = false;
-                enemyBuffDatas.Add(enemyBuffData.ID, enemyBuffData);
-            }
+        // add all enemy buffs to attackEvents
+        attackEvents = new List<UnityEvent>();
+        foreach (EnemyBuff enemyBuff in enemyBuffs) {
+            attackEvents.Add(enemyBuff.NowEvent);
         }
-
-        enemyBuff.AssignAttackEvents(this);
-
     }
     public int GetID() {
         return ID;
-    }
-
-    // add to attackEvents
-    public void AddAttackEvent(UnityEvent<object, GameObject> attackEvent) {
-        attackEvents.Add(attackEvent);
     }
 
     // decide whether the enemy is crit or not
@@ -266,9 +247,9 @@ public class Enemy : MonoBehaviour
         StartCoroutine(AttackAnimation());
         playerHP.DeductHP(damage);
 
-        // invoke the slowness event
-        for(int i = 0; i < attackEvents.Count; i++) {
-            attackEvents[i]?.Invoke(enemyBuffDatas[enemyBuffIDs[i]], player);
+        // invoke all enemy buffs
+        foreach (UnityEvent attackEvent in attackEvents) {
+            attackEvent.Invoke();
         }
 
     }
