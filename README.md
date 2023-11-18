@@ -1,4 +1,13 @@
 # Oblivion-Fortress Update Log
+
+## 11/18 from henryhuang920712
+  - 修復Debuff無法新增Bug
+    - 改成將`Scripts\Enemies\EnemyBuff`當中的Script拉到`Prefabs\Enemies`當中
+    - 記得填寫Duration、Interval等數據
+  - 完成Debuff UI System
+    - 新增Freeze
+  - 拉下來新版本的時候發現**防禦塔無法正常顯示**，在我之前有人去動到防禦塔的sprites嗎？
+
 ## 11/14 from Zhang-Ziwei
 - 工具重叠修復
   - 撿起放下系統工具已無法重叠
