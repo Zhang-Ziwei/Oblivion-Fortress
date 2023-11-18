@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 
 public class Poison: EnemyBuff
 {
@@ -14,18 +15,11 @@ public class Poison: EnemyBuff
     private HPControl playerHP;
 
 
-    private void Start() {
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<HeroKnight>();
-        isBuffed = false;
+    private new void Start() {
+        base.Start();
+        
         buffName = "Poison";
 
-        if (player == null) {
-            Debug.Log("player is null");
-        }
-        if (playerController == null) {
-            Debug.Log("playerController is null");
-        }
         if (damage <= 0) {
             Debug.Log("damage is not positive");
         }

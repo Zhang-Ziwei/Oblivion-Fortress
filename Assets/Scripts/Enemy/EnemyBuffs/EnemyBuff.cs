@@ -36,10 +36,17 @@ public class EnemyBuff : MonoBehaviour
         }
     }
 
-    private void Start() {
+    protected void Start() {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<HeroKnight>();
         isBuffed = false;
+
+        if (player == null) {
+            Debug.Log("player is null");
+        }
+        if (playerController == null) {
+            Debug.Log("playerController is null");
+        }
     }
 
     public void Buff() {

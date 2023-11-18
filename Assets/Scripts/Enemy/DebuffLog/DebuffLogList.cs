@@ -29,7 +29,6 @@ public class DebuffLogList : MonoBehaviour
         for (int i = 0; i < BuffIconList.Length; i++)
         {
             BuffIconRef.Add(BuffIconList[i].name, BuffIconList[i]);
-            Debug.Log(BuffIconList[i].name);
         }
 
         numberOfItems = 0;

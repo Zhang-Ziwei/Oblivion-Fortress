@@ -129,9 +129,12 @@ public class Enemy : MonoBehaviour
         // add all enemy buffs to attackEvents
         attackEvents = new List<UnityEvent>();
         foreach (EnemyBuff enemyBuff in enemyBuffs) {
-            UnityEvent nowEvent = new UnityEvent();
-            nowEvent.AddListener(enemyBuff.Buff);
-            attackEvents.Add(nowEvent);
+            // if buff is not null and is active
+            if (enemyBuff != null && enemyBuff.isActiveAndEnabled) {
+                UnityEvent nowEvent = new UnityEvent();
+                nowEvent.AddListener(enemyBuff.Buff);
+                attackEvents.Add(nowEvent);
+            }
             
         }
     }

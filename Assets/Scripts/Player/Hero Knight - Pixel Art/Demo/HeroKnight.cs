@@ -48,7 +48,6 @@ public class HeroKnight : MonoBehaviour {
     public float Damage;
     public float AttackInterval = 0.5f;
 
-
     // Use this for initialization
     void Start ()
     {
@@ -99,6 +98,8 @@ public class HeroKnight : MonoBehaviour {
     {
         // UnityEngine.Debug.Log(toolstype);
         Vector3 dir = Vector2.zero;
+
+
         if (Input.GetKey(KeyCode.D) && !Input.GetKeyDown(KeyCode.E))
         {
             dir += new Vector3(movespeed * Time.deltaTime, 0, 0);

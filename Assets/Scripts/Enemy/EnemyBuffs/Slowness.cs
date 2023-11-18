@@ -9,7 +9,7 @@ public class Slowness: EnemyBuff
 {
     public float ratio;
 
-    private void Start() {
+    private new void Start() {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<HeroKnight>();
         isBuffed = false;
@@ -23,9 +23,6 @@ public class Slowness: EnemyBuff
         }
         if (ratio <= 0) {
             Debug.Log("ratio is not positive");
-        }
-        if (duration <= 0) {
-            Debug.Log("duration is not positive");
         }
     }
 
