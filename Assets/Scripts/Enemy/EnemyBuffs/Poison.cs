@@ -9,16 +9,16 @@ public class Poison: EnemyBuff
 {
     public float damage;
 
-    public float duration;
-
     public float interval;
 
     private HPControl playerHP;
+
 
     private void Start() {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<HeroKnight>();
         isBuffed = false;
+        buffName = "Poison";
 
         if (player == null) {
             Debug.Log("player is null");

@@ -9,12 +9,11 @@ public class Slowness: EnemyBuff
 {
     public float ratio;
 
-    public float duration;
-
     private void Start() {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<HeroKnight>();
         isBuffed = false;
+        buffName = "Slowness";
 
         if (player == null) {
             Debug.Log("player is null");

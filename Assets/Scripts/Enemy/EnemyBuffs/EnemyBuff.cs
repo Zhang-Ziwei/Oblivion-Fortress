@@ -11,7 +11,20 @@ public class EnemyBuff : MonoBehaviour
 
     protected HeroKnight playerController;
 
+    public float duration;
+
     private bool IsBuffed;
+
+    protected string buffName;
+
+    public string BuffName {
+        get {
+            return buffName;
+        }
+        set {
+            buffName = value;
+        }
+    }
 
     // getter and setter
     public bool isBuffed {
@@ -34,7 +47,7 @@ public class EnemyBuff : MonoBehaviour
         if (isBuffed) {
             return;
         }
-        
+        DebuffLogList.Instance.AddBuffItem(this);
 
         StartCoroutine(BuffCoroutine());
     }
