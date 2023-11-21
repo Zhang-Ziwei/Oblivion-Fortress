@@ -29,7 +29,7 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         //Get correspond tower of base
         Tower = Base.GetComponent<Base>().tower;
-        attackRange = Tower.GetComponent<TowerAttack>().attackRange;
+        attackRange = Tower.GetComponent<Tower>().attackRange;
         attackField = Instantiate(attackField);
         attackField.transform.localScale = new Vector3(attackRange, attackRange, 1);
         attackField.transform.parent = Square.transform;
@@ -38,10 +38,10 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         towerInfo = transform.GetChild(1).gameObject;
         towerInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxWood;
         towerInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxStone;
-        towerInfo.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().Damage;
-        towerInfo.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackInterval;
-        towerInfo.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackRange;
-        towerInfo.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "" + Tower.GetComponent<TowerAttack>().attackType;
+        towerInfo.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().Damage;
+        towerInfo.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackInterval;
+        towerInfo.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackRange;
+        towerInfo.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackType;
     }
 
     void TaskOnClick()

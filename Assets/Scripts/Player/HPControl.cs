@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class HPControl : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class HPControl : MonoBehaviour
         if (HP <= 0) {
             GameOver();
         }
+    }
+
+    public void RecoverHP(float value) {
+        HP = Math.Min(maxHP, HP + value);
+        HPBar.value = HP / maxHP;
     }
 
     // Update is called once per frame

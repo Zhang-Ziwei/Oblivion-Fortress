@@ -97,13 +97,13 @@ public class HeroKnight : MonoBehaviour {
     private void Move(int toolstype)
     {
         // UnityEngine.Debug.Log(toolstype);
-        Vector3 dir = Vector2.zero;
+        Vector2 dir = Vector2.zero;
 
 
         if (Input.GetKey(KeyCode.D) && !Input.GetKeyDown(KeyCode.E))
         {
-            dir += new Vector3(movespeed * Time.deltaTime, 0, 0);
-            transform.Translate(movespeed * Time.deltaTime, 0, 0);
+            dir += new Vector2(1, 0);
+            //transform.Translate(movespeed * Time.deltaTime, 0, 0);
             if (toolstype == 0)
                 m_animator.SetBool("Run", true);
             if (toolstype == 1)
@@ -121,8 +121,8 @@ public class HeroKnight : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.A) && !Input.GetKeyDown(KeyCode.E))
         {
-            dir += new Vector3(-movespeed * Time.deltaTime, 0, 0);
-            transform.Translate(-movespeed * Time.deltaTime, 0, 0);
+            dir += new Vector2(-1, 0);
+            //transform.Translate(-movespeed * Time.deltaTime, 0, 0);
             if (toolstype == 0)
                 m_animator.SetBool("Run", true);
             if (toolstype == 1) { 
@@ -139,8 +139,8 @@ public class HeroKnight : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.W) && !Input.GetKeyDown(KeyCode.E))
         {
-            dir += new Vector3(0, movespeed * Time.deltaTime, 0);
-            transform.Translate(0, movespeed * Time.deltaTime, 0);
+            dir += new Vector2(0, 1);
+            //transform.Translate(0, movespeed * Time.deltaTime, 0);
             if (toolstype == 0)
                 m_animator.SetBool("Run", true);
             if (toolstype == 1) { 
@@ -157,8 +157,8 @@ public class HeroKnight : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.S) && !Input.GetKeyDown(KeyCode.E))
         {
-            dir += new Vector3(0, -movespeed * Time.deltaTime, 0);
-            transform.Translate(0, -movespeed * Time.deltaTime, 0);
+            dir += new Vector2(0, -1);
+            //transform.Translate(0, -movespeed * Time.deltaTime, 0);
             if (toolstype == 0)
                 m_animator.SetBool("Run", true);
             if (toolstype == 1) { 
@@ -173,7 +173,7 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("Run", false);
             }
         }
-        transform.position += dir;
+        m_body2d.MovePosition(m_body2d.position + dir.normalized * movespeed * Time.deltaTime);
         if(!Input.GetKey(KeyCode.D)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.S) && !Input.GetMouseButton(0))
         {
             if (toolstype == 0)
@@ -234,13 +234,16 @@ public class HeroKnight : MonoBehaviour {
         }
     }
 
+    void FixedUpdate(){
+        Move(toolstype);
+    }
     // Update is called once per frame
     void Update ()
     {
         // walk and rush in playcontroller
         update_totaltime++;
         toolstype = GetComponent<PickupSystem>().type;
-        Move(toolstype);
+        //Move(toolstype);
         rush(toolstype);
         pausegame();
         // Increase timer that controls attack combo

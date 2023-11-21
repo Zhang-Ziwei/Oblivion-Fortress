@@ -94,7 +94,7 @@ public class PickupSystem : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown("e") && type == 0 && !(locking)) //pick up
+        if (Input.GetKey("e") && type == 0 && !(locking)) //pick up
         {
             if (collision.gameObject.tag == "axe" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "wood") && !(collision.gameObject.tag == "rock")) //pick up axe
             {

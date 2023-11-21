@@ -21,7 +21,12 @@ public class LevelManager : MonoBehaviour
     public GameObject Path;
 
     public List<Transform> PathLocations;
+
     public GameObject NowLevelText;
+
+    private AudioSource audiosource;
+    public AudioClip LevelStartAudio;
+
 
     // Tilemap GroundMap;
     // Grid grid;
@@ -71,7 +76,7 @@ public class LevelManager : MonoBehaviour
         EnemyToRemove = new Queue<Enemy>();
 
         StartCoroutine(GameLoop());
-
+        
     }
 
     // Start is called before the first frame update
@@ -88,6 +93,8 @@ public class LevelManager : MonoBehaviour
                 enemyLevelDatas.Add(enemyLevelData);
             }
         }
+
+        audiosource = GetComponent<AudioSource>();
     }   
 
     // Update is called once per frame
@@ -156,8 +163,12 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
 
+        // show level in UI
         NowLevelText.GetComponent<Text>().text = "Level: " + NowLevel;
         timer = 0;
+
+        // level start audio
+        audiosource.Play();
 
         // set timertext to inactive
         timerText.gameObject.SetActive(false);

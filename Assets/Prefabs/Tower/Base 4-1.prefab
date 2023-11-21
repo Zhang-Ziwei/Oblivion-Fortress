@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3035196717666425432}
   - component: {fileID: 7828430219067810825}
   m_Layer: 0
-  m_Name: Base 4
+  m_Name: Base 4-1
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524bec6c0d99b7346a457c6e3ee2c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 8598278846631442000, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+  tower: {fileID: 8598278846631442000, guid: 62ce6de5b0cd7e24cbdae4c77c90a1e0, type: 3}
   MaxWood: 1
   Wood: 0
   MaxStone: 1

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -20,7 +21,22 @@ public class Enemy : MonoBehaviour
     public float speed;
 
     private float originSpeed;
-    private float SlowDownTimer;
+    private struct Debuff
+    {
+        public int id;
+        public String debuffName;
+        public float debuffValue;
+        public Debuff(int id, String debuffName, float debuffValue)
+        {
+            this.id = id;
+            this.debuffName = debuffName;
+            this.debuffValue = debuffValue;
+        }
+    };
+    private List<Debuff> Debuffs = new List<Debuff>();
+    private List<float> DebuffTimers = new List<float>(); 
+    private float poisonTimer = 0f;
+    private float poisonAffectInterval = 0.5f;
 
     public float attackRange;
 
@@ -163,9 +179,46 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void SlowDownEnemy(float rate, float seconds) {
-        speed = rate * originSpeed;
-        SlowDownTimer = seconds;
+    public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue) {
+        bool idExist = false;
+
+        for(int i = Debuffs.Count - 1; i >= 0; i--){
+            if (Debuffs[i].id == id){
+                if (DebuffTimers[i] < time){
+                    DebuffTimers[i] = time;
+                    /*Debuff newdebuff = Debuffs[i];
+                    newdebuff.timer = time;
+                    Debuffs[i] = newdebuff;*/
+                    idExist = true;
+                }
+            }
+        }
+
+        if(!idExist){
+            Debuffs.Add(new Debuff(id, debuffName, debuffValue));
+            DebuffTimers.Add(time);
+            if (debuffName == "slow"){
+                speed *= debuffValue;
+            }
+        }
+    }
+
+    private void UpdateDebuff(){
+        poisonTimer += Time.deltaTime;
+        for(int i = Debuffs.Count - 1; i >= 0; i--){
+            DebuffTimers[i] -= Time.deltaTime;
+            if (poisonTimer >= poisonAffectInterval && Debuffs[i].debuffName == "poison"){
+                DeductHealth(Debuffs[i].debuffValue);
+            }
+            if (DebuffTimers[i] <= 0) {
+                if (Debuffs[i].debuffName == "slow"){
+                    speed /= Debuffs[i].debuffValue;
+                }
+                Debuffs.RemoveAt(i);
+                DebuffTimers.RemoveAt(i);
+            }
+        }
+        if (poisonTimer >= poisonAffectInterval) poisonTimer = 0f;
     }
 
     private IEnumerator AttackAnimation() {
@@ -315,12 +368,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (SlowDownTimer > 0) {
-            SlowDownTimer -= Time.deltaTime;
-            if (SlowDownTimer <= 0) {
-                speed = originSpeed;
-            }
-        }
+        UpdateDebuff();
+
         if (player != null) {
             if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
                 AttackCastle();

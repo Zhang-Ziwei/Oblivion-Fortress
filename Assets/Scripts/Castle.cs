@@ -13,6 +13,8 @@ public class Castle : MonoBehaviour
 
     public GameObject GameOverUI;
 
+    public AudioClip CastleHitAudio;
+
     public void GameOver() {
         Debug.Log("Game Over");
         Application.Quit();
@@ -23,7 +25,7 @@ public class Castle : MonoBehaviour
     public void DeductHealth(float damage) {
         health -= damage;
         healthBar.value = health / maxHealth;
-
+        AudioSource.PlayClipAtPoint(CastleHitAudio, transform.position, 1);
         if (health <= 0) {
             GameOver();
         }
