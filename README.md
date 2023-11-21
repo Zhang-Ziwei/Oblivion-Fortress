@@ -1,5 +1,16 @@
 # Oblivion-Fortress Update Log
 
+## 11/22 from kyleko56
+- 新增音效
+  - 目前有背景音樂、主堡受擊、敵人出擊、建築完成
+- 新增防禦塔資訊、升級 UI
+- 新增防禦塔
+  - 毒、冰、回復、加攻、對同一敵人持續增加傷害
+- 修復 bugs
+  - 物品不易撿起
+  - 斜向移動較快
+- 已知 bug: 角色 freeze 結束後仍不能移動
+
 ## 11/18 from henryhuang920712
   - 修復Debuff無法新增Bug
     - 改成將`Scripts\Enemies\EnemyBuff`當中的Script拉到`Prefabs\Enemies`當中
