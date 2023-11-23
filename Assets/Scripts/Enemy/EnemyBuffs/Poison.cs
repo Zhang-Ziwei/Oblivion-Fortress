@@ -41,7 +41,9 @@ public class Poison: EnemyBuff
             playerHP = player.GetComponent<HPControl>();
             playerHP.DeductHP(damage);
             yield return new WaitForSeconds(interval);
+            
         }
+        yield return new WaitForSeconds(cooldown);
         isBuffed = false;
     }
 }

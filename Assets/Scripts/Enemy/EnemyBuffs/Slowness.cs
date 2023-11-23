@@ -32,6 +32,8 @@ public class Slowness: EnemyBuff
         playerController.movespeed = originSpeed * ratio;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
+
+        yield return new WaitForSeconds(cooldown);
         isBuffed = false;
     }
 }

@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+  cooldown: 0
   damage: 1
   interval: 0.5
 --- !u!114 &-4854952023695547456
@@ -352,6 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 3
+  cooldown: 0
   ratio: 1
 --- !u!114 &5118153624084375721
 MonoBehaviour:
@@ -365,7 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd2af316a0a8404cb67bdc9c36a2951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 1
+  cooldown: 0.5
 --- !u!1 &7049548902468871762
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,11 @@ public class Freeze: EnemyBuff
         playerController.movespeed = 0;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
+        yield return new WaitForSeconds(cooldown);
         isBuffed = false;
     }
+
+    // void Update() {
+    //     Debug.Log(playerController.movespeed);
+    // }
 }

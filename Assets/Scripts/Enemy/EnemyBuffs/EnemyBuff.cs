@@ -13,6 +13,8 @@ public class EnemyBuff : MonoBehaviour
 
     public float duration;
 
+    public float cooldown;
+
     private bool IsBuffed;
 
     protected string buffName;
