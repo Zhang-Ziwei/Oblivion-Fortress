@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class EnemySummon : MonoBehaviour
     public static List<Enemy> EnemiesInGame;
     public static Dictionary<int, GameObject> EnemyPrefabs;
     public static Dictionary<int, Queue<Enemy>> EnemyObjectPools;
+
+    public static List<string> EnemyNames;
 
     public static void Init()
     {
@@ -19,12 +22,16 @@ public class EnemySummon : MonoBehaviour
 
         EnemySummonData[] enemies = Resources.LoadAll<EnemySummonData>("Enemies");
 
+        EnemyNames = new List<string>();
+
 
         foreach (EnemySummonData enemy in enemies)
         {
             EnemyPrefabs.Add(enemy.EnemyID, enemy.EnemyPrefab);
             EnemyObjectPools.Add(enemy.EnemyID, new Queue<Enemy>());
+            EnemyNames.Add(enemy.EnemyPrefab.name);
         }
+
 
     }
 

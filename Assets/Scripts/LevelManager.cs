@@ -6,6 +6,50 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+public class EnemyAudio
+{
+    public GameObject audioObject;
+    public AudioSource attacking_1;
+    public AudioSource attacking_2;
+    public AudioSource take_hit;
+    public AudioSource death;
+
+    public EnemyAudio(AudioClip attacking1Clip, AudioClip attacking2Clip, AudioClip takeHitClip, AudioClip deathClip)
+    {
+        // Create an empty GameObject to hold the audio sources
+        audioObject = new GameObject("EnemyAudio");
+
+        // Add AudioSource components to the GameObject
+        attacking_1 = audioObject.AddComponent<AudioSource>();
+        attacking_2 = audioObject.AddComponent<AudioSource>();
+        take_hit = audioObject.AddComponent<AudioSource>();
+        death = audioObject.AddComponent<AudioSource>();
+
+        // Assign the provided audio clips to the audio sources
+        attacking_1.clip = attacking1Clip;
+        attacking_2.clip = attacking2Clip;
+        take_hit.clip = takeHitClip;
+        death.clip = deathClip;
+    }
+    public void ApplySettings(float volume, float pitch, bool loop)
+    {
+        attacking_1.volume = volume;
+        attacking_1.pitch = pitch;
+        attacking_1.loop = loop;
+
+        attacking_2.volume = volume;
+        attacking_2.pitch = pitch;
+        attacking_2.loop = loop;
+
+        take_hit.volume = volume;
+        take_hit.pitch = pitch;
+        take_hit.loop = loop;
+
+        death.volume = volume;
+        death.pitch = pitch;
+        death.loop = loop;
+    }
+}
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
@@ -28,6 +72,9 @@ public class LevelManager : MonoBehaviour
     public AudioClip LevelStartAudio;
 
 
+    public Dictionary<string, EnemyAudio> enemyAudios;
+
+
     // Tilemap GroundMap;
     // Grid grid;
 
@@ -35,6 +82,7 @@ public class LevelManager : MonoBehaviour
     private static Queue<Enemy> EnemyToRemove;  // enemy object
 
     private static List<EnemyLevelData> enemyLevelDatas;
+
 
     private int NowLevel;
 
@@ -92,6 +140,26 @@ public class LevelManager : MonoBehaviour
             if (enemyLevelData.isActive) {
                 enemyLevelDatas.Add(enemyLevelData);
             }
+        }
+        enemyAudios = new Dictionary<string, EnemyAudio>();
+
+        // load audio
+        foreach (string enemyName in EnemySummon.EnemyNames) 
+        {
+            AudioClip attacking_1 = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/attacking_1");
+            AudioClip attacking_2 = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/attacking_2");
+            AudioClip take_hit = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/take_hit");
+            AudioClip death = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/death");
+
+            EnemyAudio enemyAudio = new EnemyAudio(attacking_1, attacking_2, take_hit, death);
+
+            // ensure all audio are loaded
+            if (enemyAudio.attacking_1 == null || enemyAudio.attacking_2 == null || enemyAudio.take_hit == null || enemyAudio.death == null) {
+                Debug.Log($"LevelManager.cs: enemy audio {enemyName} is null");
+            } else {
+                enemyAudios.Add(enemyName, enemyAudio);
+            }
+            
         }
 
         audiosource = GetComponent<AudioSource>();

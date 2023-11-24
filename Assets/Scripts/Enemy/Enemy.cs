@@ -10,11 +10,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using Unity.VisualScripting;
 
 
 // custom class for enemy
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy Attributes")]
+
     public float maxHealth;
     private float health;
     public float damage;
@@ -44,9 +47,17 @@ public class Enemy : MonoBehaviour
 
     public float attackInterval;
 
-    public float critChance;
+    [Range(0f, 1f)] public float critChance;
 
-    public Slider healthBar;
+    [SerializeField] private Slider healthBar;
+
+    [Header("Audio")]
+
+    [Range(0f, 1f)] public float delayTime;
+
+    [Range(0f, 2f)] public float audioSpeed;
+
+    [Range(0f, 1f)] public float volume;
 
     private int ID;
 
@@ -84,6 +95,10 @@ public class Enemy : MonoBehaviour
 
     private List<UnityEvent> attackEvents;
 
+    private EnemyAudio enemyAudio;
+
+    private string enemyName;
+
     public void Init(int enemyID)
     {
         PathIndex = 1;
@@ -113,6 +128,10 @@ public class Enemy : MonoBehaviour
 
         // find castle ground
         castleGround = castle.transform.Find("GroundSensor");
+
+        // get the corresponding prefab name
+        GameObject prefab = EnemySummon.EnemyPrefabs[enemyID];
+        enemyName = prefab.name;
 
         // if maxhealth == 0, debug log
         if (maxHealth == 0)
@@ -153,6 +172,12 @@ public class Enemy : MonoBehaviour
             }
             
         }
+
+        // load audio
+        if (LevelManager.Instance.enemyAudios.ContainsKey(enemyName))
+        {
+            enemyAudio = LevelManager.Instance.enemyAudios[enemyName];
+        }
     }
     public int GetID() {
         return ID;
@@ -163,8 +188,10 @@ public class Enemy : MonoBehaviour
         float random = Random.Range(0f, 1f);
         if (random <= critChance) {
             animator.SetFloat(isCrit, 1);
+            enemyAudio?.attacking_2.Play();
         } else {
             animator.SetFloat(isCrit, 0);
+            enemyAudio?.attacking_1.PlayDelayed(delayTime);
         }
     }
 
@@ -173,8 +200,10 @@ public class Enemy : MonoBehaviour
         healthBar.value = health / maxHealth;
 
         animator.SetTrigger(isAttacked);
+        enemyAudio?.take_hit.PlayDelayed(delayTime);
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
+            enemyAudio?.death.PlayDelayed(delayTime);
             StartCoroutine(DeathAnimation());
         }
     }
