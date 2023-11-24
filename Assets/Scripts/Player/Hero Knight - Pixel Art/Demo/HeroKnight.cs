@@ -48,6 +48,7 @@ public class HeroKnight : MonoBehaviour {
     public float Damage;
     public float AttackInterval = 0.5f;
 
+
     // Use this for initialization
     void Start ()
     {

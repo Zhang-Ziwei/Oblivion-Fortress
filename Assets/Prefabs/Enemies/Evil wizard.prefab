@@ -164,8 +164,13 @@ MonoBehaviour:
   attackRange: 1.2
   detectRange: 2.5
   attackInterval: 1
-  critChance: 0
+  critChance: 0.1
+  critMultiplier: 2
   healthBar: {fileID: 3463029789909533881}
+  hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
+  delayTime: 0
+  audioSpeed: 0
+  volume: 0
 --- !u!70 &6247291402382981186
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -289,7 +294,7 @@ GameObject:
   - component: {fileID: 2413991863877245240}
   - component: {fileID: 2148331684450700259}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -128,8 +128,17 @@ MonoBehaviour:
   attackRange: 1.2
   detectRange: 2.5
   attackInterval: 1
-  critChance: 0
+  critChance: 0.5
+  critMultiplier: 2
   healthBar: {fileID: 7205990533331165074}
+  hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
+  audioSpeed: 1
+  volume: 0.2
+  delayTime:
+    attacking_1: 0.4
+    attacking_2: 0.5
+    take_hit: 0
+    death: 0
 --- !u!70 &3727526894786740574
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -528,7 +537,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 5

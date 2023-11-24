@@ -14,10 +14,12 @@ public class EnemyAudio
     public AudioSource take_hit;
     public AudioSource death;
 
-    public EnemyAudio(AudioClip attacking1Clip, AudioClip attacking2Clip, AudioClip takeHitClip, AudioClip deathClip)
+    public EnemyAudio(AudioClip attacking1Clip, AudioClip attacking2Clip, AudioClip takeHitClip, AudioClip deathClip, Transform transform)
     {
         // Create an empty GameObject to hold the audio sources
         audioObject = new GameObject("EnemyAudio");
+
+        audioObject.transform.SetParent(transform);
 
         // Add AudioSource components to the GameObject
         attacking_1 = audioObject.AddComponent<AudioSource>();
@@ -151,7 +153,7 @@ public class LevelManager : MonoBehaviour
             AudioClip take_hit = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/take_hit");
             AudioClip death = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/death");
 
-            EnemyAudio enemyAudio = new EnemyAudio(attacking_1, attacking_2, take_hit, death);
+            EnemyAudio enemyAudio = new EnemyAudio(attacking_1, attacking_2, take_hit, death, transform);
 
             // ensure all audio are loaded
             if (enemyAudio.attacking_1 == null || enemyAudio.attacking_2 == null || enemyAudio.take_hit == null || enemyAudio.death == null) {

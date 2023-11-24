@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 13188072113269819}
   - component: {fileID: 8980497980318289032}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,6 +538,10 @@ MonoBehaviour:
   attackInterval: 1
   critChance: 0
   healthBar: {fileID: 5113885311150809645}
+  hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
+  delayTime: 0
+  audioSpeed: 0
+  volume: 0
 --- !u!70 &6947253346254741246
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

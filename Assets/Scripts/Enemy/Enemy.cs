@@ -11,7 +11,17 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
+using TMPro;
 
+[System.Serializable]
+public class AudioDelaySettings
+{
+    [Range(0f, 1f)] public float attacking_1 = 0.2f;
+    [Range(0f, 1f)] public float attacking_2 = 0.2f;
+    [Range(0f, 1f)] public float take_hit = 0.2f;
+    [Range(0f, 1f)] public float death = 0.2f;
+
+}
 
 // custom class for enemy
 public class Enemy : MonoBehaviour
@@ -41,23 +51,27 @@ public class Enemy : MonoBehaviour
     private float poisonTimer = 0f;
     private float poisonAffectInterval = 0.5f;
 
-    public float attackRange;
+    public float attackRange = 1;
 
-    public float detectRange;
+    public float detectRange = 2f;
 
-    public float attackInterval;
+    public float attackInterval = 1f;
 
-    [Range(0f, 1f)] public float critChance;
+    [Range(0f, 1f)] public float critChance = 0.1f;
+
+    [Range(1f, 3f)] public float critMultiplier = 2f;
 
     [SerializeField] private Slider healthBar;
 
+    [SerializeField] private HurtUI hurtUI;
+
     [Header("Audio")]
 
-    [Range(0f, 1f)] public float delayTime;
+    [Range(0f, 2f)] public float audioSpeed = 1f;
 
-    [Range(0f, 2f)] public float audioSpeed;
+    [Range(0f, 1f)] public float volume = 0.2f;
 
-    [Range(0f, 1f)] public float volume;
+    public AudioDelaySettings delayTime;
 
     private int ID;
 
@@ -177,6 +191,7 @@ public class Enemy : MonoBehaviour
         if (LevelManager.Instance.enemyAudios.ContainsKey(enemyName))
         {
             enemyAudio = LevelManager.Instance.enemyAudios[enemyName];
+            enemyAudio?.ApplySettings(volume, audioSpeed, false);
         }
     }
     public int GetID() {
@@ -184,14 +199,18 @@ public class Enemy : MonoBehaviour
     }
 
     // decide whether the enemy is crit or not
-    public void SetIsCrit() {
+    public void SetIsCrit(float damage) {
         float random = Random.Range(0f, 1f);
         if (random <= critChance) {
             animator.SetFloat(isCrit, 1);
-            enemyAudio?.attacking_2.Play();
+            enemyAudio?.attacking_2.PlayDelayed(delayTime.attacking_2);
+            playerHP.DeductHP(damage * critMultiplier);
+            hurtUI.Init(damage * critMultiplier, player.transform, true);
         } else {
             animator.SetFloat(isCrit, 0);
-            enemyAudio?.attacking_1.PlayDelayed(delayTime);
+            playerHP.DeductHP(damage);
+            enemyAudio?.attacking_1.PlayDelayed(delayTime.attacking_1);
+            hurtUI.Init(damage, player.transform, false);
         }
     }
 
@@ -200,10 +219,13 @@ public class Enemy : MonoBehaviour
         healthBar.value = health / maxHealth;
 
         animator.SetTrigger(isAttacked);
-        enemyAudio?.take_hit.PlayDelayed(delayTime);
+        enemyAudio?.take_hit.PlayDelayed(delayTime.take_hit);
+
+        hurtUI.Init(damage, transform, false);
+
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
-            enemyAudio?.death.PlayDelayed(delayTime);
+            enemyAudio?.death.PlayDelayed(delayTime.death);
             StartCoroutine(DeathAnimation());
         }
     }
@@ -250,9 +272,9 @@ public class Enemy : MonoBehaviour
         if (poisonTimer >= poisonAffectInterval) poisonTimer = 0f;
     }
 
-    private IEnumerator AttackAnimation() {
+    private IEnumerator AttackAnimation(float damage) {
         inAttackInterval = true;
-        SetIsCrit();
+        SetIsCrit(damage);
         animator.SetTrigger(isAttacking);
 
         while (animator.GetCurrentAnimatorStateInfo(0).IsName(isAttacking)) {
@@ -332,8 +354,7 @@ public class Enemy : MonoBehaviour
         }
         animator.SetBool(isWalking, false);
 
-        StartCoroutine(AttackAnimation());
-        playerHP.DeductHP(damage);
+        StartCoroutine(AttackAnimation(damage));
 
         // invoke all enemy buffs
         foreach (UnityEvent attackEvent in attackEvents) {
@@ -351,7 +372,7 @@ public class Enemy : MonoBehaviour
             actionMode = -1;
         }
 
-        StartCoroutine(AttackAnimation());
+        StartCoroutine(AttackAnimation(damage));
         castle.DeductHealth(damage);
     }
 
