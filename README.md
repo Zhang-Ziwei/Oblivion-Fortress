@@ -1,5 +1,13 @@
 # Oblivion-Fortress Update Log
 
+## 11/24 from henryhuang920712
+ - 新增音效
+     - 四種敵人攻擊、受傷、死亡的音效
+     - 音效延遲可以到`Prefabs\Enemies`的Audio那欄調整
+ - 解決freeze的bug
+     - buff那邊增加cooldown time可以填寫
+ - 新增傷害UI
+
 ## 11/22 from kyleko56
 - 新增音效
   - 目前有背景音樂、主堡受擊、敵人出擊、建築完成
