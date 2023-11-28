@@ -272,9 +272,8 @@ public class Enemy : MonoBehaviour
         if (poisonTimer >= poisonAffectInterval) poisonTimer = 0f;
     }
 
-    private IEnumerator AttackAnimation(float damage) {
+    private IEnumerator AttackAnimation() {
         inAttackInterval = true;
-        SetIsCrit(damage);
         animator.SetTrigger(isAttacking);
 
         while (animator.GetCurrentAnimatorStateInfo(0).IsName(isAttacking)) {
@@ -353,8 +352,8 @@ public class Enemy : MonoBehaviour
             actionMode = -1;
         }
         animator.SetBool(isWalking, false);
-
-        StartCoroutine(AttackAnimation(damage));
+        SetIsCrit(damage);
+        StartCoroutine(AttackAnimation());
 
         // invoke all enemy buffs
         foreach (UnityEvent attackEvent in attackEvents) {
@@ -372,7 +371,7 @@ public class Enemy : MonoBehaviour
             actionMode = -1;
         }
 
-        StartCoroutine(AttackAnimation(damage));
+        StartCoroutine(AttackAnimation());
         castle.DeductHealth(damage);
     }
 
@@ -425,10 +424,10 @@ public class Enemy : MonoBehaviour
                 AttackCastle();
                 // Debug.Log("Enemy.cs: AttackCastle() called.");
     
-            } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval) {
+            } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval && (playerHP.HP > 0)) {
                 AttackPlayer();
                 // Debug.Log("Enemy.cs: AttackPlayer() called.");
-            } else if (Vector3.Distance(transform.position, playerGround.position) <= detectRange) {
+            } else if (Vector3.Distance(transform.position, playerGround.position) <= detectRange && (playerHP.HP > 0)) {
                 ChasePlayer();
             } else {
                 MoveToPath();

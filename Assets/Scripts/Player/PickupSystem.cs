@@ -19,14 +19,14 @@ public class PickupSystem : MonoBehaviour
 
     public Transform parent;
 
-    public GameObject tempicon_axe;
-    public GameObject tempicon_pickaxe;
     public GameObject tempicon_wood;
     public GameObject tempicon_rock;
 
     public string Tag = "Base";
     public float depositRange = 3;
     bool locking = false;
+
+    public int amount = 0; // quantity in hand
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +42,10 @@ public class PickupSystem : MonoBehaviour
             if (type == 1) //put down axe
             {
                 Instantiate(axe, transform.position, Quaternion.identity, parent);
-                tempicon_axe.SetActive(false);
             }
             else if (type == 2) //put down axe
             {
                 Instantiate(pickaxe, transform.position, Quaternion.identity, parent);
-                tempicon_pickaxe.SetActive(false);
             }
             type = 0;
             locking = true;
@@ -99,14 +97,12 @@ public class PickupSystem : MonoBehaviour
             if (collision.gameObject.tag == "axe" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "wood") && !(collision.gameObject.tag == "rock")) //pick up axe
             {
                 type = 1;
-                tempicon_axe.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
             }
             else if (collision.gameObject.tag == "pickaxe" && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "wood") && !(collision.gameObject.tag == "rock")) //pick up pickaxe
             {
                 type = 2;
-                tempicon_pickaxe.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
             }

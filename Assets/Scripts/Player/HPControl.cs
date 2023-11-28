@@ -6,46 +6,103 @@ using System;
 
 public class HPControl : MonoBehaviour
 {
+    public int PenaltyTime = 10;
     public float maxHP;
     public float HP;
     public Slider HPBar;
-    public GameObject GameOverUI;
+    private GameObject player;
+    private bool die;
+    private float AccuPT = 0f;
+
+    private Animator m_animator;
+
+    private bool PauseEnable = false;
+    public GameObject pauseUI;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        m_animator = GetComponent<Animator>();
+
         if (maxHP <= 0) {
             Debug.Log("maxHP should be positive");
             return;
         }
-
+        die = false;
         HP = maxHP;
         HPBar.value = HP / maxHP;
     }
 
-    public void GameOver() {
-        Debug.Log("Game Over");
-        Time.timeScale = 0;
-        GameOverUI.SetActive(true);
-    }
-
     public void DeductHP(float damage) {
+        m_animator.SetTrigger("Hurt");
         HP -= damage;
-        HPBar.value = HP / maxHP;
 
         if (HP <= 0) {
-            GameOver();
+            Debug.Log("Died");
+            die = true;
+            AccuPT = 0;
+            m_animator.SetTrigger("Death");
+
+            // blocking player control
+            GetComponent<HeroKnight>().enabled = false;
+            GetComponent<PickupSystem>().enabled = false;
+            GetComponent<CollectResource>().enabled = false;
+
+            Invoke("Relive",PenaltyTime);
         }
+    }
+
+    public void Relive(){
+        Debug.Log("Relive");
+        die = false;
+
+        // unblock player control
+        GetComponent<HeroKnight>().enabled = true;
+        GetComponent<PickupSystem>().enabled = true;
+        GetComponent<CollectResource>().enabled = true;
+
+        HP = maxHP;
+        PenaltyTime += 10; // relive time +10s
+        m_animator.SetTrigger("Hurt"); // wake up
     }
 
     public void RecoverHP(float value) {
         HP = Math.Min(maxHP, HP + value);
-        HPBar.value = HP / maxHP;
+    }
+
+    void pausegame()
+    {
+        //pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseEnable == false)
+            {
+                PauseEnable = true;
+                Time.timeScale = 0;
+                pauseUI.SetActive(true);
+            }
+            else if (PauseEnable == true)
+            {
+                PauseEnable = false;
+                Time.timeScale = 1;
+                pauseUI.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        pausegame();
         
+        if(!(die)){
+            HPBar.value = HP / maxHP;
+        }
+        else{
+            AccuPT += Time.deltaTime;
+            HPBar.value = AccuPT / PenaltyTime;
+        }
     }
 }
