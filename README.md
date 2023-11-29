@@ -1,5 +1,14 @@
 # Oblivion-Fortress Update Log
 
+## 11/29 from sankonsky
+- 新增場景
+  - 關卡選擇 List
+  - 新手教學關 Tutorial
+  - 第二關 Chapter2
+- 完成第二關地圖布置(tilemap、resources、path)
+- 已知bug:
+  - 選蓋第一種塔時，蓋好會出現第三種塔
+
 ## 11/28 from sankonsky
 - 復活機制，每次死亡懲罰時間由10s,20s,30s,...遞增
 - 新增玩家受擊&死亡動畫

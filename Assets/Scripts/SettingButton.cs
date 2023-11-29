@@ -22,15 +22,39 @@ public class SettingButton : MonoBehaviour
         
     }
 
-    public void RestartGame()
+    public void RestartGame0()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Tutorial");
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame1()
+    {
+        SceneManager.LoadScene("Chapter1");
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame2()
+    {
+        SceneManager.LoadScene("Chapter2");
+        Time.timeScale = 1;
+    }
+
+    public void RestartGame3()
+    {
+        SceneManager.LoadScene("Chapter3");
         Time.timeScale = 1;
     }
 
     public void QuitGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
+    }
+
+    public void GoChapterList()
+    {
+        SceneManager.LoadScene("List");
         Time.timeScale = 1;
     }
 
