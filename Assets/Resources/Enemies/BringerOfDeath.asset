@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BringerOfDeath
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 5983025356698328478, guid: ca1af815e8f88e0438dbc825ac91b7ce, type: 3}
-  EnemyID: 5
+  EnemyID: 6

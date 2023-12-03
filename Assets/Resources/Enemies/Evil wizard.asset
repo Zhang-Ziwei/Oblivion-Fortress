@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Evil wizard
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 3460690045583338566, guid: c6cb4c42462ff1d48bd19caf4e836282, type: 3}
-  EnemyID: 6
+  EnemyID: 5

@@ -1274,7 +1274,6 @@ MonoBehaviour:
   Grid: {fileID: 471956964}
   timerText: {fileID: 1428224061}
   enemiesLeaveText: {fileID: 815241186}
-  Path: {fileID: 2049814495}
   PathLocations: []
   NowLevelText: {fileID: 612133147}
   LevelStartAudio: {fileID: 0}
@@ -35723,6 +35722,7 @@ MonoBehaviour:
   maxHP: 10
   HP: 0
   HPBar: {fileID: 1172083022}
+  hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
   pauseUI: {fileID: 433133028}
 --- !u!4 &1534037035 stripped
 Transform:

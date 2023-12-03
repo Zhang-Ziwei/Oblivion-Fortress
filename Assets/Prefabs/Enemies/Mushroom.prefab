@@ -536,12 +536,17 @@ MonoBehaviour:
   attackRange: 1
   detectRange: 2
   attackInterval: 1
-  critChance: 0
+  critChance: 0.2
+  critMultiplier: 2
   healthBar: {fileID: 5113885311150809645}
   hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
-  delayTime: 0
-  audioSpeed: 0
-  volume: 0
+  audioSpeed: 1.5
+  volume: 0.2
+  delayTime:
+    attacking_1: 0.2
+    attacking_2: 0.2
+    take_hit: 0
+    death: 0
 --- !u!70 &6947253346254741246
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

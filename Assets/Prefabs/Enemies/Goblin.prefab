@@ -290,11 +290,16 @@ MonoBehaviour:
   detectRange: 2
   attackInterval: 3
   critChance: 1
+  critMultiplier: 2
   healthBar: {fileID: 8006671188524515060}
   hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
-  delayTime: 0.97
   audioSpeed: 2
-  volume: 1
+  volume: 0.2
+  delayTime:
+    attacking_1: 0.2
+    attacking_2: 0.2
+    take_hit: 0
+    death: 0
 --- !u!82 &7978885451291567517
 AudioSource:
   m_ObjectHideFlags: 0

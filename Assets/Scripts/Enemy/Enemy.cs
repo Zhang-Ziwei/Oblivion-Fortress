@@ -167,9 +167,9 @@ public class Enemy : MonoBehaviour
         animator.SetFloat(isCrit, 0);
 
         // set enemy to the first path location
-        transform.position = LevelManager.Instance.PathLocations[0].position;
+        transform.position = LevelManager.Instance.GetPathLocations()[0].position;
 
-        nextPath = LevelManager.Instance.PathLocations[PathIndex];
+        nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
 
 
         // find all enemy buffs attach to this enemy
@@ -199,19 +199,20 @@ public class Enemy : MonoBehaviour
     }
 
     // decide whether the enemy is crit or not
-    public void SetIsCrit(float damage) {
+    public int SetIsCrit(float damage) {
         float random = Random.Range(0f, 1f);
+        int nowIsCrit = 0;
         if (random <= critChance) {
-            animator.SetFloat(isCrit, 1);
+            nowIsCrit = 1;
             enemyAudio?.attacking_2.PlayDelayed(delayTime.attacking_2);
-            playerHP.DeductHP(damage * critMultiplier);
-            hurtUI.Init(damage * critMultiplier, player.transform, true);
+            playerHP.DeductHP(damage * critMultiplier, true, delayTime.attacking_2);
         } else {
-            animator.SetFloat(isCrit, 0);
-            playerHP.DeductHP(damage);
+            nowIsCrit = 0;
+            playerHP.DeductHP(damage, false, delayTime.attacking_1);
             enemyAudio?.attacking_1.PlayDelayed(delayTime.attacking_1);
-            hurtUI.Init(damage, player.transform, false);
         }
+        animator.SetFloat(isCrit, nowIsCrit);
+        return nowIsCrit;
     }
 
     public void DeductHealth(float damage) {
@@ -221,7 +222,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger(isAttacked);
         enemyAudio?.take_hit.PlayDelayed(delayTime.take_hit);
 
-        hurtUI.Init(damage, transform, false);
+        hurtUI.Init(damage, transform, false, delayTime.take_hit);
 
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
@@ -299,13 +300,13 @@ public class Enemy : MonoBehaviour
 
     private void AssignNearestPath() {
         // return the nearest path location in LevelManager.Instance.PathLocations
-        Transform nearestPath = LevelManager.Instance.PathLocations[0];
+        Transform nearestPath = LevelManager.Instance.GetPathLocations()[0];
         float minDistance = Vector3.Distance(transform.position, nearestPath.position);
         int minIndex = 0;
-        for (int i = 1; i < LevelManager.Instance.PathLocations.Count; i ++) {
-            float distance = Vector3.Distance(transform.position, LevelManager.Instance.PathLocations[i].position);
+        for (int i = 1; i < LevelManager.Instance.GetPathLocations().Count; i ++) {
+            float distance = Vector3.Distance(transform.position, LevelManager.Instance.GetPathLocations()[i].position);
             if (distance < minDistance) {
-                nearestPath = LevelManager.Instance.PathLocations[i];
+                nearestPath = LevelManager.Instance.GetPathLocations()[i];
                 minDistance = distance;
                 minIndex = i;
             }
@@ -352,12 +353,14 @@ public class Enemy : MonoBehaviour
             actionMode = -1;
         }
         animator.SetBool(isWalking, false);
-        SetIsCrit(damage);
+        int nowIsCrit = SetIsCrit(damage);
         StartCoroutine(AttackAnimation());
 
         // invoke all enemy buffs
-        foreach (UnityEvent attackEvent in attackEvents) {
-            attackEvent?.Invoke();
+        if (nowIsCrit == 1) {
+            foreach (UnityEvent attackEvent in attackEvents) {
+                attackEvent?.Invoke();
+            }
         }
 
     }
@@ -397,13 +400,13 @@ public class Enemy : MonoBehaviour
             AssignNearestPath();
             actionMode = 1;
         }
-        if (PathIndex < LevelManager.Instance.PathLocations.Count - 1)
+        if (PathIndex < LevelManager.Instance.GetPathLocations().Count - 1)
         {
             Move(nextPath);
             if (Vector3.Distance(transform.position, nextPath.position) <= 0.1f)
             {
                 PathIndex++;
-                nextPath = LevelManager.Instance.PathLocations[PathIndex];
+                nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
             } 
         }
     }
@@ -433,11 +436,5 @@ public class Enemy : MonoBehaviour
                 MoveToPath();
             }
         }    
-    }
-    IEnumerator Test() {
-        while(true) {
-            yield return new WaitForSeconds(3);
-            DeductHealth(1);
-        }
     }
 }

@@ -14,10 +14,10 @@ public class EnemyAudio
     public AudioSource take_hit;
     public AudioSource death;
 
-    public EnemyAudio(AudioClip attacking1Clip, AudioClip attacking2Clip, AudioClip takeHitClip, AudioClip deathClip, Transform transform)
+    public EnemyAudio(AudioClip attacking1Clip, AudioClip attacking2Clip, AudioClip takeHitClip, AudioClip deathClip, Transform transform, string name)
     {
         // Create an empty GameObject to hold the audio sources
-        audioObject = new GameObject("EnemyAudio");
+        audioObject = new GameObject($"{name} EnemyAudio");
 
         audioObject.transform.SetParent(transform);
 
@@ -64,9 +64,15 @@ public class LevelManager : MonoBehaviour
 
     public Text enemiesLeaveText;
 
-    public GameObject Path;
+    private static List<EnemyLevelData> enemyLevelDatas;
 
-    public List<Transform> PathLocations;
+    private GameObject Path;
+
+    private List<Transform> PathLocations;
+
+    public List<Transform> GetPathLocations() {
+        return PathLocations;
+    }
 
     public GameObject NowLevelText;
 
@@ -83,9 +89,6 @@ public class LevelManager : MonoBehaviour
     private static Queue<int> EnemyToSummon;  // enemy ID
     private static Queue<Enemy> EnemyToRemove;  // enemy object
 
-    private static List<EnemyLevelData> enemyLevelDatas;
-
-
     private int NowLevel;
 
     private bool inLevel;
@@ -97,22 +100,17 @@ public class LevelManager : MonoBehaviour
     void Awake() {
         Instance = this;
 
-        // // get tilemap of ground
-        // GroundMap = Ground.GetComponent<Tilemap>();
-
-        // // get grid
-        // grid = Grid.GetComponent<Grid>();
-
         IsGameOver = false;
 
         NowLevel = 0;
 
         inLevel = false;
 
+        Path = GameObject.Find("Path");
 
         // get path locations
         Transform[] Locs = Path.GetComponentsInChildren<Transform>();
-
+        PathLocations = new List<Transform>();
         for(int i = 1; i < Locs.Length; i ++) {
             PathLocations.Add(Locs[i]);
             // Debug.Log(Locs[i].position);
@@ -134,7 +132,7 @@ public class LevelManager : MonoBehaviour
     {
 
         // get all enemy level data
-        EnemyLevelData[] temp = Resources.LoadAll<EnemyLevelData>("Enemies/EnemyLevelData");
+        EnemyLevelData[] temp = Resources.LoadAll<EnemyLevelData>($"Enemies/EnemyLevelData/{gameObject.scene.name}");
 
         // add in list if active
         enemyLevelDatas = new List<EnemyLevelData>();
@@ -153,7 +151,7 @@ public class LevelManager : MonoBehaviour
             AudioClip take_hit = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/take_hit");
             AudioClip death = Resources.Load<AudioClip>("Enemies/Audio/" + enemyName + "/death");
 
-            EnemyAudio enemyAudio = new EnemyAudio(attacking_1, attacking_2, take_hit, death, transform);
+            EnemyAudio enemyAudio = new EnemyAudio(attacking_1, attacking_2, take_hit, death, transform, enemyName);
 
             // ensure all audio are loaded
             if (enemyAudio.attacking_1 == null || enemyAudio.attacking_2 == null || enemyAudio.take_hit == null || enemyAudio.death == null) {

@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Unity.VisualScripting;
 
 public class HPControl : MonoBehaviour
 {
     public int PenaltyTime = 10;
     public float maxHP;
     public float HP;
+
     public Slider HPBar;
+
+    [SerializeField] private HurtUI hurtUI;
+
     private GameObject player;
     private bool die;
     private float AccuPT = 0f;
@@ -35,9 +40,14 @@ public class HPControl : MonoBehaviour
         HPBar.value = HP / maxHP;
     }
 
-    public void DeductHP(float damage) {
+    public void DeductHP(float damage, bool isCritical = false, float delayTime = 0f) {
         m_animator.SetTrigger("Hurt");
         HP -= damage;
+        if (isCritical) {
+            hurtUI.Init(damage, transform, true, delayTime);
+        } else {
+            hurtUI.Init(damage, transform, false, delayTime);
+        }
 
         if (HP <= 0) {
             Debug.Log("Died");

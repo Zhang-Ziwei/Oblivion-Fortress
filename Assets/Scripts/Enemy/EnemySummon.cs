@@ -55,7 +55,7 @@ public class EnemySummon : MonoBehaviour
             } else {
 
                 // if no, instantiate
-                GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], LevelManager.Instance.PathLocations[0].position, Quaternion.identity);
+                GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], LevelManager.Instance.GetPathLocations()[0].position, Quaternion.identity);
                 SummonedEnemy = NewEnemy.GetComponent<Enemy>();
             }
             SummonedEnemy.Init(enemyID);
