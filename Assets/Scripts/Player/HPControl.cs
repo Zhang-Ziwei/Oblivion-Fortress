@@ -44,9 +44,9 @@ public class HPControl : MonoBehaviour
         m_animator.SetTrigger("Hurt");
         HP -= damage;
         if (isCritical) {
-            hurtUI.Init(damage, transform, true, delayTime);
+            hurtUI.Init(damage, transform, true);
         } else {
-            hurtUI.Init(damage, transform, false, delayTime);
+            hurtUI.Init(damage, transform, false);
         }
 
         if (HP <= 0) {

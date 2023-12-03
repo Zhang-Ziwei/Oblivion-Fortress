@@ -14,11 +14,14 @@ public class DebuffLog : MonoBehaviour
     public Image BuffIcon;
 
     public Image TimerFill;
-    public void Init(EnemyBuff enemyBuff, Sprite nowBuffIcon) {
+
+    public EnemyBuff myBuff;
+    public void Init(EnemyBuff enemyBuff) {
+        myBuff = enemyBuff;
 
         DescriptionText.text = enemyBuff.BuffName;
 
-        BuffIcon.sprite = nowBuffIcon;
+        BuffIcon.sprite = enemyBuff.buffIcon;
 
         TimerText.text = enemyBuff.duration.ToString();
 

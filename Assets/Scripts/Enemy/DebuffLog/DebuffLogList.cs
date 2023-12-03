@@ -12,8 +12,7 @@ public class DebuffLogList : MonoBehaviour
 
     private VerticalLayoutGroup verticalLayoutGroup;
 
-    private Dictionary<string, Sprite> BuffIconRef;
-
+    private Dictionary<string, int> nowDebuffs;
     public static DebuffLogList Instance;
 
     void Start()
@@ -23,34 +22,43 @@ public class DebuffLogList : MonoBehaviour
         // Get the VerticalLayoutGroup component
         verticalLayoutGroup = GetComponent<VerticalLayoutGroup>();
 
-        Sprite[] BuffIconList = Resources.LoadAll<Sprite>("Enemies/DebuffIconData");
-
-        BuffIconRef = new Dictionary<string, Sprite>();
-        for (int i = 0; i < BuffIconList.Length; i++)
-        {
-            BuffIconRef.Add(BuffIconList[i].name, BuffIconList[i]);
-        }
-
         numberOfItems = 0;
+        
+        nowDebuffs = new Dictionary<string, int>();
 
+    }
+    public bool CheckDebuff(string debuffName)
+    {
+        if (!nowDebuffs.ContainsKey(debuffName))
+        {
+            nowDebuffs.Add(debuffName, 0);
+        }
+        if (nowDebuffs[debuffName] == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void AddBuffItem(EnemyBuff enemyBuff)
     {
         numberOfItems++;
+        nowDebuffs[enemyBuff.BuffName]++;
 
         // instantiate the new item prefab and set its parent to the content transform
         DebuffLog newItem = Instantiate(debuffLog, transform);
 
-        
-
-        newItem.Init(enemyBuff, BuffIconRef[enemyBuff.BuffName]);
+        newItem.Init(enemyBuff);
 
     }
 
     public void RemoveBuffItem(DebuffLog itemToRemove)
     {
         numberOfItems--;
+        nowDebuffs[itemToRemove.myBuff.BuffName]--;
 
         // destroy the gameobject of the item to remove
         Destroy(itemToRemove.gameObject);

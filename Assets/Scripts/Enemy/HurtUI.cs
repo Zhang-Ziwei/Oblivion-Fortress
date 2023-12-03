@@ -6,12 +6,8 @@ using System.Xml.Serialization;
 
 public class HurtUI : MonoBehaviour
 {
-    public void Init(float damage, Transform target, bool isCrit, float delayTime = 0f) {
-        StartCoroutine(InitDelay(damage, target, isCrit, delayTime));
-    }
 
-    public IEnumerator InitDelay(float damage, Transform target, bool isCrit, float delayTime = 0f) {
-        yield return new WaitForSeconds(delayTime);
+    public void Init(float damage, Transform target, bool isCrit) {
 
         // instantiate the hurtUI prefab as a child of enemy canvas
         GameObject hurtUIInstance = Instantiate(gameObject);
@@ -30,7 +26,6 @@ public class HurtUI : MonoBehaviour
         } else {
             text.color = Color.white;
         }
-        yield return null;
     }
 
     public void Destroy() {

@@ -14,24 +14,26 @@ public class Poison: EnemyBuff
 
     private HPControl playerHP;
 
+    public override void Buff()
+    {
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
 
-    private new void Start() {
-        base.Start();
-        
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<HeroKnight>();
+        nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
+
         buffName = "Poison";
 
-        if (damage <= 0) {
-            Debug.Log("damage is not positive");
-        }
-        if (duration <= 0) {
-            Debug.Log("duration is not positive");
-        }
-        if (interval <= 0) {
-            Debug.Log("interval is not positive");
-        }
+        DebuffLogList.Instance.AddBuffItem(this);
+
+        // set the parent of the gameObject to player
+        nowItem.transform.SetParent(player.transform);
+
+        player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
     }
     public override IEnumerator BuffCoroutine() {
-        isBuffed = true;
         float timer = 0;
 
         playerHP = player.GetComponent<HPControl>();
@@ -43,7 +45,7 @@ public class Poison: EnemyBuff
             yield return new WaitForSeconds(interval);
             
         }
+        Destroy(nowItem);
         yield return new WaitForSeconds(cooldown);
-        isBuffed = false;
     }
 }

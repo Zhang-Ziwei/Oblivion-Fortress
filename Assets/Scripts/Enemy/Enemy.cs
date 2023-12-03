@@ -73,6 +73,10 @@ public class Enemy : MonoBehaviour
 
     public AudioDelaySettings delayTime;
 
+    [Header("Enemy Buffs")]
+
+    public EnemyBuff[] enemyBuffs;
+
     private int ID;
 
     private Castle castle;
@@ -104,8 +108,6 @@ public class Enemy : MonoBehaviour
     // private string isMoving = "IsMoving";
 
     private bool inAttackInterval;
-
-    private EnemyBuff[] enemyBuffs;
 
     private List<UnityEvent> attackEvents;
 
@@ -171,15 +173,11 @@ public class Enemy : MonoBehaviour
 
         nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
 
-
-        // find all enemy buffs attach to this enemy
-        enemyBuffs = GetComponents<EnemyBuff>();
-
         // add all enemy buffs to attackEvents
         attackEvents = new List<UnityEvent>();
         foreach (EnemyBuff enemyBuff in enemyBuffs) {
-            // if buff is not null and is active
-            if (enemyBuff != null && enemyBuff.isActiveAndEnabled) {
+            if (enemyBuff != null) {
+
                 UnityEvent nowEvent = new UnityEvent();
                 nowEvent.AddListener(enemyBuff.Buff);
                 attackEvents.Add(nowEvent);
@@ -222,7 +220,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger(isAttacked);
         enemyAudio?.take_hit.PlayDelayed(delayTime.take_hit);
 
-        hurtUI.Init(damage, transform, false, delayTime.take_hit);
+        hurtUI.Init(damage, transform, false);
 
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {

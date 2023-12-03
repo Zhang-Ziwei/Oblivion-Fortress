@@ -9,31 +9,32 @@ public class Slowness: EnemyBuff
 {
     public float ratio;
 
-    private new void Start() {
+    public override void Buff()
+    {
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
+
         player = GameObject.Find("Player");
         playerController = player.GetComponent<HeroKnight>();
-        isBuffed = false;
+        nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
+
         buffName = "Slowness";
 
-        if (player == null) {
-            Debug.Log("player is null");
-        }
-        if (playerController == null) {
-            Debug.Log("playerController is null");
-        }
-        if (ratio <= 0) {
-            Debug.Log("ratio is not positive");
-        }
+        DebuffLogList.Instance.AddBuffItem(this);
+
+        // set the parent of the gameObject to player
+        nowItem.transform.SetParent(player.transform);
+
+        player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
     }
 
     public override IEnumerator BuffCoroutine() {
-        isBuffed = true;
         float originSpeed = playerController.movespeed;
         playerController.movespeed = originSpeed * ratio;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
-
+        Destroy(nowItem);
         yield return new WaitForSeconds(cooldown);
-        isBuffed = false;
     }
 }
