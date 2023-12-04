@@ -25,6 +25,7 @@ public class PickupSystem : MonoBehaviour
     public string Tag = "Base";
     public float depositRange = 3;
     bool locking = false;
+    bool touchitem = false;
 
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class PickupSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e") && type != 0 && (!locking)) //put down
+        if (Input.GetKeyDown("e") && type != 0 && !locking && !touchitem) //put down
         {
             putdown(type);
             type = 0;
@@ -86,6 +87,22 @@ public class PickupSystem : MonoBehaviour
                 locking = true;
                 putdown(temp);
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "wood" || (collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe") || (collision.gameObject.tag == "rock"))
+        {
+            touchitem = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "wood" || (collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe") || (collision.gameObject.tag == "rock"))
+        {
+            touchitem = false;
         }
     }
 
