@@ -16,10 +16,14 @@ public class CollectResource : MonoBehaviour
 
     public Slider CollectBar;
 
+    public AudioClip tree_sound;
+    public AudioClip rock_sound;
+    AudioSource audiosource;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,12 @@ public class CollectResource : MonoBehaviour
                 CollectBar.gameObject.SetActive(true);
                 CollectBar.value = count / CollectTime;
                 count += Time.deltaTime;
+
+                if(!audiosource.isPlaying)
+                {
+                    audiosource.PlayOneShot(tree_sound);
+                }
+
                 if(count > CollectTime)
                 {
                     // collection competed
@@ -48,7 +58,12 @@ public class CollectResource : MonoBehaviour
                 CollectBar.gameObject.SetActive(true);
                 CollectBar.value = count / CollectTime;
                 count += Time.deltaTime;
-                CollectBar.value = count / CollectTime;
+
+                if(!audiosource.isPlaying)
+                {
+                    audiosource.PlayOneShot(rock_sound);
+                }
+
                 if(count > CollectTime)
                 {
                     // collection competed
@@ -64,12 +79,14 @@ public class CollectResource : MonoBehaviour
             else
             {
                 count = 0;
+                audiosource.Stop();
                 CollectBar.gameObject.SetActive(false);
             }
         }
         if(Input.GetKeyUp(KeyCode.Space)){
             // collection aborted
             count = 0;
+            audiosource.Stop();
             CollectBar.gameObject.SetActive(false);
         }
     }
