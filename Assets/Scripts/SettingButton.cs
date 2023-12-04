@@ -8,8 +8,6 @@ public class SettingButton : MonoBehaviour
 {
     // Start is called before the first frame update
     private Button RestartButton;
-    public GameObject BuildingUI;
-    public GameObject SmallBuildingUI;
 
     void Start()
     {
@@ -58,15 +56,4 @@ public class SettingButton : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void CloseBuildingUI()
-    {
-        BuildingUI.SetActive(false);
-        SmallBuildingUI.SetActive(true);
-    }
-
-    public void OpenBuildingUI()
-    {
-        BuildingUI.SetActive(true);
-        SmallBuildingUI.SetActive(false);
-    }
 }

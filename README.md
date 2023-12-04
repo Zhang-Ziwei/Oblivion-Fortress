@@ -1,5 +1,13 @@
 # Oblivion-Fortress Update Log
 
+## 12/4 from sankonsky
+- 新增場景
+  - 第三關 Chapter3
+- 完成第二關地圖布置(tilemap、resources、path)
+- 更改木材、石材圖案
+- 已知bug:
+  - 被紫色怪物打到有機率卡死
+
 ## 11/29 from sankonsky
 - 新增場景
   - 關卡選擇 List
