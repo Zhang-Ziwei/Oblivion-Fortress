@@ -63,10 +63,11 @@ public class TowerInfo : MonoBehaviour
         deleteButton.interactable = true;
     }
 
-    void UpdateUpgradeTowerInfo(GameObject Base, GameObject upgradeButtonObject)
+    void UpdateUpgradeTowerInfo(GameObject TB, GameObject upgradeButtonObject)
     {
         //Modify UI with tower information
-        GameObject Tower = Base.GetComponent<Base>().tower;
+        GameObject Tower = TB.transform.GetChild(0).gameObject;
+        GameObject Base = TB.transform.GetChild(1).gameObject;
         GameObject towerInfo = upgradeButtonObject.transform.GetChild(1).gameObject;
         towerInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxWood;
         towerInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxStone;
@@ -93,7 +94,7 @@ public class TowerInfo : MonoBehaviour
 
     void DeleteTaskOnClick()
     {
-        Destroy(hitObject);
+        Destroy(hitObject.transform.parent.gameObject);
         ResetAllButtons();
     }
 
@@ -115,7 +116,7 @@ public class TowerInfo : MonoBehaviour
         {
             hitObject = hit.collider.gameObject;
 
-            if(hit.transform.tag == "Base") Tower = hitObject.GetComponent<Base>().tower;
+            if(hit.transform.tag == "Base") Tower = hitObject.transform.parent.GetChild(0).gameObject;
             else Tower = hitObject;
 
             UpdateTowerInfoUI(Tower);

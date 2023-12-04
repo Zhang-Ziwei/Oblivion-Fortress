@@ -142,6 +142,16 @@ MonoBehaviour:
   Tag: Enemy
   attackInterval: 0.2
   attackType: Single_L2
+  ID: 5
+  test:
+  - maxWood: 0
+    maxStone: 0
+    Buff: 
+    buffvalue: 0
+  - maxWood: 0
+    maxStone: 0
+    Buff: 
+    buffvalue: 0
   upgradeBase1: {fileID: 0}
   upgradeBase2: {fileID: 0}
 --- !u!120 &7462953453726178600

@@ -142,6 +142,12 @@ MonoBehaviour:
   Tag: Enemy
   attackInterval: 5
   attackType: AreaSlow
+  ID: 8
+  test:
+  - maxWood: 0
+    maxStone: 0
+    Buff: 
+    buffvalue: 0
   upgradeBase1: {fileID: 0}
   upgradeBase2: {fileID: 0}
 --- !u!120 &7462953453726178600

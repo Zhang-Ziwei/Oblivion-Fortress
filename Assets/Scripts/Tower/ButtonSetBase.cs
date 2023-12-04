@@ -9,7 +9,8 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Start is called before the first frame update
     private Button mybutton;
     public GameObject Square;
-    public GameObject Base;
+    public GameObject TB;
+    private GameObject Base;
     public GameObject attackField;
     private Collider2D BaseCollider;
     private bool isBaseSetting = false;
@@ -28,7 +29,8 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         BaseCollider = Square.GetComponent<PolygonCollider2D>();
 
         //Get correspond tower of base
-        Tower = Base.GetComponent<Base>().tower;
+        Tower = TB.transform.GetChild(0).gameObject; //Tower = Base.GetComponent<Base>().tower;
+        Base = TB.transform.GetChild(1).gameObject;
         attackRange = Tower.GetComponent<Tower>().attackRange;
         attackField = Instantiate(attackField);
         attackField.transform.localScale = new Vector3(attackRange, attackRange, 1);
@@ -73,7 +75,7 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             
             if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), new List<Collider2D>()) == 0)
             {
-                Instantiate(Base, GameData.nearestVertex(GameData.getMousePos()), Quaternion.identity);
+                Instantiate(TB, GameData.nearestVertex(GameData.getMousePos()), Quaternion.identity);
             }
             isBaseSetting = false;
             Square.SetActive(false);

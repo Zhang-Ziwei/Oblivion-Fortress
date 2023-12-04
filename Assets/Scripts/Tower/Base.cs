@@ -20,11 +20,13 @@ public class Base : MonoBehaviour
     void Start()
     {
         if(DebugMode) {
-            Instantiate(tower, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);//Destroy(gameObject);
             return;
         }
         //Text_Pro = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+
+        tower = transform.parent.GetChild(0).gameObject;
         changeUI();
     }
 
@@ -41,8 +43,8 @@ public class Base : MonoBehaviour
         Wood += depositNum - remainNum;
         if ((Wood == MaxWood) && (Stone == MaxStone))
         {
-            Instantiate(tower, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);//Destroy(gameObject);
         }
         changeUI();
         return remainNum;
@@ -54,8 +56,8 @@ public class Base : MonoBehaviour
         Stone += depositNum - remainNum;
         if ((Wood == MaxWood) && (Stone == MaxStone))
         {
-            Instantiate(tower, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);//Destroy(gameObject);
         }
         changeUI();
         return remainNum;

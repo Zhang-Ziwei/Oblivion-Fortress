@@ -4,8 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[System.Serializable]
+    public class LevelUP
+    {
+        public int maxWood;
+        public int maxStone;
+        public string Buff;
+        public float buffvalue;
+        /*public int maxWood { get; set; };
+        public int maxStone { get; set; };
+        public string Buff { get; set; };
+        public float buffvalue { get; set; };*/
+    };
 public class Tower : MonoBehaviour
 {
+    
     public float attackRange = 5;
     public float Damage = 1F;
     public float slowDownRate = 0.5f;
@@ -13,6 +26,8 @@ public class Tower : MonoBehaviour
     public string Tag = "Enemy";
     public float attackInterval = 1f;
     public string attackType = "Single";
+    public int ID = 0;
+    public LevelUP[] test; 
     private float timePassed = 0f;
 
     // used for attack animation
