@@ -3,7 +3,7 @@
 ## 12/4 from sankonsky
 - 新增場景
   - 第三關 Chapter3
-- 完成第二關地圖布置(tilemap、resources、path)
+- 完成第三關地圖布置(tilemap、resources、path)
 - 更改木材、石材圖案
 - 新增砍樹&敲石頭音效
 - 完成新手教學關卡
