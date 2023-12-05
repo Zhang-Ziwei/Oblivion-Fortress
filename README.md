@@ -5,12 +5,9 @@
 
 ## Third demo version
 - 已知bug:
-  - 遊戲建置
-    - Tower.cs的ArrayUtility.Contains(enemies, preAttackEnemy)無法建置
-  - 角色動畫
-    - 角色被擊/中毒後腳步動畫故障
-    - 切換手中工具後人物圖片未改變
-    - 拿取建材後無法翻滾/攻擊
+  - 角色被擊/中毒後腳步動畫故障
+  - 切換手中工具後人物圖片未改變
+  - 拿取建材後無法翻滾/攻擊
 
 ## 12/5 from kyleko56
 - 完成防禦塔升級機制及 UI
