@@ -7,25 +7,28 @@ using System.Xml.Serialization;
 
 public class Freeze: EnemyBuff
 {
-    public override void Buff()
+    public override void Init()
     {
-        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
-            return;
-        }
-
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<HeroKnight>();
-        nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
-
+        base.Init();
         buffName = "Freeze";
 
-        DebuffLogList.Instance.AddBuffItem(this);
-
-        // set the parent of the gameObject to player
-        nowItem.transform.SetParent(player.transform);
-
-        player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
     }
+
+    // public override void Buff()
+    // {
+    //     if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+    //         return;
+    //     }
+
+    //     nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
+
+    //     DebuffLogList.Instance.AddBuffItem(this);
+
+    //     // set the parent of the gameObject to player
+    //     nowItem.transform.SetParent(player.transform);
+
+    //     player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
+    // }
 
 
     public override IEnumerator BuffCoroutine() {

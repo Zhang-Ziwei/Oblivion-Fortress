@@ -177,6 +177,7 @@ public class Enemy : MonoBehaviour
         attackEvents = new List<UnityEvent>();
         foreach (EnemyBuff enemyBuff in enemyBuffs) {
             if (enemyBuff != null) {
+                enemyBuff.Init();
 
                 UnityEvent nowEvent = new UnityEvent();
                 nowEvent.AddListener(enemyBuff.Buff);

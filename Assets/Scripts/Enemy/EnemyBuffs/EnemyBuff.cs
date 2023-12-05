@@ -46,8 +46,25 @@ public class EnemyBuff : MonoBehaviour
         isBuffed = false;
     }
 
-    public virtual void Buff() {
+    public virtual void Init() {
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<HeroKnight>();
+    }
 
+    public void Buff() {
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
+
+
+        nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
+
+        DebuffLogList.Instance.AddBuffItem(this);
+
+        // set the parent of the gameObject to player
+        nowItem.transform.SetParent(player.transform);
+
+        player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
     }
 
     public virtual IEnumerator BuffCoroutine() {
