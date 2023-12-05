@@ -42,6 +42,7 @@ public class HPControl : MonoBehaviour
     }
 
     public void DeductHP(float damage, bool isCritical = false, float delayTime = 0f) {
+        /*
         if(toolstype == 0)
         {
             m_animator.SetTrigger("Hurt");
@@ -54,7 +55,7 @@ public class HPControl : MonoBehaviour
         {
             m_animator.SetTrigger("Hurt_ham");
         }
-
+        */
         HP -= damage;
         if (isCritical) {
             hurtUI.Init(damage, transform, true);

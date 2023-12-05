@@ -352,7 +352,7 @@ public class Tower : MonoBehaviour
             else if (attackType == "Single_L2")
             {
                 GameObject[] enemies = GameData.getInRangeObjectWithTag(transform.position, Tag, attackRange);
-                if (preAttackEnemy && ArrayUtility.Contains(enemies, preAttackEnemy))
+                if (preAttackEnemy /*&& ArrayUtility.Contains(enemies, preAttackEnemy)*/)
                 {
                     DamageRate = Math.Max(DamageIncreaseRate * DamageRate, maxDamageRate);
                     preAttackEnemy.GetComponent<Enemy>().DeductHealth(Damage * DamageRate);

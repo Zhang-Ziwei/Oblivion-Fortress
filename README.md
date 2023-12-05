@@ -3,26 +3,19 @@
 ## Third demo 測試回饋
 - https://docs.google.com/forms/d/1e2zId1f4n8VI6e1pTg5O81HXozueyTJQ89Pq7YrobeE/edit
 
-## 12/5 from kyleko56
-- 完成防禦塔升級機制及 UI
-  - 包含經驗值、解鎖
-- 重新平衡製作 Chapter 1
-
 ## Third demo version
-- 難度過高
 - 已知bug:
   - 遊戲建置
     - Tower.cs的ArrayUtility.Contains(enemies, preAttackEnemy)無法建置
-  - 防禦塔
-    - 防禦塔升級功能故障，無法升級
-    - 防禦塔升級面板的二級塔參數與一級相同
-    - 防禦塔UI的功能項目與實際不符
   - 角色動畫
     - 角色被擊/中毒後腳步動畫故障
     - 切換手中工具後人物圖片未改變
     - 拿取建材後無法翻滾/攻擊
-    - 拿著工具死亡時角色不會躺平
-    - 
+
+## 12/5 from kyleko56
+- 完成防禦塔升級機制及 UI
+  - 包含經驗值、解鎖
+- 重新平衡製作 Chapter 1
 
 ## 12/4 from sankonsky
 - 新增場景
