@@ -23,8 +23,9 @@ public class HPControl : MonoBehaviour
 
     private bool PauseEnable = false;
     public GameObject pauseUI;
+    private int toolstype = 0;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,19 @@ public class HPControl : MonoBehaviour
     }
 
     public void DeductHP(float damage, bool isCritical = false, float delayTime = 0f) {
-        m_animator.SetTrigger("Hurt");
+        if(toolstype == 0)
+        {
+            m_animator.SetTrigger("Hurt");
+        }
+        if (toolstype == 1)
+        {
+            m_animator.SetTrigger("Hurt_ax");
+        }
+        if (toolstype == 2)
+        {
+            m_animator.SetTrigger("Hurt_ham");
+        }
+
         HP -= damage;
         if (isCritical) {
             hurtUI.Init(damage, transform, true);
@@ -106,8 +119,9 @@ public class HPControl : MonoBehaviour
     void Update()
     {
         pausegame();
-        
-        if(!(die)){
+
+        toolstype = GetComponent<PickupSystem>().type;
+        if (!(die)){
             HPBar.value = HP / maxHP;
         }
         else{
