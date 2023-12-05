@@ -3,6 +3,11 @@
 ## Third demo 測試回饋
 - https://docs.google.com/forms/d/1e2zId1f4n8VI6e1pTg5O81HXozueyTJQ89Pq7YrobeE/edit
 
+## 12/5 from kyleko56
+- 完成防禦塔升級機制及 UI
+  - 包含經驗值、解鎖
+- 重新平衡製作 Chapter 1
+
 ## Third demo version
 - 難度過高
 - 已知bug:
