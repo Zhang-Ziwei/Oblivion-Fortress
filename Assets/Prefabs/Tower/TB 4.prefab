@@ -42,9 +42,105 @@ PrefabInstance:
     m_TransformParent: {fileID: 2972455223869932035}
     m_Modifications:
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: upgradeTB1
+      value: 
+      objectReference: {fileID: 421343602136147315, guid: f5ec426d465b6b242af956c50d004aab, type: 3}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: attackRange
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: slowDownTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: upgradeBase1
       value: 
       objectReference: {fileID: 421343602136147315}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: slowDownValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].maxWood1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].maxWood2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].maxWood1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].maxWood2
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].maxStone1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].maxStone2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffInfo1
+      value: test1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffInfo2
+      value: test2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].maxStone1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].maxStone2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].unlockExp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].buffValue1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].buffValue2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffValue1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffValue2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].buffTarget1
+      value: SlowDownTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[0].buffTarget2
+      value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffTarget1
+      value: Special
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: levelUps.Array.data[1].buffTarget2
+      value: Tranform
+      objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -114,6 +210,14 @@ PrefabInstance:
     - target: {fileID: 2085130942620763656, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
       propertyPath: m_Name
       value: Base 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035196717666425432, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
+      propertyPath: MaxStone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035196717666425432, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
+      propertyPath: DebugMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6520583173501268548, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
       propertyPath: m_LocalPosition.x

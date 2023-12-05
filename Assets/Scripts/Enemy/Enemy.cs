@@ -230,6 +230,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void DeductHealthPercent(float percent) {
+        DeductHealth(percent * maxHealth);
+    }
+
     public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue) {
         bool idExist = false;
 

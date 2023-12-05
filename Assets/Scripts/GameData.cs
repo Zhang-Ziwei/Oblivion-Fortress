@@ -33,7 +33,7 @@ public class GameData : MonoBehaviour
     }
 
     // Get nearest object with tag after transform to rectangular coordinate system
-    public static GameObject getNearestObjectWithTag(Vector3 selfPos, string Tag)
+    public static GameObject getNearestObjectWithTag(Vector3 selfPos, string Tag, float dmin = 0)
     {
         float minDistance = float.MaxValue;
         GameObject nearestObject = null;
@@ -42,7 +42,7 @@ public class GameData : MonoBehaviour
         foreach(GameObject o in objects)
         {
             float distance = distanceRec(selfPos, o.transform.position);
-            if(distance < minDistance)
+            if(distance < minDistance && distance > dmin)
             {
                 minDistance = distance;
                 nearestObject = o;

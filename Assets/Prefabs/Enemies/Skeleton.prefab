@@ -122,11 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ba8f1eb94f1234b819bf04eef98306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 80
   damage: 0.5
-  speed: 1
-  attackRange: 1.2
-  detectRange: 2.5
+  speed: 0.75
+  attackRange: 1.8
+  detectRange: 1.9
   attackInterval: 1
   critChance: 0.5
   critMultiplier: 2
@@ -139,6 +139,7 @@ MonoBehaviour:
     attacking_2: 0.5
     take_hit: 0
     death: 0
+  enemyBuffs: []
 --- !u!70 &3727526894786740574
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

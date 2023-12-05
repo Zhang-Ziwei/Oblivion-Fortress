@@ -19,11 +19,6 @@ public class Base : MonoBehaviour
 
     void Start()
     {
-        if(DebugMode) {
-            tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
-            gameObject.SetActive(false);//Destroy(gameObject);
-            return;
-        }
         //Text_Pro = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
 
         tower = transform.parent.GetChild(0).gameObject;
@@ -35,8 +30,22 @@ public class Base : MonoBehaviour
         //Text_Pro.text = String.Format("W {0}/{1}\nS {2}/{3}", Wood, MaxWood, Stone, MaxStone);
         transform.GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text = Wood + "/" + MaxWood;
         transform.GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<Text>().text = Stone + "/" + MaxStone;
+        
+        if(DebugMode) {
+            tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);//Destroy(gameObject);
+            return;
+        }
+
+        tower.GetComponent<Tower>().setUpgradeInfo();
     }
 
+    public void setUpgradeResourse(int wood, int stone)
+    {
+        Wood = 0; Stone = 0;
+        MaxWood = wood; MaxStone = stone;
+        changeUI();
+    }
     public int depositWood(int depositNum) 
     {
         int remainNum = Math.Max(depositNum + Wood - MaxWood, 0);
