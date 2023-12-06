@@ -118,6 +118,7 @@ public class Enemy : MonoBehaviour
     public void Init(int enemyID)
     {
         PathIndex = 1;
+        maxHealth *= Difficulty.enemyHealthRate;
         health = maxHealth;
         ID = enemyID;
         healthBar.value = health / maxHealth;

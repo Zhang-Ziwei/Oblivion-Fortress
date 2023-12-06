@@ -218,7 +218,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // set timer to beforeSpawnInterval
-        timer = enemyLevelData.beforeSpawnInterval;
+        timer = enemyLevelData.beforeSpawnInterval * Difficulty.levelIntervalRate;
         // set color of timer text to red
         timerText.color = Color.red;
 
