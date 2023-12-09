@@ -298,8 +298,20 @@ MonoBehaviour:
   attackEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5561958983861293021, guid: 9a494d04fe0643e48a9350c05ac8bb61, type: 3}
-        m_TargetAssemblyTypeName: Poison, Assembly-CSharp
+      - m_Target: {fileID: 1579633468066272305, guid: 890527f941b141e4087537b636c563f3, type: 3}
+        m_TargetAssemblyTypeName: Summon, Assembly-CSharp
+        m_MethodName: OnBuff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2631358078125900803, guid: 2307cab293b9e5e46852f7e094458066, type: 3}
+        m_TargetAssemblyTypeName: Healing, Assembly-CSharp
         m_MethodName: OnBuff
         m_Mode: 0
         m_Arguments:

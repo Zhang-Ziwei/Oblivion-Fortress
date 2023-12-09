@@ -9,6 +9,9 @@ public class Freeze: PlayerDebuff
 {
     public override void OnBuff(Enemy enemy) {
         buffName = "Freeze";
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
         base.OnBuff(enemy);
     }
     public override IEnumerator BuffCoroutine() {
@@ -16,7 +19,10 @@ public class Freeze: PlayerDebuff
         playerController.movespeed = 0;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
-        particle?.Stop();
+        if (nowItem != null)
+        {
+            particle?.Stop();
+        }
         yield return new WaitForSeconds(cooldown);
         Destroy(nowItem);
     }

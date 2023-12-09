@@ -51,6 +51,7 @@ public class EnemySummon : MonoBehaviour
 
                 if (position != null) {
                     SummonedEnemy.transform.position = (Vector3)position;
+                    SummonedEnemy.AssignNearestPath();
                 } 
                 SummonedEnemy.gameObject.SetActive(true);
                 
@@ -58,12 +59,13 @@ public class EnemySummon : MonoBehaviour
                 if (position != null) {
                     GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], (Vector3)position, Quaternion.identity);
                     SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+                    SummonedEnemy.Init(enemyID, position);
                 } else {
                     GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], LevelManager.Instance.GetPathLocations()[0].position, Quaternion.identity);
                     SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+                    SummonedEnemy.Init(enemyID);
                 }
             }
-            SummonedEnemy.Init(enemyID);
             
             EnemiesInGame.Add(SummonedEnemy);
         } else {

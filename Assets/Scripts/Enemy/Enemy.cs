@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.Tilemaps;
 
 [System.Serializable]
 public class AudioDelaySettings
@@ -154,7 +155,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Init(int enemyID)
+    private Tilemap ground;
+
+    public void Init(int enemyID, Vector3? position = null)
     {
         PathIndex = 1;
         maxHealth *= Difficulty.enemyHealthRate;
@@ -185,6 +188,10 @@ public class Enemy : MonoBehaviour
         // find castle ground
         castleGround = castle.transform.Find("GroundSensor");
 
+        // find tilemap ground
+        GameObject grid = GameObject.Find("Grid");
+        ground = grid.transform.Find("Ground").GetComponent<Tilemap>();
+
         // get the corresponding prefab name
         GameObject prefab = EnemySummon.EnemyPrefabs[enemyID];
         enemyName = prefab.name;
@@ -209,9 +216,14 @@ public class Enemy : MonoBehaviour
         animator.SetFloat(isCrit, 0);
 
         // set enemy to the first path location
-        transform.position = LevelManager.Instance.GetPathLocations()[0].position;
+        if (position == null) {
+            transform.position = LevelManager.Instance.GetPathLocations()[0].position;
 
-        nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
+            nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
+        } else {
+            transform.position = (Vector3)position;
+            actionMode = 0;
+        }
 
         // load audio
         if (LevelManager.Instance.enemyAudios.ContainsKey(enemyName))
@@ -222,6 +234,19 @@ public class Enemy : MonoBehaviour
     }
     public int GetID() {
         return ID;
+    }
+
+    public Vector3 GetOnGround(Vector3 position) {
+        Vector3Int cellPosition = ground.WorldToCell(position);
+
+        cellPosition = new Vector3Int(Math.Min(cellPosition.x, 12), Math.Min(cellPosition.y, 12), cellPosition.z);
+        cellPosition = new Vector3Int(Math.Max(cellPosition.x, -16), Math.Max(cellPosition.y, -16), cellPosition.z);
+
+
+        // Debug.Log(cellPosition);
+        // change to world position
+        Vector3 worldPosition = ground.CellToWorld(cellPosition) - new Vector3(0.5f, 0.5f, 0f);
+        return worldPosition;
     }
 
     // decide whether the enemy is crit or not
@@ -242,6 +267,10 @@ public class Enemy : MonoBehaviour
     }
 
     public void DeductHealth(float damage) {
+        if (actionMode == -2) {
+            return;
+        }
+
         health -= damage;
         healthBar.value = health / maxHealth;
 
@@ -339,7 +368,7 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
 
-    private void AssignNearestPath() {
+    public void AssignNearestPath() {
         // return the nearest path location in LevelManager.Instance.PathLocations
         Transform nearestPath = LevelManager.Instance.GetPathLocations()[0];
         float minDistance = Vector3.Distance(transform.position, nearestPath.position);
@@ -439,10 +468,11 @@ public class Enemy : MonoBehaviour
             AssignNearestPath();
             actionMode = 1;
         }
+
         if (PathIndex < LevelManager.Instance.GetPathLocations().Count - 1)
         {
             Move(nextPath);
-            if (Vector3.Distance(transform.position, nextPath.position) <= 0.1f)
+            if (Vector3.Distance(transform.position, nextPath.position) <= 0.3f)
             {
                 PathIndex++;
                 nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
@@ -476,8 +506,7 @@ public class Enemy : MonoBehaviour
             } else {
                 MoveToPath();
             }
-        }    
-
-        Debug.Log(health);
+        }  
+        
     }
 }

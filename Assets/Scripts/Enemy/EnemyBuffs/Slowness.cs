@@ -11,6 +11,9 @@ public class Slowness: PlayerDebuff
 
     public override void OnBuff(Enemy enemy) {
         buffName = "Slowness";
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
         base.OnBuff(enemy);
     }
 
@@ -19,7 +22,10 @@ public class Slowness: PlayerDebuff
         playerController.movespeed = originSpeed * ratio;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
-        particle?.Stop();
+        if (nowItem != null)
+        {
+            particle?.Stop();
+        }
         
         yield return new WaitForSeconds(cooldown);
         Destroy(nowItem);

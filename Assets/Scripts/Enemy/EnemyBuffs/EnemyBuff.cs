@@ -7,10 +7,6 @@ public class EnemyBuff : Buff
     public override void OnBuff(Enemy enemy) {
         base.OnBuff(enemy);
         
-        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
-            return;
-        }
-
         nowItem = Instantiate(gameObject, enemy.transform.position, Quaternion.identity);
 
         particle = nowItem.GetComponent<ParticleSystem>();

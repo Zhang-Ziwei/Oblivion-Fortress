@@ -16,6 +16,9 @@ public class Poison: PlayerDebuff
 
     public override void OnBuff(Enemy enemy) {
         buffName = "Poison";
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
         base.OnBuff(enemy);
     }
 
@@ -31,8 +34,10 @@ public class Poison: PlayerDebuff
             yield return new WaitForSeconds(interval);
             
         }
-        if (particle != null && this != null)
-            particle.Stop();
+        if (nowItem != null)
+        {
+            particle?.Stop();
+        }
         yield return new WaitForSeconds(cooldown);
         Destroy(nowItem);
     }

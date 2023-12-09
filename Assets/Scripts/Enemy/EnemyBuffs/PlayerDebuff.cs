@@ -10,10 +10,7 @@ public class PlayerDebuff : Buff
 
     public override void OnBuff(Enemy enemy) {
         base.OnBuff(enemy);
-        
-        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
-            return;
-        }
+
         player = enemy.Player;
         playerController = player.GetComponent<HeroKnight>();
 

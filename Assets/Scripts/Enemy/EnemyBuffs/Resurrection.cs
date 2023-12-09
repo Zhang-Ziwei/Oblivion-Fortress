@@ -8,8 +8,10 @@ public class Resurrection : EnemyBuff
 
     public override void OnBuff(Enemy enemy) {
         buffName = "Resurrection";
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
         base.OnBuff(enemy);
-        
         // set gameobject rotation x to 15
         nowItem.transform.rotation = Quaternion.Euler(15, 0, 0);
     }
@@ -25,9 +27,13 @@ public class Resurrection : EnemyBuff
             enemy.RecoverHealth(healthToAdd);
             yield return new WaitForSeconds(interval);
         }
+        if (nowItem != null)
+        {
+            particle?.Stop();
+        }
         enemy.IsResurrected = false;
         enemy.ActionMode = 1;
-        particle?.Stop();
+
         yield return new WaitForSeconds(cooldown);
         Destroy(nowItem);
     }
