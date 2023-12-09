@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ba8f1eb94f1234b819bf04eef98306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 2
   damage: 0.5
   speed: 1
   attackRange: 1.5
@@ -295,8 +295,36 @@ MonoBehaviour:
     attacking_2: 0.2
     take_hit: 0
     death: 0
-  enemyBuffs:
-  - {fileID: 5561958983861293021, guid: 9a494d04fe0643e48a9350c05ac8bb61, type: 3}
+  attackEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5561958983861293021, guid: 9a494d04fe0643e48a9350c05ac8bb61, type: 3}
+        m_TargetAssemblyTypeName: Poison, Assembly-CSharp
+        m_MethodName: OnBuff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3257074774253642540, guid: c0b77a0455cee7a41ac3da235088d997, type: 3}
+        m_TargetAssemblyTypeName: Resurrection, Assembly-CSharp
+        m_MethodName: OnBuff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &6145687875906654770
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

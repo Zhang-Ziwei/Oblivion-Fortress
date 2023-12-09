@@ -43,15 +43,15 @@ public class DebuffLogList : MonoBehaviour
         }
     }
 
-    public void AddBuffItem(EnemyBuff enemyBuff)
+    public void AddBuffItem(Buff buff)
     {
         numberOfItems++;
-        nowDebuffs[enemyBuff.BuffName]++;
+        nowDebuffs[buff.BuffName]++;
 
         // instantiate the new item prefab and set its parent to the content transform
         DebuffLog newItem = Instantiate(debuffLog, transform);
 
-        newItem.Init(enemyBuff);
+        newItem.Init(buff);
 
     }
 

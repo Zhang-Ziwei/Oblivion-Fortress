@@ -5,39 +5,20 @@ using System;
 using UnityEngine.Events;
 using System.Xml.Serialization;
 
-public class Freeze: EnemyBuff
+public class Freeze: PlayerDebuff
 {
-    public override void Init()
-    {
-        base.Init();
+    public override void OnBuff(Enemy enemy) {
         buffName = "Freeze";
-
+        base.OnBuff(enemy);
     }
-
-    // public override void Buff()
-    // {
-    //     if (DebuffLogList.Instance.CheckDebuff(buffName)) {
-    //         return;
-    //     }
-
-    //     nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
-
-    //     DebuffLogList.Instance.AddBuffItem(this);
-
-    //     // set the parent of the gameObject to player
-    //     nowItem.transform.SetParent(player.transform);
-
-    //     player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
-    // }
-
-
     public override IEnumerator BuffCoroutine() {
         float originSpeed = playerController.movespeed;
         playerController.movespeed = 0;
         yield return new WaitForSeconds(duration);
         playerController.movespeed = originSpeed;
-        Destroy(nowItem);
+        particle?.Stop();
         yield return new WaitForSeconds(cooldown);
+        Destroy(nowItem);
     }
 
 }

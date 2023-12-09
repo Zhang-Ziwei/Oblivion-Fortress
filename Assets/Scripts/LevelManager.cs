@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+
 public class EnemyAudio
 {
     public GameObject audioObject;
@@ -86,7 +87,7 @@ public class LevelManager : MonoBehaviour
     // Tilemap GroundMap;
     // Grid grid;
 
-    private static Queue<int> EnemyToSummon;  // enemy ID
+    private static Queue<(int, Vector3?)> EnemyToSummon;  // enemy ID
     private static Queue<Enemy> EnemyToRemove;  // enemy object
 
     private int NowLevel;
@@ -120,7 +121,7 @@ public class LevelManager : MonoBehaviour
         EnemySummon.Init();
 
         // initialize enemy queues
-        EnemyToSummon = new Queue<int>();
+        EnemyToSummon = new Queue<(int, Vector3?)>();
         EnemyToRemove = new Queue<Enemy>();
 
         StartCoroutine(GameLoop());
@@ -243,7 +244,7 @@ public class LevelManager : MonoBehaviour
         // spawn the enemies
         enemiesLeft += enemyLevelData.enemiesIDs.Count;
         foreach (int enemyIndx in enemyLevelData.enemiesIDs) {
-            EnqueEnemyToSummon(enemyIndx);
+            EnqueEnemyToSummon(enemyIndx, null);
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
         }
         
@@ -257,8 +258,8 @@ public class LevelManager : MonoBehaviour
         // while game is not over
         while(!IsGameOver) {
             for (int i = 0; i < EnemyToSummon.Count; i++) {
-                int enemyID = EnemyToSummon.Dequeue();
-                EnemySummon.SummonEnemy(enemyID);
+                (int enemyID, Vector3? position) = EnemyToSummon.Dequeue();
+                EnemySummon.SummonEnemy(enemyID, position);
             }
 
             // remove enemies
@@ -271,8 +272,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void EnqueEnemyToSummon(int enemyID) {  // add new enemies to enemytosummon
-        EnemyToSummon.Enqueue(enemyID);
+    public void EnqueEnemyToSummon(int enemyID, Vector3? position) {  // add new enemies to enemytosummon
+        EnemyToSummon.Enqueue((enemyID, position));
     }
     public void EnqueEnemyToRemove(Enemy enemyToRemove) {  // add new enemies to enemytoremove
         EnemyToRemove.Enqueue(enemyToRemove);

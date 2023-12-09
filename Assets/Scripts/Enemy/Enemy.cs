@@ -23,6 +23,11 @@ public class AudioDelaySettings
 
 }
 
+[System.Serializable]
+public class BuffEvent : UnityEvent<Enemy>
+{
+}
+
 // custom class for enemy
 public class Enemy : MonoBehaviour
 {
@@ -30,6 +35,13 @@ public class Enemy : MonoBehaviour
 
     public float maxHealth;
     private float health;
+
+    public float Health {
+        get {
+            return health;
+        }
+    }
+
     public float damage;
     public float speed;
 
@@ -75,7 +87,9 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Buffs")]
 
-    public EnemyBuff[] enemyBuffs;
+    [SerializeField] private BuffEvent attackEvent;
+
+    [SerializeField] private BuffEvent deathEvent;
 
     private int ID;
 
@@ -89,11 +103,27 @@ public class Enemy : MonoBehaviour
 
     private GameObject player;
 
+    // getter and setter
+    public GameObject Player {
+        get {
+            return player;
+        }
+    }
+
     private HPControl playerHP;
 
     private Transform playerGround;
 
     private int actionMode;
+
+    public int ActionMode {
+        get {
+            return actionMode;
+        }
+        set {
+            actionMode = value;
+        }
+    }
 
     private Animator animator;
 
@@ -109,11 +139,20 @@ public class Enemy : MonoBehaviour
 
     private bool inAttackInterval;
 
-    private List<UnityEvent> attackEvents;
-
     private EnemyAudio enemyAudio;
 
     private string enemyName;
+
+    private bool isResurrected = false;
+
+    public bool IsResurrected {
+        get {
+            return isResurrected;
+        }
+        set {
+            isResurrected = value;
+        }
+    }
 
     public void Init(int enemyID)
     {
@@ -174,19 +213,6 @@ public class Enemy : MonoBehaviour
 
         nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
 
-        // add all enemy buffs to attackEvents
-        attackEvents = new List<UnityEvent>();
-        foreach (EnemyBuff enemyBuff in enemyBuffs) {
-            if (enemyBuff != null) {
-                enemyBuff.Init();
-
-                UnityEvent nowEvent = new UnityEvent();
-                nowEvent.AddListener(enemyBuff.Buff);
-                attackEvents.Add(nowEvent);
-            }
-            
-        }
-
         // load audio
         if (LevelManager.Instance.enemyAudios.ContainsKey(enemyName))
         {
@@ -226,9 +252,18 @@ public class Enemy : MonoBehaviour
 
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
+            deathEvent?.Invoke(this);
             enemyAudio?.death.PlayDelayed(delayTime.death);
             StartCoroutine(DeathAnimation());
         }
+    }
+
+    public void RecoverHealth(float health) {
+        this.health += health;
+        if (this.health > maxHealth) {
+            this.health = maxHealth;
+        }
+        healthBar.value = this.health / maxHealth;
     }
 
     public void DeductHealthPercent(float percent) {
@@ -298,7 +333,9 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        LevelManager.Instance.EnqueEnemyToRemove(this);
+        if (!isResurrected) {
+            LevelManager.Instance.EnqueEnemyToRemove(this);
+        } 
         yield return null;
     }
 
@@ -362,9 +399,7 @@ public class Enemy : MonoBehaviour
 
         // invoke all enemy buffs
         if (nowIsCrit == 1) {
-            foreach (UnityEvent attackEvent in attackEvents) {
-                attackEvent?.Invoke();
-            }
+            attackEvent?.Invoke(this);
         }
 
     }
@@ -427,10 +462,12 @@ public class Enemy : MonoBehaviour
         UpdateDebuff();
 
         if (player != null) {
-            if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
+            if (actionMode == -2) {
+                // do nothing
+            } 
+            else if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
                 AttackCastle();
                 // Debug.Log("Enemy.cs: AttackCastle() called.");
-    
             } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval && (playerHP.HP > 0)) {
                 AttackPlayer();
                 // Debug.Log("Enemy.cs: AttackPlayer() called.");
@@ -440,5 +477,7 @@ public class Enemy : MonoBehaviour
                 MoveToPath();
             }
         }    
+
+        Debug.Log(health);
     }
 }
