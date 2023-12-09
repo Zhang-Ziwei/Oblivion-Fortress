@@ -1,5 +1,12 @@
 # Oblivion-Fortress Update Log
 
+## 12/9 from henryhuang920712
+- 新增buff
+   - Resurrection (復活): 原地復活一次
+   - Summon (召喚): 隨機召喚若干其他敵人
+   - Healing (治癒): 治療範圍內敵人
+- 修改buff 架構，現在分成攻擊事件 (AttackEvent) 跟死亡事件 (DeathEvent)
+
 ## Third demo 測試回饋
 - https://docs.google.com/forms/d/1e2zId1f4n8VI6e1pTg5O81HXozueyTJQ89Pq7YrobeE/edit
 
