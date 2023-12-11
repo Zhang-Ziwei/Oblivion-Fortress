@@ -55,5 +55,5 @@ public class SettingButton : MonoBehaviour
         SceneManager.LoadScene("List");
         Time.timeScale = 1;
     }
-
+    
 }

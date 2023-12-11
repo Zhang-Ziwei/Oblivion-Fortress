@@ -8,6 +8,7 @@ public class Difficulty: MonoBehaviour
     public int difficultyId = 0;
     public static float enemyHealthRate = 1f;
     public static float levelIntervalRate = 1f;
+    
     //private Button button;
     // Start is called before the first frame update
     public void SetDifficulty(int id){
@@ -28,6 +29,7 @@ public class Difficulty: MonoBehaviour
     public void TaskOnClick()
     {
         SetDifficulty(difficultyId);
+        Debug.Log(difficultyId);
     }
 
     void Start()
@@ -38,5 +40,24 @@ public class Difficulty: MonoBehaviour
     void Update()
     {
         
+    }
+
+    // change frame color
+    public void clickEasy(){
+        GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
+        GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+    }
+    
+    public void clickNormal(){
+        GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
+        GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+    }
+
+    public void clickHard(){
+        GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
     }
 }

@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 12/11 from sankonsky
+- 微調level UI
+- 修改難度按鈕外觀，新增變色功能
+
 ## 12/9 from henryhuang920712
 - 新增buff
    - Resurrection (復活): 原地復活一次
