@@ -1,5 +1,17 @@
 # Oblivion-Fortress Update Log
 
+## 12/12 from kyleko56
+- Level 3 防禦塔初步平衡
+- chapter 2 關卡設計
+   - 資源不足所以先複製幾份
+- 調整 towerinfo UI
+- 調整經驗值機制 (每座塔分開解鎖)
+- 其他改動
+   - 讓地基不會因重疊到木材、石頭、人物等而不能設置
+   - 放錯物資到地基現在變成會放在旁邊
+- bug: 後面波數若召喚與前面波數相同 ID 的敵人不會召喚在出生點，並且 HP 為 0
+   - 我先 comment 掉 EnemySummon.cs 第82行
+
 ## 12/11 from sankonsky
 - 微調level UI
 - 修改難度按鈕外觀，新增變色功能
