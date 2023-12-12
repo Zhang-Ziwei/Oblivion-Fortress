@@ -218,6 +218,9 @@ public class LevelManager : MonoBehaviour
             Debug.Log("LevelManager.cs: spawnInterval is 0");
         }
 
+        // Increase enemy HP at level 6
+        if (NowLevel == 6) Difficulty.enemyHealthRate *= 2f;
+
         // set timer to beforeSpawnInterval
         timer = enemyLevelData.beforeSpawnInterval * Difficulty.levelIntervalRate;
         // set color of timer text to red
