@@ -8,7 +8,8 @@ public class Difficulty: MonoBehaviour
     public int difficultyId = 0;
     public static float enemyHealthRate = 1f;
     public static float levelIntervalRate = 1f;
-    
+    public static bool DebugMode = false;
+
     //private Button button;
     // Start is called before the first frame update
     public void SetDifficulty(int id){

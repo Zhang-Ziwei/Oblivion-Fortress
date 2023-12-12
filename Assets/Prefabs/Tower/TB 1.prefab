@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6680221366789557983, guid: cfc759f5838424b4881345e4acdbb545, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -292,6 +296,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 421343602136147315, guid: ecf661d47e743584bb0790231b1e5baf, type: 3}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
+      propertyPath: upgradeTB2
+      value: 
+      objectReference: {fileID: 421343602136147315, guid: ecf661d47e743584bb0790231b1e5baf, type: 3}
+    - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
+      propertyPath: attackRange
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: upgradeBase1
       value: 
       objectReference: {fileID: 421343602136147315}
@@ -309,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood1
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood2
@@ -345,15 +357,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo1
-      value: can attack two enemies
+      value: attack also damage two nearby enemies with 1/2 Damage
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: can attack two enemies
+      value: Damage x1.4 each attack, reset when target enemy change
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
+      propertyPath: levelUps.Array.data[1].maxStone1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].unlockExp
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[2].buffInfo1
@@ -389,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget2
-      value: Tranform
+      value: Transform
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[2].buffTarget1

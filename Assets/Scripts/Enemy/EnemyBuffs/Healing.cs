@@ -10,6 +10,8 @@ public class Healing : EnemyBuff
 
     public float healRange;
 
+    public float healHPPercent;
+
     public override void OnBuff(Enemy enemy) {
         buffName = "Healing";
         if (DebuffLogList.Instance.CheckDebuff(buffName)) {
@@ -45,7 +47,7 @@ public class Healing : EnemyBuff
             timer += interval;
             foreach (Enemy nearbyEnemy in nearbyEnemies)
             {
-                nearbyEnemy.RecoverHealth(healAmount);
+                nearbyEnemy.RecoverHealth(healAmount, healHPPercent);
             }
             yield return new WaitForSeconds(interval);
         }

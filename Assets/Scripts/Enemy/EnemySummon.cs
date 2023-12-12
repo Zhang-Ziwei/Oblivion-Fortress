@@ -79,7 +79,7 @@ public class EnemySummon : MonoBehaviour
         EnemiesInGame.Remove(enemyToRemove);
 
         // put the enemy back to the queue
-        EnemyObjectPools[enemyToRemove.GetID()].Enqueue(enemyToRemove);
+        //EnemyObjectPools[enemyToRemove.GetID()].Enqueue(enemyToRemove);
         enemyToRemove.gameObject.SetActive(false);
     }
 }

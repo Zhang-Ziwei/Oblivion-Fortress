@@ -42,8 +42,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 2972455223869932035}
     m_Modifications:
     - target: {fileID: 1892882467875860413, guid: 8e754792bb489394684ee2c9a9dfdc1b, type: 3}
+      propertyPath: Damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 8e754792bb489394684ee2c9a9dfdc1b, type: 3}
       propertyPath: attackRange
-      value: 4
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 8e754792bb489394684ee2c9a9dfdc1b, type: 3}
+      propertyPath: slowDownTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 8e754792bb489394684ee2c9a9dfdc1b, type: 3}
+      propertyPath: attackInterval
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: 8e754792bb489394684ee2c9a9dfdc1b, type: 3}
       propertyPath: m_LocalPosition.x

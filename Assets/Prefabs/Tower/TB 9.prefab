@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2972455223869932035}
   m_Layer: 0
-  m_Name: TB 4
+  m_Name: TB 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,20 +42,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 2972455223869932035}
     m_Modifications:
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: ID
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: attackType
+      value: AreaMaxHP
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: upgradeTB1
       value: 
-      objectReference: {fileID: 421343602136147315, guid: f5ec426d465b6b242af956c50d004aab, type: 3}
-    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
-      propertyPath: upgradeTB2
-      value: 
-      objectReference: {fileID: 421343602136147315, guid: 0cb3d7c5e0a0883499563e4dae966327, type: 3}
+      objectReference: {fileID: 421343602136147315}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: attackRange
       value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: slowDownTime
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: upgradeBase1
@@ -63,11 +67,15 @@ PrefabInstance:
       objectReference: {fileID: 421343602136147315}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: slowDownValue
-      value: 0.5
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: attackInterval
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[0].maxWood1
@@ -79,11 +87,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood1
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood2
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[0].maxStone1
@@ -95,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo1
-      value: Freeze enemies for 1s (enemy can't be Freezed in 1s after Freezed finish)
+      value: test1
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: 'Let enemies'' HP x0.8 for 10s '
+      value: test2
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxStone1
@@ -107,11 +115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxStone2
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].unlockExp
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[0].buffValue1
@@ -139,11 +147,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget1
-      value: Transform
+      value: Special
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget2
-      value: Transform
+      value: Tranform
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407458991769465896, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559375548850702884, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559375548850702884, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559375548850702884, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.62841606
       objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: m_LocalPosition.x

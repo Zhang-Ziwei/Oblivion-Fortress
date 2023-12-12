@@ -125,12 +125,12 @@ public class PickupSystem : MonoBehaviour
             {
                 if (item == 3) //add 1 wood to base
                 {
-                    nearestBase.GetComponent<Base>().depositWood(1);
+                    if (nearestBase.GetComponent<Base>().depositWood(1) != 0) Instantiate(wood, transform.position, Quaternion.identity, parent);
                     tempicon_wood.SetActive(false);
                 }
                 else if (item == 4) //add 1 rock to base
                 {
-                    nearestBase.GetComponent<Base>().depositStone(1);
+                    if (nearestBase.GetComponent<Base>().depositStone(1) != 0) Instantiate(rock, transform.position, Quaternion.identity, parent);
                     tempicon_rock.SetActive(false);
                 }
             }

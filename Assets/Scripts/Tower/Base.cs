@@ -31,7 +31,7 @@ public class Base : MonoBehaviour
         transform.GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text = Wood + "/" + MaxWood;
         transform.GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<Text>().text = Stone + "/" + MaxStone;
         
-        if(DebugMode) {
+        if(DebugMode || Difficulty.DebugMode) {
             tower.SetActive(true); //Instantiate(tower, transform.position, Quaternion.identity);
             gameObject.SetActive(false);//Destroy(gameObject);
             return;

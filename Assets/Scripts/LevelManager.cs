@@ -241,6 +241,9 @@ public class LevelManager : MonoBehaviour
         // set timertext to inactive
         timerText.gameObject.SetActive(false);
 
+        // gain exp
+        gameObject.GetComponent<TowerUnlockManager>().GainExp(enemyLevelData.expGain);
+
         // spawn the enemies
         enemiesLeft += enemyLevelData.enemiesIDs.Count;
         foreach (int enemyIndx in enemyLevelData.enemiesIDs) {

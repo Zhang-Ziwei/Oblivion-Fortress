@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     private List<Debuff> Debuffs = new List<Debuff>();
     private List<float> DebuffTimers = new List<float>(); 
     private float poisonTimer = 0f;
-    private float poisonAffectInterval = 0.5f;
+    private float poisonAffectInterval = 1.5f;
 
     public float attackRange = 1;
 
@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Buffs")]
 
+    [SerializeField] private BuffEvent surviveEvent;
     [SerializeField] private BuffEvent attackEvent;
 
     [SerializeField] private BuffEvent deathEvent;
@@ -266,11 +267,12 @@ public class Enemy : MonoBehaviour
         return nowIsCrit;
     }
 
-    public void DeductHealth(float damage) {
+    public void DeductHealth(float damage, float percentHPDamage = 0f) {
         if (actionMode == -2) {
             return;
         }
-
+        damage += percentHPDamage * health;
+        //Debug.Log(percentHPDamage);
         health -= damage;
         healthBar.value = health / maxHealth;
 
@@ -287,8 +289,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void RecoverHealth(float health) {
-        this.health += health;
+    public void RecoverHealth(float health, float percent = 0) {
+        this.health += health + percent * maxHealth;;
         if (this.health > maxHealth) {
             this.health = maxHealth;
         }
@@ -296,7 +298,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void DeductHealthPercent(float percent) {
-        DeductHealth(percent * maxHealth);
+        DeductHealth(percent * health);
     }
 
     public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue) {
@@ -304,12 +306,17 @@ public class Enemy : MonoBehaviour
 
         for(int i = Debuffs.Count - 1; i >= 0; i--){
             if (Debuffs[i].id == id){
+                if (id == 3) {
+                    idExist = true;
+                    break;
+                }
                 if (DebuffTimers[i] < time){
                     DebuffTimers[i] = time;
                     /*Debuff newdebuff = Debuffs[i];
                     newdebuff.timer = time;
                     Debuffs[i] = newdebuff;*/
                     idExist = true;
+                    break;
                 }
             }
         }
@@ -319,6 +326,10 @@ public class Enemy : MonoBehaviour
             DebuffTimers.Add(time);
             if (debuffName == "slow"){
                 speed *= debuffValue;
+            }
+            else if (debuffName == "reduceMaxHP"){
+                health *= debuffValue;
+                maxHealth *= debuffValue;
             }
         }
     }
@@ -333,6 +344,14 @@ public class Enemy : MonoBehaviour
             if (DebuffTimers[i] <= 0) {
                 if (Debuffs[i].debuffName == "slow"){
                     speed /= Debuffs[i].debuffValue;
+                    if (Debuffs[i].debuffValue < 0.1) {
+                        Debuffs.Add(new Debuff(Debuffs[i].id, Debuffs[i].debuffName, 1));
+                        DebuffTimers.Add(1);
+                    }
+                }
+                else if (Debuffs[i].debuffName == "reduceMaxHP"){
+                    health /= Debuffs[i].debuffValue;
+                    maxHealth /= Debuffs[i].debuffValue;
                 }
                 Debuffs.RemoveAt(i);
                 DebuffTimers.RemoveAt(i);
@@ -490,7 +509,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         UpdateDebuff();
-
+        surviveEvent?.Invoke(this);
         if (player != null) {
             if (actionMode == -2) {
                 // do nothing

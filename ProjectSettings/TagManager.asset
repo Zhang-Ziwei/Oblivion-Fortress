@@ -15,6 +15,7 @@ TagManager:
   - stone
   - Enemy Appearance
   - Manager
+  - sensor
   layers:
   - Default
   - TransparentFX

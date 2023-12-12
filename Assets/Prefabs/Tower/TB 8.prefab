@@ -43,7 +43,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1892882467875860413, guid: 62ce6de5b0cd7e24cbdae4c77c90a1e0, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 62ce6de5b0cd7e24cbdae4c77c90a1e0, type: 3}
       propertyPath: slowDownTime
@@ -55,7 +55,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 62ce6de5b0cd7e24cbdae4c77c90a1e0, type: 3}
       propertyPath: attackInterval
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7864617780398809351, guid: 62ce6de5b0cd7e24cbdae4c77c90a1e0, type: 3}
       propertyPath: m_IsActive

@@ -37379,7 +37379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PenaltyTime: 10
-  maxHP: 10
+  maxHP: 100
   HP: 0
   HPBar: {fileID: 1172083022}
   hurtUI: {fileID: 761927467479140783, guid: efde3e75af296e2429b5b98714dcaeac, type: 3}
@@ -38101,7 +38101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 629053154}
-  maxHealth: 15
+  maxHealth: 150
   health: 0
   GameOverUI: {fileID: 1651409615}
   CastleHitAudio: {fileID: 8300000, guid: 57708e136d9c9724798de2ecfa2fed4d, type: 3}
