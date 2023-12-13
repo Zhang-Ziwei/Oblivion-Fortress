@@ -155,7 +155,7 @@ public class Tower : MonoBehaviour
         else if (buffTarget == "Transform") {
             if (choice == 1) Instantiate(upgradeTB1, transform.position, Quaternion.identity);
             else Instantiate(upgradeTB2, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
         }
 
         level++;

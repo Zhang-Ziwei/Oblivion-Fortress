@@ -357,7 +357,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo1
-      value: attack also damage two nearby enemies with 1/2 Damage
+      value: deal 1/2 Damage to other 2 nearby enemies (if no, deal x2 Damage to
+        target)
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: c695ca2d53f63544e98a21eb2ef35355, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2

@@ -99,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: 'Let enemies'' HP x0.8 for 10s '
+      value: 'Let enemies'' Max HP x0.8 for 10s '
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxStone1

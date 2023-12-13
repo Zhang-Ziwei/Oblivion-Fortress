@@ -240,8 +240,12 @@ PrefabInstance:
       value: Base 4
       objectReference: {fileID: 0}
     - target: {fileID: 3035196717666425432, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
-      propertyPath: MaxStone
+      propertyPath: MaxWood
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035196717666425432, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
+      propertyPath: MaxStone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3035196717666425432, guid: 6570b228c79f8db42920caa6e58396c5, type: 3}
       propertyPath: DebugMode
