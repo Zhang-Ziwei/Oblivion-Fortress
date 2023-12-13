@@ -26308,6 +26308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569912716}
+  - component: {fileID: 1569912717}
   m_Layer: 0
   m_Name: Resources
   m_TagString: Untagged
@@ -26332,6 +26333,25 @@ Transform:
   - {fileID: 790007914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569912717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569912715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4848acc8f4bbe124c9bd3220e962f32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: {fileID: 8602313218532074619, guid: ef21d04b46aacbf4f9f51369fb5e2cb5, type: 3}
+  TreesDir: {fileID: 1489416830}
+  stone: {fileID: 2228955041757129589, guid: 4e6e36842f274974b9b82ac4eadcaab0, type: 3}
+  StonesDir: {fileID: 790007914}
+  MapSize: 34
+  SpawnTimeUpper: 20
+  SpawnTimeLower: 40
 --- !u!1 &1580124014
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 12/13 from sankonsky
+- 隨機生成資源 GenerateResources.cs
+  - 掛在Resources上，可調整生成時間間距
+
 ## 12/12 from kyleko56
 - Level 3 防禦塔初步平衡
 - chapter 2 關卡設計
