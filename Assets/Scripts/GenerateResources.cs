@@ -27,7 +27,7 @@ public class GenerateResources : MonoBehaviour
     void Start()
     {
         IntervalsTime = UnityEngine.Random.Range(SpawnTimeUpper,SpawnTimeLower);
-        Invoke("generate",IntervalsTime);
+        Invoke("generate",IntervalsTime * Difficulty.levelIntervalRate);
     }
 
     // Update is called once per frame
@@ -67,8 +67,14 @@ public class GenerateResources : MonoBehaviour
                 SuccessSpawn = false;
             }
         }
-        Debug.Log("generate resource");
-        IntervalsTime = UnityEngine.Random.Range(SpawnTimeUpper,SpawnTimeLower);
-        Invoke("generate",IntervalsTime);
+        Debug.Log("generate resource" + IntervalsTime);
+        if (IntervalsTime <= (3 * SpawnTimeUpper + SpawnTimeLower)/4 ) {
+            IntervalsTime = UnityEngine.Random.Range((SpawnTimeUpper+SpawnTimeLower)/2,SpawnTimeLower);
+        }else if (IntervalsTime >= (SpawnTimeUpper + 3 * SpawnTimeLower)/4 ) {
+            IntervalsTime = UnityEngine.Random.Range(SpawnTimeUpper,(SpawnTimeUpper+SpawnTimeLower)/2);
+        }else {
+            IntervalsTime = UnityEngine.Random.Range(SpawnTimeUpper,SpawnTimeLower);
+        }
+        Invoke("generate",IntervalsTime * Difficulty.levelIntervalRate);
     }
 }

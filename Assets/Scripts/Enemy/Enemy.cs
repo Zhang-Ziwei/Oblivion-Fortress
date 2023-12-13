@@ -330,6 +330,7 @@ public class Enemy : MonoBehaviour
             else if (debuffName == "reduceMaxHP"){
                 health *= debuffValue;
                 maxHealth *= debuffValue;
+                healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = new Color (0.6f, 0 , 1f);
             }
         }
     }
@@ -352,6 +353,7 @@ public class Enemy : MonoBehaviour
                 else if (Debuffs[i].debuffName == "reduceMaxHP"){
                     health /= Debuffs[i].debuffValue;
                     maxHealth /= Debuffs[i].debuffValue;
+                    healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.red;
                 }
                 Debuffs.RemoveAt(i);
                 DebuffTimers.RemoveAt(i);

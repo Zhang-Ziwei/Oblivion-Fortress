@@ -139,6 +139,9 @@ MonoBehaviour:
     attacking_2: 0.5
     take_hit: 0
     death: 0
+  surviveEvent:
+    m_PersistentCalls:
+      m_Calls: []
   attackEvent:
     m_PersistentCalls:
       m_Calls: []
