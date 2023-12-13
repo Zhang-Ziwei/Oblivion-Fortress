@@ -14,14 +14,18 @@ public class Difficulty: MonoBehaviour
     // Start is called before the first frame update
     public void SetDifficulty(int id){
         if (id == 0){ //easy
+            enemyHealthRate = 0.8f;
+            levelIntervalRate = 1.25f;
+        }
+        else if (id == 1){ //normal
             enemyHealthRate = 1f;
             levelIntervalRate = 1f;
         }
-        else if (id == 1){ //normal
+        else if (id == 2){ //hard
             enemyHealthRate = 1.5f;
             levelIntervalRate = 0.9f;
         }
-        else if (id == 2){ //hard
+        else if (id == 3){ //expert
             enemyHealthRate = 2f;
             levelIntervalRate = 0.8f;
         }
@@ -35,6 +39,7 @@ public class Difficulty: MonoBehaviour
 
     void Start()
     {
+        if (difficultyId == 1) TaskOnClick();
         transform.GetComponent<Button>().onClick.AddListener(TaskOnClick);
     }
     // Update is called once per frame
@@ -48,17 +53,27 @@ public class Difficulty: MonoBehaviour
         GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
         GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
         GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("ExpertFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
     }
     
     public void clickNormal(){
         GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
         GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
         GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("ExpertFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
     }
 
     public void clickHard(){
         GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
         GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
         GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
+        GameObject.Find("ExpertFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+    }
+
+    public void clickExpert(){
+        GameObject.Find("EasyFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("NormalFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("HardFrame").GetComponent<Image>().color = new Color32(50, 120, 50, 255);
+        GameObject.Find("ExpertFrame").GetComponent<Image>().color = new Color32(170, 255, 170, 255);
     }
 }
