@@ -1,7 +1,10 @@
 # Oblivion-Fortress Update Log
 
 ## 12/14 from sankonsky
-- 修復放下工具後角色動畫卡住的問題
+- 修復放下工具後角色動畫卡住的問題 :)
+- 修復背景音效的重播問題
+- 已知bug:
+  - 敵人數量有機率變成負數
 
 ## 12/13 from sankonsky
 - 隨機生成資源 GenerateResources.cs
