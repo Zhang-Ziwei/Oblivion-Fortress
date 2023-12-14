@@ -1,5 +1,8 @@
 # Oblivion-Fortress Update Log
 
+## 12/14 from sankonsky
+- 修復放下工具後角色動畫卡住的問題
+
 ## 12/13 from sankonsky
 - 隨機生成資源 GenerateResources.cs
   - 掛在Resources上，可調整生成時間間距

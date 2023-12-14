@@ -396,6 +396,7 @@ public class HeroKnight : MonoBehaviour {
         toolstype = GetComponent<PickupSystem>().type;
         if (collision.gameObject.tag == "axe" && toolstype==1)
         {
+            Debug.Log("pickup pickaxe");
             m_animator.SetBool("axe", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 1);
@@ -408,6 +409,7 @@ public class HeroKnight : MonoBehaviour {
         //捡起锤子
         if (collision.gameObject.tag == "pickaxe" && toolstype == 2)
         {
+            Debug.Log("pickup axe");
             m_animator.SetBool("ham", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 2);
@@ -416,8 +418,9 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //丢下工具
-        if (toolstype==0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
+        if (toolstype==0 && ((collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe")))
         {
+            Debug.Log("drop tool");
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("Attack_stop", false);
