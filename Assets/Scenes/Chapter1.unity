@@ -7196,7 +7196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10 Enemies Leave
+  m_Text: 0 Enemies Leave
 --- !u!222 &815241187
 CanvasRenderer:
   m_ObjectHideFlags: 0

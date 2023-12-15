@@ -177,7 +177,7 @@ public class LevelManager : MonoBehaviour
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             } else {
-                if (enemiesLeft == 0) {
+                if (enemiesLeft <= 0) {
                     GameWin();
                 }
             }
@@ -200,6 +200,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void UpdateEnemiesLeaveText() {
+        enemiesLeft = EnemySummon.EnemiesInGame.Count;
         enemiesLeaveText.text =  enemiesLeft + " Enemies Leave";
     }
 
@@ -247,8 +248,6 @@ public class LevelManager : MonoBehaviour
         // gain exp
         gameObject.GetComponent<TowerUnlockManager>().GainExp(enemyLevelData.expGain);
 
-        // spawn the enemies
-        enemiesLeft += enemyLevelData.enemiesIDs.Count;
         foreach (int enemyIndx in enemyLevelData.enemiesIDs) {
             EnqueEnemyToSummon(enemyIndx, null);
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
@@ -283,6 +282,5 @@ public class LevelManager : MonoBehaviour
     }
     public void EnqueEnemyToRemove(Enemy enemyToRemove) {  // add new enemies to enemytoremove
         EnemyToRemove.Enqueue(enemyToRemove);
-        enemiesLeft --;
     }
 }
