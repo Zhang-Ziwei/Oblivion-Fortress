@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ba8f1eb94f1234b819bf04eef98306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
   maxHealth: 250
   damage: 5
   speed: 1
@@ -447,7 +448,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 2631358078125900803, guid: 2307cab293b9e5e46852f7e094458066, type: 3}
         m_TargetAssemblyTypeName: Healing, Assembly-CSharp
         m_MethodName: OnBuff
@@ -459,7 +460,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -474,7 +475,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!70 &6145687875906654770
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

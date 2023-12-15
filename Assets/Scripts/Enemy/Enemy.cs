@@ -13,6 +13,7 @@ using Random = UnityEngine.Random;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.Tilemaps;
+using System.Runtime.InteropServices;
 
 [System.Serializable]
 public class AudioDelaySettings
@@ -33,6 +34,8 @@ public class BuffEvent : UnityEvent<Enemy>
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Attributes")]
+
+    public int life = 1;
 
     public float maxHealth;
     private float health;
@@ -216,6 +219,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool(isWalking, false);
         animator.SetFloat(isCrit, 0);
 
+
         // set enemy to the first path location
         if (position == null) {
             transform.position = LevelManager.Instance.GetPathLocations()[0].position;
@@ -283,6 +287,7 @@ public class Enemy : MonoBehaviour
 
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
+            life--;
             deathEvent?.Invoke(this);
             enemyAudio?.death.PlayDelayed(delayTime.death);
             StartCoroutine(DeathAnimation());

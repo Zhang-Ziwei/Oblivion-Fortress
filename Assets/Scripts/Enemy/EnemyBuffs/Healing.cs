@@ -57,6 +57,7 @@ public class Healing : EnemyBuff
         }
         foreach (GameObject healthBuff in healthBuffs)
         {
+            Debug.Log(1);
             Destroy(healthBuff);
         }
         Destroy(nowItem);
