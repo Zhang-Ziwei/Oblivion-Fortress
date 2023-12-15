@@ -1,6 +1,11 @@
 # Oblivion-Fortress Update Log
 
 ## 12/14 from sankonsky
+- 無盡模式地圖 Infinite
+- 關卡目錄
+- 遊戲結束音效
+
+## 12/14 from sankonsky
 - 修復放下工具後角色動畫卡住的問題 :)
 - 修復背景音效的重播問題
 - 已知bug:

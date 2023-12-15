@@ -77,8 +77,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject NowLevelText;
 
-    private AudioSource audiosource;
-    public AudioClip LevelStartAudio;
+    public AudioSource LevelStartAudio;
+    public AudioSource BackgroundMusic;
 
 
     public Dictionary<string, EnemyAudio> enemyAudios;
@@ -163,7 +163,6 @@ public class LevelManager : MonoBehaviour
             
         }
 
-        audiosource = GetComponent<AudioSource>();
     }   
 
     // Update is called once per frame
@@ -188,6 +187,7 @@ public class LevelManager : MonoBehaviour
     private void GameWin() {
         Time.timeScale = 0;
         WinUI.SetActive(true);
+        BackgroundMusic.Stop();
     }
 
     private void UpdateTimerText()
@@ -240,7 +240,7 @@ public class LevelManager : MonoBehaviour
         timer = 0;
 
         // level start audio
-        audiosource.Play();
+        LevelStartAudio.Play();
 
         // set timertext to inactive
         timerText.gameObject.SetActive(false);

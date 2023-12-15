@@ -1,6 +1,7 @@
 # OS auto-generated files
 .DS_Store
 *.db
+connectwebgl
 
 # Unity3D auto-generated folders
 /[Ll]ibrary/
