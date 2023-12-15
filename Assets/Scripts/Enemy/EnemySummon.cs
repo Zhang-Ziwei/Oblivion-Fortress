@@ -42,7 +42,7 @@ public class EnemySummon : MonoBehaviour
 
         if (EnemyPrefabs.ContainsKey(enemyID)) {
             Queue<Enemy> ReferencedQueue = EnemyObjectPools[enemyID];
-            
+
 
             // Debug.Log(ReferencedQueue.Count);
             if (ReferencedQueue.Count > 0) {
@@ -52,11 +52,16 @@ public class EnemySummon : MonoBehaviour
                 if (position != null) {
                     SummonedEnemy.transform.position = (Vector3)position;
                     SummonedEnemy.AssignNearestPath();
+                    SummonedEnemy.gameObject.SetActive(true);
+                    SummonedEnemy.Init(enemyID, position);
+
                 } else {
                     SummonedEnemy.transform.position = LevelManager.Instance.GetPathLocations()[0].position;
                     SummonedEnemy.AssignNearestPath();
+                    SummonedEnemy.gameObject.SetActive(true);
+                    SummonedEnemy.Init(enemyID);
                 }
-                SummonedEnemy.gameObject.SetActive(true);
+                
                 
             } else {
                 if (position != null) {

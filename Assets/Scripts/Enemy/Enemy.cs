@@ -244,8 +244,8 @@ public class Enemy : MonoBehaviour
     public Vector3 GetOnGround(Vector3 position) {
         Vector3Int cellPosition = ground.WorldToCell(position);
 
-        cellPosition = new Vector3Int(Math.Min(cellPosition.x, 12), Math.Min(cellPosition.y, 12), cellPosition.z);
-        cellPosition = new Vector3Int(Math.Max(cellPosition.x, -16), Math.Max(cellPosition.y, -16), cellPosition.z);
+        cellPosition = new Vector3Int(Math.Min(cellPosition.x, 10), Math.Min(cellPosition.y, 10), cellPosition.z);
+        cellPosition = new Vector3Int(Math.Max(cellPosition.x, -14), Math.Max(cellPosition.y, -14), cellPosition.z);
 
 
         // Debug.Log(cellPosition);
@@ -412,7 +412,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void Move(Transform target) {
-
+        if (transform.position == null){
+            Debug.Log(1);
+        }
         Vector2 direction = (target.position - transform.position).normalized;
         // if x is negative, flip the sprite of the child object
         GameObject Skin = transform.Find("Skin").gameObject;
