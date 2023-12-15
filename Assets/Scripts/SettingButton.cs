@@ -44,6 +44,12 @@ public class SettingButton : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void RestartGame4()
+    {
+        SceneManager.LoadScene("Infinite");
+        Time.timeScale = 1;
+    }
+
     public void QuitGame()
     {
         SceneManager.LoadScene("Menu");
