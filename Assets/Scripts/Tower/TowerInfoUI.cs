@@ -14,6 +14,7 @@ public class TowerInfo : MonoBehaviour
     private Button unlockButton;
     private GameObject Manager;
     public LevelUp towerLevelUp;
+    public GameObject square;
     // Start is called before the first frame update
 
     void Start()
@@ -28,6 +29,8 @@ public class TowerInfo : MonoBehaviour
         unlockButton = transform.GetChild(4).GetComponent<Button>();
 
         Manager = GameObject.FindGameObjectsWithTag("Manager")[0];
+        square = Instantiate(square);
+        square.SetActive(false);
     }
 
     void UpdateTowerInfoUI(GameObject Tower){
@@ -190,6 +193,7 @@ public class TowerInfo : MonoBehaviour
         upgradeButton1.interactable = false;
         upgradeButton2.interactable = false;
         deleteButton.interactable = false;
+        square.SetActive(false);
     }
 
     void Update()
@@ -204,6 +208,9 @@ public class TowerInfo : MonoBehaviour
             else Tower = hitObject;
 
             UpdateTowerInfoUI(Tower);
+
+            square.SetActive(true);
+            square.transform.position = hitObject.transform.position;
         }              
     }
 }

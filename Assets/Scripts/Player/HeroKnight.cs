@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class HeroKnight : MonoBehaviour {
 
@@ -207,7 +208,7 @@ public class HeroKnight : MonoBehaviour {
         foreach (Collider2D enemy in hitEnemies) {
             if (enemy.tag == "Enemy") {
                 // hurt the enemy
-                enemy.GetComponent<Enemy>().DeductHealth(Damage);
+                enemy.GetComponent<Enemy>().DeductHealth(Damage * Math.Max(Difficulty.enemyHealthRate, 1f));
             }
         }
     }

@@ -48954,6 +48954,7 @@ MonoBehaviour:
     buffTarget2: 
     buffValue2: 0
     buffInfo2: 
+  square: {fileID: 4948031385967175124, guid: d7d7d03ef853f2b4cb77525e7511510e, type: 3}
 --- !u!114 &2106716596
 MonoBehaviour:
   m_ObjectHideFlags: 0
