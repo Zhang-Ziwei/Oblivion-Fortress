@@ -82,6 +82,8 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("Attack_stop", false);
             if (toolstype == 3)
                 m_animator.SetTrigger("Roll_wood");
+            if (toolstype == 4)
+                m_animator.SetTrigger("Roll_stone");
         }
         if (isSpeedUp && (rushTimer < 0))//update_totaltime - update_temptime == rush_cyclenum)
         {
@@ -124,6 +126,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("wood", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 4)
+            {
+                m_animator.SetBool("Run_stone", true);
+                m_animator.SetBool("stone", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         if (Input.GetKey(KeyCode.A) && !Input.GetKeyDown(KeyCode.E))
         {
@@ -146,6 +154,12 @@ public class HeroKnight : MonoBehaviour {
             {
                 m_animator.SetBool("Run_wood", true);
                 m_animator.SetBool("wood", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 4)
+            {
+                m_animator.SetBool("Run_stone", true);
+                m_animator.SetBool("stone", false);
                 m_animator.SetBool("Run", false);
             }
         }
@@ -172,6 +186,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("wood", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 4)
+            {
+                m_animator.SetBool("Run_stone", true);
+                m_animator.SetBool("stone", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         if (Input.GetKey(KeyCode.S) && !Input.GetKeyDown(KeyCode.E))
         {
@@ -196,6 +216,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("wood", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 4)
+            {
+                m_animator.SetBool("Run_stone", true);
+                m_animator.SetBool("stone", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         m_body2d.MovePosition(m_body2d.position + dir.normalized * movespeed * Time.deltaTime);
         if(!Input.GetKey(KeyCode.D)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.S) && !Input.GetMouseButton(0))
@@ -216,6 +242,12 @@ public class HeroKnight : MonoBehaviour {
             if (toolstype == 3)
             {
                 m_animator.SetBool("Run_wood", false);
+                //m_animator.SetBool("ham", true);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 4)
+            {
+                m_animator.SetBool("Run_stone", false);
                 //m_animator.SetBool("ham", true);
                 m_animator.SetBool("Run", false);
             }
@@ -392,9 +424,11 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);
+            m_animator.SetBool("stone", false);
             m_animator.SetBool("Run_ham", false);
             m_animator.SetBool("Run_ax", false);
             m_animator.SetBool("Run_wood", false);
+            m_animator.SetBool("Run_stone", false);
             m_animator.SetBool("Attack_stop", false);
             m_animator.SetInteger("Tool_type", 0);
         }
@@ -447,6 +481,7 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetInteger("Tool_type", 1);
             m_animator.SetBool("ham", false);
             m_animator.SetBool("wood", false);
+            m_animator.SetBool("stone", false);
             //toolstype = 1;
             //m_animator.SetTrigger("HeroKnight_ax");
             //toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
@@ -461,6 +496,7 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetInteger("Tool_type", 2);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);
+            m_animator.SetBool("stone", false);
             //toolstype = 2;
         }
 
@@ -471,6 +507,18 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetInteger("Tool_type", 3);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("ham", false);
+            m_animator.SetBool("stone", false);
+            //toolstype = 2;
+        }
+
+        //捡起石头
+        if (collision.gameObject.tag == "rock" && toolstype == 4)
+        {
+            m_animator.SetBool("stone", true);
+            m_animator.SetInteger("Tool_type", 4);
+            m_animator.SetBool("axe", false);
+            m_animator.SetBool("ham", false);
+            m_animator.SetBool("wood", false);
             //toolstype = 2;
         }
 
@@ -482,12 +530,14 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);
+            m_animator.SetBool("stone", false);
             m_animator.SetBool("Run_ham", false);
             m_animator.SetBool("Run_ax", false);
             m_animator.SetBool("Run_wood", false);
+            m_animator.SetBool("Run_stone", false);
             m_animator.SetBool("Attack_stop", false);
             m_animator.SetInteger("Tool_type", 0);
-            
+
         }
     }
 
