@@ -104,6 +104,10 @@ public class HPControl : MonoBehaviour
         HP = Math.Min(maxHP, HP + value);
     }
 
+    public bool isPlayerDie(){
+        return die;
+    }
+
     void pausegame()
     {
         //pause menu

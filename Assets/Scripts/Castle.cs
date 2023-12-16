@@ -14,11 +14,13 @@ public class Castle : MonoBehaviour
     public GameObject GameOverUI;
 
     public AudioClip CastleHitAudio;
+    public AudioSource BackgroundMusic;
 
     public void GameOver() {
         Debug.Log("Game Over");
         Time.timeScale = 0;
         GameOverUI.SetActive(true);
+        BackgroundMusic.Stop();
     }
 
     public void DeductHealth(float damage) {

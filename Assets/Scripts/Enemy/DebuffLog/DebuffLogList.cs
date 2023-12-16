@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -27,6 +28,10 @@ public class DebuffLogList : MonoBehaviour
         nowDebuffs = new Dictionary<string, int>();
 
     }
+    void Update()
+    {
+
+    }
     public bool CheckDebuff(string debuffName)
     {
         if (!nowDebuffs.ContainsKey(debuffName))
@@ -43,24 +48,28 @@ public class DebuffLogList : MonoBehaviour
         }
     }
 
-    public void AddBuffItem(EnemyBuff enemyBuff)
+    public void AddBuffItem(Buff buff)
     {
         numberOfItems++;
-        nowDebuffs[enemyBuff.BuffName]++;
+        nowDebuffs[buff.BuffName]++;
 
         // instantiate the new item prefab and set its parent to the content transform
         DebuffLog newItem = Instantiate(debuffLog, transform);
 
-        newItem.Init(enemyBuff);
+        newItem.Init(buff);
 
     }
 
     public void RemoveBuffItem(DebuffLog itemToRemove)
     {
-        numberOfItems--;
-        nowDebuffs[itemToRemove.myBuff.BuffName]--;
-
+        StartCoroutine(RemoveBuffItemCoroutine(itemToRemove));
+    }
+    private IEnumerator RemoveBuffItemCoroutine(DebuffLog itemToRemove)
+    {
         // destroy the gameobject of the item to remove
         Destroy(itemToRemove.gameObject);
+        yield return new WaitForSeconds(itemToRemove.myBuff.cooldown);
+        numberOfItems--;
+        nowDebuffs[itemToRemove.myBuff.BuffName]--;
     }
 }

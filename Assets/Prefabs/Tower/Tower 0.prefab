@@ -192,9 +192,9 @@ GameObject:
   - component: {fileID: 8418831643102904591}
   - component: {fileID: 1892882467875860413}
   - component: {fileID: 7462953453726178600}
-  - component: {fileID: 7911506217708809573}
   - component: {fileID: 6983001774519358236}
   - component: {fileID: 7173757278720474065}
+  - component: {fileID: 7981320830473299349}
   m_Layer: 0
   m_Name: Tower 0
   m_TagString: Tower
@@ -234,13 +234,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 6
   Damage: 1
-  slowDownRate: 0.5
+  maxDamageRate: 1
+  DamageIncreaseRate: 1.1
+  slowDownValue: 0.5
   slowDownTime: 5
   Tag: Enemy
   attackInterval: 1
   attackType: Single_L
-  upgradeBase1: {fileID: 2085130942620763656, guid: cfc759f5838424b4881345e4acdbb545, type: 3}
-  upgradeBase2: {fileID: 2085130942620763656, guid: d6c2744ab42a79342a5aeadd03172a3a, type: 3}
+  ID: 0
+  levelUps: []
+  level: 1
+  upgradeTB1: {fileID: 0}
+  upgradeTB2: {fileID: 0}
+  percentHPDamage: 0
+  isUpgradeUnlocked: 0
 --- !u!120 &7462953453726178600
 LineRenderer:
   serializedVersion: 2
@@ -343,41 +350,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!58 &7911506217708809573
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8598278846631442000}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.4
 --- !u!50 &6983001774519358236
 Rigidbody2D:
   serializedVersion: 4
@@ -501,6 +473,55 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &7981320830473299349
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598278846631442000}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.4}
+      - {x: -0.9, y: 0}
+      - {x: 0, y: -0.4}
+      - {x: 0.9, y: 0}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &9085485685057130106
 PrefabInstance:
   m_ObjectHideFlags: 0

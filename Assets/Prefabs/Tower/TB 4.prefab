@@ -46,6 +46,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 421343602136147315, guid: f5ec426d465b6b242af956c50d004aab, type: 3}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
+      propertyPath: upgradeTB2
+      value: 
+      objectReference: {fileID: 421343602136147315, guid: 0cb3d7c5e0a0883499563e4dae966327, type: 3}
+    - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: attackRange
       value: 3.5
       objectReference: {fileID: 0}
@@ -75,11 +79,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood1
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood2
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[0].maxStone1
@@ -91,11 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo1
-      value: test1
+      value: Freeze enemies for 1s (enemy can't be Freezed in 1s after Freezed finish)
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: test2
+      value: 'Let enemies'' Max HP x0.8 for 10s '
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxStone1
@@ -103,11 +107,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].maxStone2
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].unlockExp
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[0].buffValue1
@@ -135,11 +139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget1
-      value: Special
+      value: Transform
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget2
-      value: Tranform
+      value: Transform
       objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: f42514bef1d4e5d4494940905ae04134, type: 3}
       propertyPath: m_LocalPosition.x

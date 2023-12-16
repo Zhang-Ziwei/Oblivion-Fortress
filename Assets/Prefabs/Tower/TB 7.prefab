@@ -41,6 +41,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2972455223869932035}
     m_Modifications:
+    - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
+      propertyPath: ID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
+      propertyPath: Damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -113,6 +125,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3035196717666425432, guid: cfc759f5838424b4881345e4acdbb545, type: 3}
       propertyPath: MaxWood
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035196717666425432, guid: cfc759f5838424b4881345e4acdbb545, type: 3}
+      propertyPath: MaxStone
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3035196717666425432, guid: cfc759f5838424b4881345e4acdbb545, type: 3}

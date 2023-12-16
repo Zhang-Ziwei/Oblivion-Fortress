@@ -12,6 +12,8 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.Tilemaps;
+using System.Runtime.InteropServices;
 
 [System.Serializable]
 public class AudioDelaySettings
@@ -23,13 +25,27 @@ public class AudioDelaySettings
 
 }
 
+[System.Serializable]
+public class BuffEvent : UnityEvent<Enemy>
+{
+}
+
 // custom class for enemy
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Attributes")]
 
+    public int life = 1;
+
     public float maxHealth;
     private float health;
+
+    public float Health {
+        get {
+            return health;
+        }
+    }
+
     public float damage;
     public float speed;
 
@@ -49,7 +65,7 @@ public class Enemy : MonoBehaviour
     private List<Debuff> Debuffs = new List<Debuff>();
     private List<float> DebuffTimers = new List<float>(); 
     private float poisonTimer = 0f;
-    private float poisonAffectInterval = 0.5f;
+    private float poisonAffectInterval = 1.5f;
 
     public float attackRange = 1;
 
@@ -75,7 +91,10 @@ public class Enemy : MonoBehaviour
 
     [Header("Enemy Buffs")]
 
-    public EnemyBuff[] enemyBuffs;
+    [SerializeField] private BuffEvent surviveEvent;
+    [SerializeField] private BuffEvent attackEvent;
+
+    [SerializeField] private BuffEvent deathEvent;
 
     private int ID;
 
@@ -89,11 +108,27 @@ public class Enemy : MonoBehaviour
 
     private GameObject player;
 
+    // getter and setter
+    public GameObject Player {
+        get {
+            return player;
+        }
+    }
+
     private HPControl playerHP;
 
     private Transform playerGround;
 
     private int actionMode;
+
+    public int ActionMode {
+        get {
+            return actionMode;
+        }
+        set {
+            actionMode = value;
+        }
+    }
 
     private Animator animator;
 
@@ -109,15 +144,27 @@ public class Enemy : MonoBehaviour
 
     private bool inAttackInterval;
 
-    private List<UnityEvent> attackEvents;
-
     private EnemyAudio enemyAudio;
 
     private string enemyName;
 
-    public void Init(int enemyID)
+    private bool isResurrected = false;
+
+    public bool IsResurrected {
+        get {
+            return isResurrected;
+        }
+        set {
+            isResurrected = value;
+        }
+    }
+
+    private Tilemap ground;
+
+    public void Init(int enemyID, Vector3? position = null)
     {
         PathIndex = 1;
+        maxHealth *= Difficulty.enemyHealthRate;
         health = maxHealth;
         ID = enemyID;
         healthBar.value = health / maxHealth;
@@ -145,6 +192,10 @@ public class Enemy : MonoBehaviour
         // find castle ground
         castleGround = castle.transform.Find("GroundSensor");
 
+        // find tilemap ground
+        GameObject grid = GameObject.Find("Grid");
+        ground = grid.transform.Find("Ground").GetComponent<Tilemap>();
+
         // get the corresponding prefab name
         GameObject prefab = EnemySummon.EnemyPrefabs[enemyID];
         enemyName = prefab.name;
@@ -168,22 +219,15 @@ public class Enemy : MonoBehaviour
         animator.SetBool(isWalking, false);
         animator.SetFloat(isCrit, 0);
 
+
         // set enemy to the first path location
-        transform.position = LevelManager.Instance.GetPathLocations()[0].position;
+        if (position == null) {
+            transform.position = LevelManager.Instance.GetPathLocations()[0].position;
 
-        nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
-
-        // add all enemy buffs to attackEvents
-        attackEvents = new List<UnityEvent>();
-        foreach (EnemyBuff enemyBuff in enemyBuffs) {
-            if (enemyBuff != null) {
-                enemyBuff.Init();
-
-                UnityEvent nowEvent = new UnityEvent();
-                nowEvent.AddListener(enemyBuff.Buff);
-                attackEvents.Add(nowEvent);
-            }
-            
+            nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
+        } else {
+            transform.position = (Vector3)position;
+            actionMode = 0;
         }
 
         // load audio
@@ -195,6 +239,19 @@ public class Enemy : MonoBehaviour
     }
     public int GetID() {
         return ID;
+    }
+
+    public Vector3 GetOnGround(Vector3 position) {
+        Vector3Int cellPosition = ground.WorldToCell(position);
+
+        cellPosition = new Vector3Int(Math.Min(cellPosition.x, 10), Math.Min(cellPosition.y, 10), cellPosition.z);
+        cellPosition = new Vector3Int(Math.Max(cellPosition.x, -14), Math.Max(cellPosition.y, -14), cellPosition.z);
+
+
+        // Debug.Log(cellPosition);
+        // change to world position
+        Vector3 worldPosition = ground.CellToWorld(cellPosition) - new Vector3(0.5f, 0.5f, 0f);
+        return worldPosition;
     }
 
     // decide whether the enemy is crit or not
@@ -214,7 +271,12 @@ public class Enemy : MonoBehaviour
         return nowIsCrit;
     }
 
-    public void DeductHealth(float damage) {
+    public void DeductHealth(float damage, float percentHPDamage = 0f) {
+        if (actionMode == -2) {
+            return;
+        }
+        damage += percentHPDamage * health;
+        //Debug.Log(percentHPDamage);
         health -= damage;
         healthBar.value = health / maxHealth;
 
@@ -225,13 +287,23 @@ public class Enemy : MonoBehaviour
 
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
+            life--;
+            deathEvent?.Invoke(this);
             enemyAudio?.death.PlayDelayed(delayTime.death);
             StartCoroutine(DeathAnimation());
         }
     }
 
+    public void RecoverHealth(float health, float percent = 0) {
+        this.health += health + percent * maxHealth;;
+        if (this.health > maxHealth) {
+            this.health = maxHealth;
+        }
+        healthBar.value = this.health / maxHealth;
+    }
+
     public void DeductHealthPercent(float percent) {
-        DeductHealth(percent * maxHealth);
+        DeductHealth(percent * health);
     }
 
     public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue) {
@@ -239,12 +311,17 @@ public class Enemy : MonoBehaviour
 
         for(int i = Debuffs.Count - 1; i >= 0; i--){
             if (Debuffs[i].id == id){
+                if (id == 3) {
+                    idExist = true;
+                    break;
+                }
                 if (DebuffTimers[i] < time){
                     DebuffTimers[i] = time;
                     /*Debuff newdebuff = Debuffs[i];
                     newdebuff.timer = time;
                     Debuffs[i] = newdebuff;*/
                     idExist = true;
+                    break;
                 }
             }
         }
@@ -254,6 +331,11 @@ public class Enemy : MonoBehaviour
             DebuffTimers.Add(time);
             if (debuffName == "slow"){
                 speed *= debuffValue;
+            }
+            else if (debuffName == "reduceMaxHP"){
+                health *= debuffValue;
+                maxHealth *= debuffValue;
+                healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = new Color (0.6f, 0 , 1f);
             }
         }
     }
@@ -268,6 +350,15 @@ public class Enemy : MonoBehaviour
             if (DebuffTimers[i] <= 0) {
                 if (Debuffs[i].debuffName == "slow"){
                     speed /= Debuffs[i].debuffValue;
+                    if (Debuffs[i].debuffValue < 0.1) {
+                        Debuffs.Add(new Debuff(Debuffs[i].id, Debuffs[i].debuffName, 1));
+                        DebuffTimers.Add(1);
+                    }
+                }
+                else if (Debuffs[i].debuffName == "reduceMaxHP"){
+                    health /= Debuffs[i].debuffValue;
+                    maxHealth /= Debuffs[i].debuffValue;
+                    healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.red;
                 }
                 Debuffs.RemoveAt(i);
                 DebuffTimers.RemoveAt(i);
@@ -297,11 +388,13 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        LevelManager.Instance.EnqueEnemyToRemove(this);
+        if (!isResurrected) {
+            LevelManager.Instance.EnqueEnemyToRemove(this);
+        } 
         yield return null;
     }
 
-    private void AssignNearestPath() {
+    public void AssignNearestPath() {
         // return the nearest path location in LevelManager.Instance.PathLocations
         Transform nearestPath = LevelManager.Instance.GetPathLocations()[0];
         float minDistance = Vector3.Distance(transform.position, nearestPath.position);
@@ -319,7 +412,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void Move(Transform target) {
-
+        if (transform.position == null){
+            Debug.Log(1);
+        }
         Vector2 direction = (target.position - transform.position).normalized;
         // if x is negative, flip the sprite of the child object
         GameObject Skin = transform.Find("Skin").gameObject;
@@ -361,9 +456,7 @@ public class Enemy : MonoBehaviour
 
         // invoke all enemy buffs
         if (nowIsCrit == 1) {
-            foreach (UnityEvent attackEvent in attackEvents) {
-                attackEvent?.Invoke();
-            }
+            attackEvent?.Invoke(this);
         }
 
     }
@@ -403,10 +496,11 @@ public class Enemy : MonoBehaviour
             AssignNearestPath();
             actionMode = 1;
         }
+
         if (PathIndex < LevelManager.Instance.GetPathLocations().Count - 1)
         {
             Move(nextPath);
-            if (Vector3.Distance(transform.position, nextPath.position) <= 0.1f)
+            if (Vector3.Distance(transform.position, nextPath.position) <= 0.3f)
             {
                 PathIndex++;
                 nextPath = LevelManager.Instance.GetPathLocations()[PathIndex];
@@ -424,12 +518,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         UpdateDebuff();
-
+        surviveEvent?.Invoke(this);
         if (player != null) {
-            if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
+            if (actionMode == -2) {
+                // do nothing
+            } 
+            else if (Vector3.Distance(transform.position, castleGround.position) <= 2 && !inAttackInterval) {
                 AttackCastle();
                 // Debug.Log("Enemy.cs: AttackCastle() called.");
-    
             } else if (Vector3.Distance(transform.position, playerGround.position) <= attackRange && !inAttackInterval && (playerHP.HP > 0)) {
                 AttackPlayer();
                 // Debug.Log("Enemy.cs: AttackPlayer() called.");
@@ -438,6 +534,7 @@ public class Enemy : MonoBehaviour
             } else {
                 MoveToPath();
             }
-        }    
+        }  
+        
     }
 }

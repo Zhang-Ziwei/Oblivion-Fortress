@@ -17,6 +17,8 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private float attackRange;
     private GameObject towerInfo;
     private GameObject Tower;
+    private List<Collider2D> colliders = new List<Collider2D>();
+    private bool canSetBase = false;
 
     void Start()
     {
@@ -61,19 +63,24 @@ public class ButtonSetBase : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Update is called once per frame
     void Update()
     {
-        if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), new List<Collider2D>()) > 0)
+        Square.gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        canSetBase = true;
+        if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), colliders) > 0)
         {
-            Square.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
-        }
-        else
-        {
-            Square.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            foreach (Collider2D collider in colliders) {
+                if (!(collider.gameObject.tag == "axe" || collider.gameObject.tag == "pickaxe" || collider.gameObject.tag == "Player" || collider.gameObject.tag == "wood" || collider.gameObject.tag == "rock" || collider.gameObject.tag == "sensor")) {
+                    Square.gameObject.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    canSetBase = false;
+                    break;
+                }
+            }
+            
         }
         if(isBaseSetting && Input.GetMouseButtonDown(0))
         {
             // Check if the collider of new base overlapping with other colliders 
             
-            if(Physics2D.OverlapCollider(BaseCollider, new ContactFilter2D().NoFilter(), new List<Collider2D>()) == 0)
+            if(canSetBase)
             {
                 Instantiate(TB, GameData.nearestVertex(GameData.getMousePos()), Quaternion.identity);
             }

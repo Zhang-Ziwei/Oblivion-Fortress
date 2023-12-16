@@ -176,6 +176,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 421343602136147315, guid: c0bd218001fb1244fb1d6a157e700b39, type: 3}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
+      propertyPath: upgradeTB2
+      value: 
+      objectReference: {fileID: 421343602136147315, guid: c0bd218001fb1244fb1d6a157e700b39, type: 3}
+    - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: attackRange
       value: 3
       objectReference: {fileID: 0}
@@ -201,11 +205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood1
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood2
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[0].maxStone1
@@ -217,11 +221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: test2
+      value: Healing when player in range
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
+      propertyPath: levelUps.Array.data[1].maxStone2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].unlockExp
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[0].buffValue1
@@ -233,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].buffValue1
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].buffValue2
@@ -249,11 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget1
-      value: Special
+      value: PercentHP
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget2
-      value: Tranform
+      value: Transform
       objectReference: {fileID: 0}
     - target: {fileID: 3370814611339017159, guid: 91a8dc3e0a342aa458230870fffd2433, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

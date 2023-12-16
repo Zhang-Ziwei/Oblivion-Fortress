@@ -4848,6 +4848,7 @@ GameObject:
   - component: {fileID: 25952362990441192}
   - component: {fileID: 7890508420957775398}
   - component: {fileID: 669647497758074058}
+  - component: {fileID: 2631358078125900803}
   m_Layer: 0
   m_Name: Healing
   m_TagString: Untagged
@@ -4865,8 +4866,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.6880002, y: -10.126223, z: -4.700794}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7545778673021844305}
   - {fileID: 7837213462610008509}
@@ -9676,6 +9677,25 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2631358078125900803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036222775843097599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ca253a5e94bd4ea5c15c7515fa3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  cooldown: 1
+  buffIcon: {fileID: -651057808, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
+  healAmount: 1
+  interval: 0.5
+  healRange: 10
+  healHPPercent: 0.05
 --- !u!1 &5821598796187700788
 GameObject:
   m_ObjectHideFlags: 0

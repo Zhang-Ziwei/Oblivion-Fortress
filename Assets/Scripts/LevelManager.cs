@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+
 public class EnemyAudio
 {
     public GameObject audioObject;
@@ -76,8 +77,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject NowLevelText;
 
-    private AudioSource audiosource;
-    public AudioClip LevelStartAudio;
+    public AudioSource LevelStartAudio;
+    public AudioSource BackgroundMusic;
 
 
     public Dictionary<string, EnemyAudio> enemyAudios;
@@ -86,7 +87,7 @@ public class LevelManager : MonoBehaviour
     // Tilemap GroundMap;
     // Grid grid;
 
-    private static Queue<int> EnemyToSummon;  // enemy ID
+    private static Queue<(int, Vector3?)> EnemyToSummon;  // enemy ID
     private static Queue<Enemy> EnemyToRemove;  // enemy object
 
     private int NowLevel;
@@ -120,7 +121,7 @@ public class LevelManager : MonoBehaviour
         EnemySummon.Init();
 
         // initialize enemy queues
-        EnemyToSummon = new Queue<int>();
+        EnemyToSummon = new Queue<(int, Vector3?)>();
         EnemyToRemove = new Queue<Enemy>();
 
         StartCoroutine(GameLoop());
@@ -162,7 +163,6 @@ public class LevelManager : MonoBehaviour
             
         }
 
-        audiosource = GetComponent<AudioSource>();
     }   
 
     // Update is called once per frame
@@ -176,7 +176,7 @@ public class LevelManager : MonoBehaviour
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             } else {
-                if (enemiesLeft == 0) {
+                if (enemiesLeft <= 0) {
                     GameWin();
                 }
             }
@@ -187,6 +187,7 @@ public class LevelManager : MonoBehaviour
     private void GameWin() {
         Time.timeScale = 0;
         WinUI.SetActive(true);
+        BackgroundMusic.Stop();
     }
 
     private void UpdateTimerText()
@@ -199,6 +200,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void UpdateEnemiesLeaveText() {
+        enemiesLeft = EnemySummon.EnemiesInGame.Count;
         enemiesLeaveText.text =  enemiesLeft + " Enemies Leave";
     }
 
@@ -217,8 +219,11 @@ public class LevelManager : MonoBehaviour
             Debug.Log("LevelManager.cs: spawnInterval is 0");
         }
 
+        // Increase enemy HP at level 6
+        if (NowLevel == 6) Difficulty.enemyHealthRate *= 2f;
+
         // set timer to beforeSpawnInterval
-        timer = enemyLevelData.beforeSpawnInterval;
+        timer = enemyLevelData.beforeSpawnInterval * Difficulty.levelIntervalRate;
         // set color of timer text to red
         timerText.color = Color.red;
 
@@ -235,15 +240,16 @@ public class LevelManager : MonoBehaviour
         timer = 0;
 
         // level start audio
-        audiosource.Play();
+        LevelStartAudio.Play();
 
         // set timertext to inactive
         timerText.gameObject.SetActive(false);
 
-        // spawn the enemies
-        enemiesLeft += enemyLevelData.enemiesIDs.Count;
+        // gain exp
+        gameObject.GetComponent<TowerUnlockManager>().GainExp(enemyLevelData.expGain);
+
         foreach (int enemyIndx in enemyLevelData.enemiesIDs) {
-            EnqueEnemyToSummon(enemyIndx);
+            EnqueEnemyToSummon(enemyIndx, null);
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
         }
         
@@ -257,8 +263,8 @@ public class LevelManager : MonoBehaviour
         // while game is not over
         while(!IsGameOver) {
             for (int i = 0; i < EnemyToSummon.Count; i++) {
-                int enemyID = EnemyToSummon.Dequeue();
-                EnemySummon.SummonEnemy(enemyID);
+                (int enemyID, Vector3? position) = EnemyToSummon.Dequeue();
+                EnemySummon.SummonEnemy(enemyID, position);
             }
 
             // remove enemies
@@ -271,11 +277,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void EnqueEnemyToSummon(int enemyID) {  // add new enemies to enemytosummon
-        EnemyToSummon.Enqueue(enemyID);
+    public void EnqueEnemyToSummon(int enemyID, Vector3? position) {  // add new enemies to enemytosummon
+        EnemyToSummon.Enqueue((enemyID, position));
     }
     public void EnqueEnemyToRemove(Enemy enemyToRemove) {  // add new enemies to enemytoremove
         EnemyToRemove.Enqueue(enemyToRemove);
-        enemiesLeft --;
     }
 }

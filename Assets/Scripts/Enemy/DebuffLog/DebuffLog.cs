@@ -15,8 +15,8 @@ public class DebuffLog : MonoBehaviour
 
     public Image TimerFill;
 
-    public EnemyBuff myBuff;
-    public void Init(EnemyBuff enemyBuff) {
+    public Buff myBuff;
+    public void Init(Buff enemyBuff) {
         myBuff = enemyBuff;
 
         DescriptionText.text = enemyBuff.BuffName;

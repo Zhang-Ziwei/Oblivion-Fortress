@@ -20,10 +20,9 @@ public class TowerUnlockManager : MonoBehaviour
         else return true;
     }
 
-    public bool SetUnclocked(int TowerID, int level, int unclockExp){
+    public bool SetUnclocked(int unclockExp){
         if (Exp >= unclockExp) {
             Exp -= unclockExp;
-            levelUnclocked[TowerID] = level;
             ChangeUI();
             return true;
         }

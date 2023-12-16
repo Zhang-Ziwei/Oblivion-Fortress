@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class HeroKnight : MonoBehaviour {
 
@@ -239,7 +240,7 @@ public class HeroKnight : MonoBehaviour {
         foreach (Collider2D enemy in hitEnemies) {
             if (enemy.tag == "Enemy") {
                 // hurt the enemy
-                enemy.GetComponent<Enemy>().DeductHealth(Damage);
+                enemy.GetComponent<Enemy>().DeductHealth(Damage * Math.Max(Difficulty.enemyHealthRate, 1f));
             }
         }
     }
@@ -440,6 +441,7 @@ public class HeroKnight : MonoBehaviour {
         toolstype = GetComponent<PickupSystem>().type;
         if (collision.gameObject.tag == "axe" && toolstype==1)
         {
+            Debug.Log("pickup pickaxe");
             m_animator.SetBool("axe", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 1);
@@ -453,6 +455,7 @@ public class HeroKnight : MonoBehaviour {
         //捡起锤子
         if (collision.gameObject.tag == "pickaxe" && toolstype == 2)
         {
+            Debug.Log("pickup axe");
             m_animator.SetBool("ham", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 2);
@@ -472,9 +475,14 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //丢下工具
+<<<<<<< HEAD
         // if (toolstype == 0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
         if (toolstype==0)
+=======
+        if (toolstype==0 && ((collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe")))
+>>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
         {
+            Debug.Log("drop tool");
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);

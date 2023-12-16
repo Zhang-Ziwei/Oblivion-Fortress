@@ -21,9 +21,11 @@ public class LevelUp
 };
 public class TowerBuff
 {
+    public string id;
     public string buffTarget;
     public float buffValue;
-    public TowerBuff(string target, float value){
+    public TowerBuff(string oid, string target, float value){
+        id = oid;
         buffTarget = target;
         buffValue = value;
     }
@@ -61,9 +63,12 @@ public class Tower : MonoBehaviour
     public GameObject upgradeTB2;
 
     private GameObject Base;
-    private Queue<TowerBuff> towerBuffs;
+    private List<TowerBuff> towerBuffs = new List<TowerBuff>();
+    private List<float> BuffTimers = new List<float>(); 
     private bool SpecialUpgrade = false;
     private List<GameObject> enemies; 
+    public float percentHPDamage = 0f;
+    public bool isUpgradeUnlocked = false;
 
     public void setUpgradeInfo(){
         for (int i = 0; i < levelUps.Length; i++){
@@ -83,6 +88,10 @@ public class Tower : MonoBehaviour
             else if (buffTarget == "SlowDownTime") {
                 //slowDownTime += buffValue;
                 levelUps[i].buffInfo1 = "Slow Down Time  +" + levelUps[i].buffValue1;
+            }
+            else if (buffTarget == "PercentHP") {
+                //slowDownTime += buffValue;
+                levelUps[i].buffInfo1 = "Attack +" + levelUps[i].buffValue1 * 100f + "% current HP damage";
             }
             /*else if (buffTarget == "Special") {
                 //SpecialUpgrade = true;
@@ -124,7 +133,7 @@ public class Tower : MonoBehaviour
         return levelUps[level-1];
     }
 
-    public void Upgrade(int maxWood, int maxStone, string buffTarget, float buffValue){
+    public void Upgrade(int maxWood, int maxStone, string buffTarget, float buffValue, int choice = 1){
         if (buffTarget == "Damage") {
             Damage += buffValue;
         }
@@ -137,15 +146,20 @@ public class Tower : MonoBehaviour
         else if (buffTarget == "SlowDownTime") {
             slowDownTime += buffValue;
         }
+        else if (buffTarget == "PercentHP") {
+            percentHPDamage += buffValue;
+        }
         else if (buffTarget == "Special") {
             SpecialUpgrade = true;
         }
-        else if (buffTarget == "Tranform") {
-            Instantiate(upgradeTB1, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+        else if (buffTarget == "Transform") {
+            if (choice == 1) Instantiate(upgradeTB1, transform.position, Quaternion.identity);
+            else Instantiate(upgradeTB2, transform.position, Quaternion.identity);
+            Destroy(gameObject.transform.parent.gameObject);
         }
 
         level++;
+        isUpgradeUnlocked = false;
         gameObject.SetActive(false);
         Base.SetActive(true);
         Base.GetComponent<Base>().setUpgradeResourse(maxWood, maxStone);
@@ -154,49 +168,63 @@ public class Tower : MonoBehaviour
 
     public void towerUpgrade(int id){
         if (id == 1) Upgrade(levelUps[level-1].maxWood1, levelUps[level-1].maxStone1, levelUps[level-1].buffTarget1, levelUps[level-1].buffValue1);
-        else Upgrade(levelUps[level-1].maxWood2, levelUps[level-1].maxStone2, levelUps[level-1].buffTarget2, levelUps[level-1].buffValue2);
+        else Upgrade(levelUps[level-1].maxWood2, levelUps[level-1].maxStone2, levelUps[level-1].buffTarget2, levelUps[level-1].buffValue2, 2);
     }
 
-    public void BuffTower(String buffName, float buffValue, float buffTime){
+    public void BuffTower(string id, string buffName, float buffValue, float buffTime){
         if (attackType == "AreaBuff") return;
-        if (buffName == "Damage"){
-            Damage += buffValue;
-            //StartCoroutine(RestoreBuff(buffName, buffValue, buffTime));
+
+        bool idExist = false;
+
+        for(int i = towerBuffs.Count - 1; i >= 0; i--){
+            if (towerBuffs[i].id == id){
+                if (BuffTimers[i] < buffTime){
+                    BuffTimers[i] = buffTime;
+                    idExist = true;
+                    break;
+                }
+            }
         }
-        else if (buffName == "Interval"){
-            attackInterval *= buffValue;
+
+        if(!idExist){
+            towerBuffs.Add(new TowerBuff(id, buffName, buffValue));
+            BuffTimers.Add(buffTime);
+            if (buffName == "Damage"){
+                Damage += buffValue;
             //StartCoroutine(RestoreBuff(buffName, buffValue, buffTime));
+            }
+            else if (buffName == "Interval"){
+                attackInterval *= buffValue;
+                //StartCoroutine(RestoreBuff(buffName, buffValue, buffTime));
+            }
+            else if (buffName == "PercentHP"){
+                percentHPDamage += buffValue;
+            }
         }
-        towerBuffs.Enqueue(new TowerBuff(buffName, buffValue));
-        Invoke("RestoreBuff", buffTime);
     }
 
-    /*IEnumerator RestoreBuff(String buffName, float buffValue, float buffTime)
-    {
-        yield return new WaitForSeconds(buffTime);
-        if (buffName == "Damage"){
-            Damage -= buffValue;
-        }
-        else if (buffName == "Interval"){
-            attackInterval /= buffValue;
-        }
-    }*/
-
-    void RestoreBuff()
-    {
-        TowerBuff buff = towerBuffs.Dequeue();
-        if (buff.buffTarget == "Damage"){
-            Damage -= buff.buffValue;
-        }
-        else if (buff.buffTarget == "Interval"){
-            attackInterval /= buff.buffValue;
+    private void UpdateBuff(){
+        for(int i = towerBuffs.Count - 1; i >= 0; i--){
+            BuffTimers[i] -= Time.deltaTime;
+            if (BuffTimers[i] <= 0) {
+                if (towerBuffs[i].buffTarget == "Damage"){
+                    Damage -= towerBuffs[i].buffValue;
+                }
+                else if (towerBuffs[i].buffTarget == "Interval"){
+                    attackInterval /= towerBuffs[i].buffValue;
+                }
+                else if (towerBuffs[i].buffTarget == "PercentHP"){
+                    percentHPDamage -= towerBuffs[i].buffValue;
+                }
+                towerBuffs.RemoveAt(i);
+                BuffTimers.RemoveAt(i);
+            }
         }
     }
 
     void Start()
     {
         enemies = new List<GameObject>();
-        towerBuffs = new Queue<TowerBuff>();
         Base = transform.parent.GetChild(1).gameObject;
         setUpgradeInfo();
         if (attackType == "Single")
@@ -207,7 +235,7 @@ public class Tower : MonoBehaviour
             //line.SetPosition(1, transform.position + new Vector3(0,0.5f,0));
             arrow = gameObject.transform.GetChild(2).gameObject; 
         }
-        else if (attackType == "Area" || attackType == "AreaSlow" || attackType == "AreaPoison" || attackType == "AreaRecover" || attackType == "AreaBuff")
+        else if (attackType == "Area" || attackType == "AreaSlow" || attackType == "AreaPoison" || attackType == "AreaRecover" || attackType == "AreaBuff" || attackType == "AreaMaxHP")
         {
             area = gameObject.transform.GetChild(2).gameObject;
             //area.transform.localScale = new Vector3(attackRange, attackRange, 1);
@@ -239,9 +267,20 @@ public class Tower : MonoBehaviour
             lightning2.SetActive(false);
             lightning3.SetActive(false);
         }
-        else if (attackType == "AreaSlow" || attackType == "AreaPoison")
+        else if (attackType == "AreaSlow" || attackType == "AreaPoison" || attackType == "AreaMaxHP")
         {
             area.SetActive(false);
+        }
+        else if (attackType == "Single_L2")
+        {
+            if (preAttackEnemy){
+                lightningEnd.transform.position = preAttackEnemy.transform.position + new Vector3(0,0.5f,0); 
+                Invoke("A", 0.1f);
+            }
+            else {
+                lightningEnd.transform.position = lightningEndAtStart;
+            }
+            //Invoke("A", 0.1f);
         }
     }
 
@@ -280,11 +319,10 @@ public class Tower : MonoBehaviour
             //Invoke("A", 0.1f);
         }
 
-        else if (attackType == "AreaSlow" || attackType == "AreaPoison")
+        else if (attackType == "AreaSlow" || attackType == "AreaPoison" || attackType == "AreaMaxHP")
         {
             area.SetActive(true);
-            if (attackType == "AreaSlow") Invoke("A", 1f); 
-            else if(attackType == "AreaPoison") Invoke("A", 1f); 
+            Invoke("A", 1f); 
         }
     }
 
@@ -315,7 +353,7 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        
+        UpdateBuff();
         timePassed += Time.deltaTime;
         if(timePassed > attackInterval)
         {
@@ -327,21 +365,25 @@ public class Tower : MonoBehaviour
                 {
                     enemies.Add(nearestEnemy);
                     if (SpecialUpgrade) {
-                        Debug.Log(1);
                         nearestEnemy2 = GameData.getNearestObjectWithTag(nearestEnemy.transform.position, Tag);
-                        if(nearestEnemy2 && GameData.distanceRec(nearestEnemy.transform.position, nearestEnemy2.transform.position) < 2)
+                        if(nearestEnemy2 && GameData.distanceRec(nearestEnemy.transform.position, nearestEnemy2.transform.position) < 3)
                         {
                             enemies.Add(nearestEnemy2);
                             nearestEnemy3 = GameData.getNearestObjectWithTag(nearestEnemy2.transform.position, Tag);
-                            if (nearestEnemy3 == nearestEnemy) nearestEnemy3 = GameData.getNearestObjectWithTag(nearestEnemy2.transform.position, Tag, GameData.distanceRec(nearestEnemy.transform.position, nearestEnemy2.transform.position));
-                            if (nearestEnemy3 && GameData.distanceRec(nearestEnemy2.transform.position, nearestEnemy3.transform.position) < 2)
+                            //if (nearestEnemy3 == nearestEnemy) nearestEnemy3 = GameData.getNearestObjectWithTag(nearestEnemy2.transform.position, Tag, GameData.distanceRec(nearestEnemy.transform.position, nearestEnemy2.transform.position));
+                            if (nearestEnemy3 && GameData.distanceRec(nearestEnemy2.transform.position, nearestEnemy3.transform.position) < 3)
                             {
                                 enemies.Add(nearestEnemy3);
                             }
                         }
+                        else {
+                            enemies.Add(nearestEnemy);
+                            enemies.Add(nearestEnemy);
+                        }
                     }
-                    foreach (GameObject enemy in enemies){
-                        enemy.GetComponent<Enemy>().DeductHealth(Damage);
+                    for (int i= 0; i < enemies.Count; i++) {
+                        if(i == 0) enemies[i].GetComponent<Enemy>().DeductHealth(Damage, percentHPDamage);
+                        else enemies[i].GetComponent<Enemy>().DeductHealth(Damage/2, percentHPDamage);
                     }
                     //line.SetPosition(1, nearestEnemy.transform.position + new Vector3(0,0.5f,0));
                     
@@ -354,15 +396,15 @@ public class Tower : MonoBehaviour
                 GameObject[] enemies = GameData.getInRangeObjectWithTag(transform.position, Tag, attackRange);
                 if (preAttackEnemy && Array.FindAll(enemies ,e => e == preAttackEnemy).Length > 0)
                 {
-                    DamageRate = Math.Max(DamageIncreaseRate * DamageRate, maxDamageRate);
-                    preAttackEnemy.GetComponent<Enemy>().DeductHealth(Damage * DamageRate);
+                    DamageRate = Math.Min(DamageIncreaseRate * DamageRate, maxDamageRate);
+                    preAttackEnemy.GetComponent<Enemy>().DeductHealth(Damage * DamageRate, percentHPDamage);
                 }
                 else {
                     GameObject nearestEnemy = GameData.getNearestObjectWithTag(transform.position, Tag);
                     if(nearestEnemy && GameData.distanceRec(transform.position, nearestEnemy.transform.position) < attackRange)
                     {
                         DamageRate = 1;
-                        nearestEnemy.GetComponent<Enemy>().DeductHealth(Damage * DamageRate);
+                        nearestEnemy.GetComponent<Enemy>().DeductHealth(Damage * DamageRate, percentHPDamage);
                         preAttackEnemy = nearestEnemy;
                         //line.SetPosition(1, nearestEnemy.transform.position + new Vector3(0,0.5f,0));
                     }
@@ -373,22 +415,26 @@ public class Tower : MonoBehaviour
                 AttackAnimation(preAttackEnemy);
             }
 
-            else if (attackType == "Area" || attackType == "AreaSlow" || attackType == "AreaPoison")
+            else if (attackType == "Area" || attackType == "AreaSlow" || attackType == "AreaPoison" || attackType == "AreaMaxHP")
             {
                 GameObject[] enemies = GameData.getInRangeObjectWithTag(transform.position, Tag, attackRange);
                 if(enemies.Length > 0)
                 {
                     foreach(GameObject enemy in enemies)
                     {
-                        enemy.GetComponent<Enemy>().DeductHealth(Damage);
-                        if (attackType == "Area" && SpecialUpgrade) {
+                        enemy.GetComponent<Enemy>().DeductHealth(Damage, percentHPDamage);
+                        /*if (attackType == "Area" && SpecialUpgrade) {
                             enemy.GetComponent<Enemy>().DeductHealthPercent(Damage * 0.005f);
-                        }
+                        }*/
                         if (attackType == "AreaSlow" ) {
-                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(0, slowDownTime, "slow", slowDownValue);
+                            if (slowDownValue < 0.1) enemy.GetComponent<Enemy>().GiveEnemyDebuff(3, slowDownTime, "slow", slowDownValue);
+                            else enemy.GetComponent<Enemy>().GiveEnemyDebuff(0, slowDownTime, "slow", slowDownValue);
                         } 
                         else if(attackType == "AreaPoison") {
-                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(1, slowDownTime, "poison", slowDownValue);
+                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(1, slowDownTime, "poison", Damage);
+                        }
+                        else if(attackType == "AreaMaxHP") {
+                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(2, slowDownTime, "reduceMaxHP", slowDownValue);
                         }
                     }
                     //area.SetActive(true);
@@ -404,7 +450,7 @@ public class Tower : MonoBehaviour
                 {
                     foreach(GameObject player in players)
                     {
-                        player.GetComponent<HPControl>().RecoverHP(Damage);
+                        if(!player.GetComponent<HPControl>().isPlayerDie()) player.GetComponent<HPControl>().RecoverHP(Damage);
                     }
                     //area.SetActive(true);
                     //Invoke("A", 0.5f);
@@ -419,8 +465,9 @@ public class Tower : MonoBehaviour
                 {
                     foreach(GameObject tower in towers)
                     {
-                        tower.GetComponent<Tower>().BuffTower("Damage", Damage, attackInterval);
-                        if(attackInterval != 1) tower.GetComponent<Tower>().BuffTower("Interval", attackInterval, attackInterval);
+                        tower.GetComponent<Tower>().BuffTower(GetInstanceID() + "D" + level, "Damage", Damage, 1);
+                        tower.GetComponent<Tower>().BuffTower(GetInstanceID() + "I" + level, "Interval", attackInterval, 1);
+                        tower.GetComponent<Tower>().BuffTower(GetInstanceID() + "P" + level, "PercentHP", percentHPDamage, 1);
                     }
                     //area.SetActive(true);
                     //Invoke("A", 0.5f);

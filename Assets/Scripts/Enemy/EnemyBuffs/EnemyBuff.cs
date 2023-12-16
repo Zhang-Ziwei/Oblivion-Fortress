@@ -1,74 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using UnityEngine.Events;
-using System.Xml.Serialization;
 
-public class EnemyBuff : MonoBehaviour 
+public class EnemyBuff : Buff
 {
-    protected HeroKnight playerController;
+    public override void OnBuff(Enemy enemy) {
+        base.OnBuff(enemy);
+        
+        nowItem = Instantiate(gameObject, enemy.transform.position, Quaternion.identity);
 
-    protected GameObject player;
-
-    public float duration;
-
-    public float cooldown;
-
-    private bool IsBuffed;
-
-    public Sprite buffIcon;
-
-    protected GameObject nowItem;
-
-    protected string buffName;
-
-    public string BuffName {
-        get {
-            return buffName;
-        }
-        set {
-            buffName = value;
-        }
-    }
-
-    // getter and setter
-    public bool isBuffed {
-        get {
-            return IsBuffed;
-        }
-        set {
-            IsBuffed = value;
-        }
-    }
-
-    protected void Start() {
-        isBuffed = false;
-    }
-
-    public virtual void Init() {
-        player = GameObject.Find("Player");
-        playerController = player.GetComponent<HeroKnight>();
-    }
-
-    public void Buff() {
-        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
-            return;
-        }
-
-
-        nowItem = Instantiate(gameObject, player.transform.position, Quaternion.identity);
+        particle = nowItem.GetComponent<ParticleSystem>();
 
         DebuffLogList.Instance.AddBuffItem(this);
 
         // set the parent of the gameObject to player
-        nowItem.transform.SetParent(player.transform);
+        nowItem.transform.SetParent(enemy.transform);
 
-        player.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
-    }
-
-    public virtual IEnumerator BuffCoroutine() {
-        yield return null;
-    }
-
+        enemy.GetComponent<MonoBehaviour>().StartCoroutine(BuffCoroutine());
+    }    
 }

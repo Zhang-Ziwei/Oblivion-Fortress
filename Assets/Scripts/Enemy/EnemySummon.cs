@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySummon : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class EnemySummon : MonoBehaviour
 
     }
 
-    public static Enemy SummonEnemy(int enemyID)
+    public static Enemy SummonEnemy(int enemyID, Vector3? position)
     {
         Enemy SummonedEnemy = null;
 
@@ -48,17 +49,31 @@ public class EnemySummon : MonoBehaviour
                 // if there's already eenemies, dequeue and set active
                 SummonedEnemy = ReferencedQueue.Dequeue();
 
-                Debug.Log(SummonedEnemy);
+                if (position != null) {
+                    SummonedEnemy.transform.position = (Vector3)position;
+                    SummonedEnemy.AssignNearestPath();
+                    SummonedEnemy.gameObject.SetActive(true);
+                    SummonedEnemy.Init(enemyID, position);
 
-                SummonedEnemy.gameObject.SetActive(true);
+                } else {
+                    SummonedEnemy.transform.position = LevelManager.Instance.GetPathLocations()[0].position;
+                    SummonedEnemy.AssignNearestPath();
+                    SummonedEnemy.gameObject.SetActive(true);
+                    SummonedEnemy.Init(enemyID);
+                }
+                
                 
             } else {
-
-                // if no, instantiate
-                GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], LevelManager.Instance.GetPathLocations()[0].position, Quaternion.identity);
-                SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+                if (position != null) {
+                    GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], (Vector3)position, Quaternion.identity);
+                    SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+                    SummonedEnemy.Init(enemyID, position);
+                } else {
+                    GameObject NewEnemy = Instantiate(EnemyPrefabs[enemyID], LevelManager.Instance.GetPathLocations()[0].position, Quaternion.identity);
+                    SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+                    SummonedEnemy.Init(enemyID);
+                }
             }
-            SummonedEnemy.Init(enemyID);
             
             EnemiesInGame.Add(SummonedEnemy);
         } else {
@@ -72,7 +87,7 @@ public class EnemySummon : MonoBehaviour
         EnemiesInGame.Remove(enemyToRemove);
 
         // put the enemy back to the queue
-        EnemyObjectPools[enemyToRemove.GetID()].Enqueue(enemyToRemove);
+        //EnemyObjectPools[enemyToRemove.GetID()].Enqueue(enemyToRemove);
         enemyToRemove.gameObject.SetActive(false);
     }
 }

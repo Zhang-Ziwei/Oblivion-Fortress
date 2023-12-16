@@ -50,6 +50,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 421343602136147315, guid: 659108168fa47e942b545f6b403e5896, type: 3}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
+      propertyPath: upgradeTB2
+      value: 
+      objectReference: {fileID: 421343602136147315, guid: 659108168fa47e942b545f6b403e5896, type: 3}
+    - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: attackRange
       value: 3.5
       objectReference: {fileID: 0}
@@ -79,7 +83,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].maxWood2
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[0].maxStone1
@@ -95,11 +99,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].buffInfo2
-      value: test2
+      value: Poison enemies for 12s when attacking
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
+      propertyPath: levelUps.Array.data[1].maxStone2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].unlockExp
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[0].buffValue1
@@ -108,6 +116,10 @@ PrefabInstance:
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[0].buffValue2
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
+      propertyPath: levelUps.Array.data[1].buffValue1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].buffValue2
@@ -123,11 +135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget1
-      value: Special
+      value: PercentHP
       objectReference: {fileID: 0}
     - target: {fileID: 1892882467875860413, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: levelUps.Array.data[1].buffTarget2
-      value: Tranform
+      value: Transform
       objectReference: {fileID: 0}
     - target: {fileID: 8418831643102904591, guid: d2cc97ec6251ab642a9d2c91a85187e5, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,6 +14,7 @@ public class TowerInfo : MonoBehaviour
     private Button unlockButton;
     private GameObject Manager;
     public LevelUp towerLevelUp;
+    public GameObject square;
     // Start is called before the first frame update
 
     void Start()
@@ -28,6 +29,8 @@ public class TowerInfo : MonoBehaviour
         unlockButton = transform.GetChild(4).GetComponent<Button>();
 
         Manager = GameObject.FindGameObjectsWithTag("Manager")[0];
+        square = Instantiate(square);
+        square.SetActive(false);
     }
 
     void UpdateTowerInfoUI(GameObject Tower){
@@ -36,7 +39,8 @@ public class TowerInfo : MonoBehaviour
 
         //modify tower information
         transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = Tower.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite;
-        transform.GetChild(0).GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().Damage;
+        if (Tower.GetComponent<Tower>().percentHPDamage == 0) transform.GetChild(0).GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().Damage;
+        else transform.GetChild(0).GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().Damage + "+" + Tower.GetComponent<Tower>().percentHPDamage * 100 + "%";
         transform.GetChild(0).GetChild(4).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackInterval;
         transform.GetChild(0).GetChild(5).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackRange;
         transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackType;
@@ -71,7 +75,7 @@ public class TowerInfo : MonoBehaviour
             UpdateUpgradeInfo();
             upgradeButtonObject1.SetActive(true);
             upgradeButtonObject2.SetActive(true);
-            if (towerLevelUp.unlockExp == 0 || Manager.GetComponent<TowerUnlockManager>().CheckUnclocked(Tower.GetComponent<Tower>().ID, Tower.GetComponent<Tower>().level)) 
+            if (towerLevelUp.unlockExp == 0 || Tower.GetComponent<Tower>().isUpgradeUnlocked) 
             {
                 unlockButtonObject.SetActive(false);
 
@@ -103,30 +107,55 @@ public class TowerInfo : MonoBehaviour
     void UpdateUpgradeInfo()
     {
         //Modify UI with tower information
-        upgradeButtonObject1.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxWood1;
-        upgradeButtonObject1.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxStone1;
-        upgradeButtonObject1.transform.GetChild(1).GetChild(5).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo1;
+        if (towerLevelUp.buffTarget1 == "Transform") {
+            UpdateUpgradeTowerInfo(Tower.GetComponent<Tower>().upgradeTB1, upgradeButtonObject1);
+            upgradeButtonObject1.transform.GetChild(1).GetChild(1).GetChild(6).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo1;
 
-        upgradeButtonObject2.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxWood2;
-        upgradeButtonObject2.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxStone2;
-        upgradeButtonObject2.transform.GetChild(1).GetChild(5).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo2;
+            upgradeButtonObject1.transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
+            upgradeButtonObject1.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+        }
+        else {
+            upgradeButtonObject1.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxWood1;
+            upgradeButtonObject1.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxStone1;
+            upgradeButtonObject1.transform.GetChild(1).GetChild(0).GetChild(5).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo1;
+
+            upgradeButtonObject1.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+            upgradeButtonObject1.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
+        }
+        
+
+        if (towerLevelUp.buffTarget2 == "Transform") {
+            UpdateUpgradeTowerInfo(Tower.GetComponent<Tower>().upgradeTB2, upgradeButtonObject2);
+            upgradeButtonObject2.transform.GetChild(1).GetChild(1).GetChild(6).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo2;
+
+            upgradeButtonObject2.transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
+            upgradeButtonObject2.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+        }
+        else {
+            upgradeButtonObject2.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxWood2;
+            upgradeButtonObject2.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.maxStone2;
+            upgradeButtonObject2.transform.GetChild(1).GetChild(0).GetChild(5).GetChild(0).GetComponent<Text>().text = "" + towerLevelUp.buffInfo2;
+
+            upgradeButtonObject2.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+            upgradeButtonObject2.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
+        }
+        
 
         unlockButtonObject.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + towerLevelUp.unlockExp;
     }
-    /*void UpdateUpgradeTowerInfo(GameObject TB, GameObject upgradeButtonObject)
+    void UpdateUpgradeTowerInfo(GameObject TB, GameObject upgradeButtonObject)
     {
         //Modify UI with tower information
         GameObject Tower = TB.transform.GetChild(0).gameObject;
         GameObject Base = TB.transform.GetChild(1).gameObject;
-        GameObject towerInfo = upgradeButtonObject.transform.GetChild(1).gameObject;
+        GameObject towerInfo = upgradeButtonObject.transform.GetChild(1).GetChild(1).gameObject;
         towerInfo.transform.GetChild(0).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxWood;
         towerInfo.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = "" + Base.GetComponent<Base>().MaxStone;
         towerInfo.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().Damage;
         towerInfo.transform.GetChild(3).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackInterval;
         towerInfo.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackRange;
         towerInfo.transform.GetChild(5).GetChild(0).GetComponent<Text>().text = "" + Tower.GetComponent<Tower>().attackType;
-
-    }*/
+    }
 
     void UpgradeTaskOnClick1()
     {
@@ -150,7 +179,7 @@ public class TowerInfo : MonoBehaviour
 
     void UnlockTaskOnClick()
     {
-        Manager.GetComponent<TowerUnlockManager>().SetUnclocked(Tower.GetComponent<Tower>().ID, Tower.GetComponent<Tower>().level, towerLevelUp.unlockExp); 
+        if (Manager.GetComponent<TowerUnlockManager>().SetUnclocked(towerLevelUp.unlockExp)) Tower.GetComponent<Tower>().isUpgradeUnlocked = true;
         ResetAllButtons();
         UpdateTowerInfoUI(Tower);
     }
@@ -164,6 +193,7 @@ public class TowerInfo : MonoBehaviour
         upgradeButton1.interactable = false;
         upgradeButton2.interactable = false;
         deleteButton.interactable = false;
+        square.SetActive(false);
     }
 
     void Update()
@@ -178,6 +208,9 @@ public class TowerInfo : MonoBehaviour
             else Tower = hitObject;
 
             UpdateTowerInfoUI(Tower);
+
+            square.SetActive(true);
+            square.transform.position = hitObject.transform.position;
         }              
     }
 }

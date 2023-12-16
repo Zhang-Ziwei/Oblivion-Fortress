@@ -12,6 +12,8 @@ public class EnemyLevelData: ScriptableObject
 
     public bool isActive;
 
+    public int expGain;
+
     private float timer;
 
     // getter and setter of timer

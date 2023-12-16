@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 
-public class Poison: EnemyBuff
+public class Poison: PlayerDebuff
 {
     public float damage;
 
@@ -14,18 +14,14 @@ public class Poison: EnemyBuff
 
     private HPControl playerHP;
 
-    public override void Init()
-    {
-        base.Init();
+    public override void OnBuff(Enemy enemy) {
         buffName = "Poison";
-
+        if (DebuffLogList.Instance.CheckDebuff(buffName)) {
+            return;
+        }
+        base.OnBuff(enemy);
     }
 
-    // public override void Buff()
-    // {
-        
-
-    // }
     public override IEnumerator BuffCoroutine() {
         float timer = 0;
 
@@ -38,7 +34,11 @@ public class Poison: EnemyBuff
             yield return new WaitForSeconds(interval);
             
         }
-        Destroy(nowItem);
+        if (nowItem != null)
+        {
+            particle?.Stop();
+        }
         yield return new WaitForSeconds(cooldown);
+        Destroy(nowItem);
     }
 }

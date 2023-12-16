@@ -1,6 +1,7 @@
 # OS auto-generated files
 .DS_Store
 *.db
+connectwebgl.zip
 
 # Unity3D auto-generated folders
 /[Ll]ibrary/
@@ -12,6 +13,10 @@
 /[Ll]ocal[Cc]ache/
 /Assets/TextMesh Pro/
 /Assets/TowerGamePack/
+/[Ll]ogs/
+/[Uu]serSettings/
+/.vs/
+/.vscode/
 
 # Auto-generated Visual Studio or MonoDevelop solution and project files
 *.csproj
