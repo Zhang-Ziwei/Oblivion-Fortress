@@ -23,7 +23,7 @@
   - 攻擊不一定會觸發中毒效果
   - 撿起道具時動畫有機率卡住，原因不明，需要更多測試
   - 手上的道具有機率無法直接放下，需和其他道具切換
-  - 降MaxHP塔發動時遊戲會卡死(出現Transform child out of bounds)
+  - 降MaxHP塔發動時有機率會卡死(出現Transform child out of bounds)
   - 召喚怪物時有機率卡死(出現Transform child out of bounds)
   - 網頁版在非全螢幕模式下計時器不會顯示毫秒
 
