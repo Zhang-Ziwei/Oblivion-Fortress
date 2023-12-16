@@ -539,11 +539,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-<<<<<<< HEAD
   m_ExitTime: 0.009565215
-=======
-  m_ExitTime: 0.06585186
->>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -571,11 +567,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 4.656613e-10
   m_TransitionOffset: 0
-<<<<<<< HEAD
   m_ExitTime: 0.006386642
-=======
-  m_ExitTime: 0.059061084
->>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -884,47 +876,43 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-<<<<<<< HEAD
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Run_wood
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: wood
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Roll_wood
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death_ax
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death_ham
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Death_wood
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-=======
     m_Controller: {fileID: 9100000}
->>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1235,11 +1223,7 @@ AnimatorStateMachine:
     m_Position: {x: 420, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6967653075747858257}
-<<<<<<< HEAD
     m_Position: {x: 670, y: 400, z: 0}
-=======
-    m_Position: {x: 660, y: 390, z: 0}
->>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
   - serializedVersion: 1
     m_State: {fileID: -7112245083461789985}
     m_Position: {x: 670, y: 490, z: 0}
@@ -1281,13 +1265,13 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 985459206989951948}
-    m_Position: {x: 130, y: 510, z: 0}
+    m_Position: {x: 140, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7468039168552811836}
     m_Position: {x: -110, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4598964870890697264}
-    m_Position: {x: 130, y: 600, z: 0}
+    m_Position: {x: 160, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4709357949481983003}
     m_Position: {x: -110, y: 460, z: 0}

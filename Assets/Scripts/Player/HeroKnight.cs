@@ -475,12 +475,8 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //丢下工具
-<<<<<<< HEAD
         // if (toolstype == 0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
         if (toolstype==0)
-=======
-        if (toolstype==0 && ((collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe")))
->>>>>>> d7fcc1c4f3080ab1a973e058fb3162a88a107ca7
         {
             Debug.Log("drop tool");
             m_animator.SetBool("ham", false);
