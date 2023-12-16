@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 827579835455497310}
   - component: {fileID: 6145687875906654770}
   m_Layer: 0
-  m_Name: BringerOfDeath
+  m_Name: BringerOfDeath_Summon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,19 @@ MonoBehaviour:
     death: 0
   surviveEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1579633468066272305, guid: 890527f941b141e4087537b636c563f3, type: 3}
+        m_TargetAssemblyTypeName: Summon, Assembly-CSharp
+        m_MethodName: OnBuff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   attackEvent:
     m_PersistentCalls:
       m_Calls: []

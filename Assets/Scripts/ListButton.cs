@@ -31,8 +31,8 @@ public class ListButton : MonoBehaviour
         if(page == 0)
         {
             Game0.SetActive(false);
-            Game1.transform.position = new Vector2(410,540);
-            Game2.transform.position = new Vector2(960,540);
+            Game1.transform.position = new Vector2(Screen.width * 410/1920, Screen.height * 540/1080);
+            Game2.transform.position = new Vector2(Screen.width * 960/1920, Screen.height * 540/1080);
             Game3.SetActive(true);
             Left.SetActive(true);
             page = 1;
@@ -40,8 +40,8 @@ public class ListButton : MonoBehaviour
         else if(page == 1)
         {
             Game1.SetActive(false);
-            Game2.transform.position = new Vector2(410,540);
-            Game3.transform.position = new Vector2(960,540);
+            Game2.transform.position = new Vector2(Screen.width * 410/1920, Screen.height * 540/1080);
+            Game3.transform.position = new Vector2(Screen.width * 960/1920, Screen.height * 540/1080);
             Game4.SetActive(true);
             Right.SetActive(false);
             page = 2;
@@ -53,8 +53,8 @@ public class ListButton : MonoBehaviour
         if(page == 1)
         {
             Game0.SetActive(true);
-            Game1.transform.position = new Vector2(960,540);
-            Game2.transform.position = new Vector2(1510,540);
+            Game1.transform.position = new Vector2(Screen.width * 960/1920, Screen.height * 540/1080);
+            Game2.transform.position = new Vector2(Screen.width * 1510/1920, Screen.height * 540/1080);
             Game3.SetActive(false);
             Left.SetActive(false);
             page = 0;
@@ -62,8 +62,8 @@ public class ListButton : MonoBehaviour
         else if(page == 2)
         {
             Game1.SetActive(true);
-            Game2.transform.position = new Vector2(960,540);
-            Game3.transform.position = new Vector2(1510,540);
+            Game2.transform.position = new Vector2(Screen.width * 960/1920, Screen.height * 540/1080);
+            Game3.transform.position = new Vector2(Screen.width * 1510/1920, Screen.height * 540/1080);
             Game4.SetActive(false);
             Right.SetActive(true);
             page = 1;

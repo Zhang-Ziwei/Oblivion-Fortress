@@ -16,3 +16,4 @@ MonoBehaviour:
   spawnInterval: 1
   beforeSpawnInterval: 60
   isActive: 1
+  expGain: 0

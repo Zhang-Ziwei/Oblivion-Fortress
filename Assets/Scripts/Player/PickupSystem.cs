@@ -19,9 +19,6 @@ public class PickupSystem : MonoBehaviour
 
     public Transform parent;
 
-    public GameObject tempicon_wood;
-    public GameObject tempicon_rock;
-
     public string Tag = "Base";
     public float depositRange = 3;
     bool locking = false;
@@ -74,7 +71,6 @@ public class PickupSystem : MonoBehaviour
             else if (collision.gameObject.tag == "wood" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "rock")) //pick up wood
             {
                 type = 3;
-                tempicon_wood.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
                 putdown(temp);
@@ -82,7 +78,6 @@ public class PickupSystem : MonoBehaviour
             else if (collision.gameObject.tag == "rock" && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe") && !(collision.gameObject.tag == "wood")) //pick up rock
             {
                 type = 4;
-                tempicon_rock.SetActive(true);
                 Destroy(collision.gameObject);
                 locking = true;
                 putdown(temp);
@@ -126,12 +121,10 @@ public class PickupSystem : MonoBehaviour
                 if (item == 3) //add 1 wood to base
                 {
                     if (nearestBase.GetComponent<Base>().depositWood(1) != 0) Instantiate(wood, transform.position, Quaternion.identity, parent);
-                    tempicon_wood.SetActive(false);
                 }
                 else if (item == 4) //add 1 rock to base
                 {
                     if (nearestBase.GetComponent<Base>().depositStone(1) != 0) Instantiate(rock, transform.position, Quaternion.identity, parent);
-                    tempicon_rock.SetActive(false);
                 }
             }
             else //if base not exist
@@ -139,12 +132,10 @@ public class PickupSystem : MonoBehaviour
                 if (item == 3) //put down wood
                 {
                     Instantiate(wood, transform.position, Quaternion.identity, parent);
-                    tempicon_wood.SetActive(false);
                 }
                 else if (item == 4) //put down rock
                 {
                     Instantiate(rock, transform.position, Quaternion.identity, parent);
-                    tempicon_rock.SetActive(false);
                 }
             }
         }

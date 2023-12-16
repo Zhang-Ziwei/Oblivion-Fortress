@@ -21,7 +21,6 @@ public class HeroKnight : MonoBehaviour {
     private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
-    private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
     private int toolstype = 0;
@@ -30,9 +29,7 @@ public class HeroKnight : MonoBehaviour {
     public float movespeed = 2f;
     public Camera maincamera;
     private Animation animate;
-    private int rush_cyclenum = 100;
-    private int update_totaltime = 101;// must more than rush_cyclenum
-    private int update_temptime = 0;
+    private int update_totaltime = 100;
     private bool isRush = false;
 
     private float rushTime = 0.5f;
@@ -475,7 +472,6 @@ public class HeroKnight : MonoBehaviour {
         toolstype = GetComponent<PickupSystem>().type;
         if (collision.gameObject.tag == "axe" && toolstype==1)
         {
-            Debug.Log("pickup pickaxe");
             m_animator.SetBool("axe", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 1);
@@ -490,7 +486,6 @@ public class HeroKnight : MonoBehaviour {
         //捡起锤子
         if (collision.gameObject.tag == "pickaxe" && toolstype == 2)
         {
-            Debug.Log("pickup axe");
             m_animator.SetBool("ham", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 2);
@@ -526,7 +521,6 @@ public class HeroKnight : MonoBehaviour {
         // if (toolstype == 0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
         if (toolstype==0)
         {
-            Debug.Log("drop tool");
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);

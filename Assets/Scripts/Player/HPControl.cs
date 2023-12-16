@@ -83,6 +83,8 @@ public class HPControl : MonoBehaviour
                 m_animator.SetTrigger("Death_ham");
             if (toolstype == 3)
                 m_animator.SetTrigger("Death_wood");
+            if (toolstype == 4)
+                m_animator.SetTrigger("Death_stone");
             
 
             // blocking player control
@@ -105,7 +107,28 @@ public class HPControl : MonoBehaviour
 
         HP = maxHP;
         PenaltyTime += 10; // relive time +10s
-        m_animator.SetTrigger("Hurt"); // wake up
+        
+        //wake up animation
+        if(toolstype == 0)
+        {
+            m_animator.SetTrigger("Hurt");
+        }
+        if (toolstype == 1)
+        {
+            m_animator.SetTrigger("Hurt_ax");
+        }
+        if (toolstype == 2)
+        {
+            m_animator.SetTrigger("Hurt_ham");
+        }
+        if (toolstype == 3)
+        {
+            m_animator.SetTrigger("Hurt_wood");
+        }
+        if (toolstype == 4)
+        {
+            m_animator.SetTrigger("Hurt_stone");
+        }
     }
 
     public void RecoverHP(float value) {
@@ -119,7 +142,7 @@ public class HPControl : MonoBehaviour
     void pausegame()
     {
         //pause menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
         {
             if (PauseEnable == false)
             {

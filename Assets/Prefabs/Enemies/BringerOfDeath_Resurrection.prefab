@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 827579835455497310}
   - component: {fileID: 6145687875906654770}
   m_Layer: 0
-  m_Name: BringerOfDeath
+  m_Name: BringerOfDeath_Resurrection
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,7 +439,19 @@ MonoBehaviour:
       m_Calls: []
   deathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3257074774253642540, guid: c0b77a0455cee7a41ac3da235088d997, type: 3}
+        m_TargetAssemblyTypeName: Resurrection, Assembly-CSharp
+        m_MethodName: OnBuff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &6145687875906654770
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

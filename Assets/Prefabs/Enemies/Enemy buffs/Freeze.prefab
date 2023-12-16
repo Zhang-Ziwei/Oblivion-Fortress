@@ -14500,8 +14500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd2af316a0a8404cb67bdc9c36a2951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  cooldown: 1
+  duration: 3
+  cooldown: 5
   buffIcon: {fileID: 1401011104, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
 --- !u!1 &6360393606373794259
 GameObject:

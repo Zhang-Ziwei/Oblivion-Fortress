@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a478a7b656ca61e448767629340c2dcb, type: 3}
-  m_Name: Level6_Enemies
+  m_Script: {fileID: 11500000, guid: 674bf545a0083024faf35a6f1749404c, type: 3}
+  m_Name: Summon_BringerOfDeath
   m_EditorClassIdentifier: 
-  enemiesIDs: 06000000
-  spawnInterval: 1.5
-  beforeSpawnInterval: 40
-  isActive: 0
+  EnemyPrefab: {fileID: 5983025356698328478, guid: 5de89acfe68606f428a5c1d29374b834, type: 3}
+  EnemyID: 10
