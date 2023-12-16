@@ -67,7 +67,15 @@ public class HPControl : MonoBehaviour
             Debug.Log("Died");
             die = true;
             AccuPT = 0;
-            m_animator.SetTrigger("Death");
+            if (toolstype == 0)
+                m_animator.SetTrigger("Death");
+            if (toolstype == 1)
+                m_animator.SetTrigger("Death_ax");
+            if (toolstype == 2)
+                m_animator.SetTrigger("Death_ham");
+            if (toolstype == 3)
+                m_animator.SetTrigger("Death_wood");
+            
 
             // blocking player control
             GetComponent<HeroKnight>().enabled = false;

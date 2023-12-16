@@ -79,6 +79,8 @@ public class HeroKnight : MonoBehaviour {
             if (toolstype == 2)
                 m_animator.SetTrigger("Roll_ham");
                 m_animator.SetBool("Attack_stop", false);
+            if (toolstype == 3)
+                m_animator.SetTrigger("Roll_wood");
         }
         if (isSpeedUp && (rushTimer < 0))//update_totaltime - update_temptime == rush_cyclenum)
         {
@@ -115,6 +117,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("ham", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 3)
+            {
+                m_animator.SetBool("Run_wood", true);
+                m_animator.SetBool("wood", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         if (Input.GetKey(KeyCode.A) && !Input.GetKeyDown(KeyCode.E))
         {
@@ -131,6 +139,12 @@ public class HeroKnight : MonoBehaviour {
             {
                 m_animator.SetBool("Run_ham", true);
                 m_animator.SetBool("ham", false);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 3)
+            {
+                m_animator.SetBool("Run_wood", true);
+                m_animator.SetBool("wood", false);
                 m_animator.SetBool("Run", false);
             }
         }
@@ -151,6 +165,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("ham", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 3)
+            {
+                m_animator.SetBool("Run_wood", true);
+                m_animator.SetBool("wood", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         if (Input.GetKey(KeyCode.S) && !Input.GetKeyDown(KeyCode.E))
         {
@@ -169,6 +189,12 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("ham", false);
                 m_animator.SetBool("Run", false);
             }
+            if (toolstype == 3)
+            {
+                m_animator.SetBool("Run_wood", true);
+                m_animator.SetBool("wood", false);
+                m_animator.SetBool("Run", false);
+            }
         }
         m_body2d.MovePosition(m_body2d.position + dir.normalized * movespeed * Time.deltaTime);
         if(!Input.GetKey(KeyCode.D)&& !Input.GetKey(KeyCode.A)&& !Input.GetKey(KeyCode.W)&& !Input.GetKey(KeyCode.S) && !Input.GetMouseButton(0))
@@ -183,6 +209,12 @@ public class HeroKnight : MonoBehaviour {
             if (toolstype == 2)
             {
                 m_animator.SetBool("Run_ham", false);
+                //m_animator.SetBool("ham", true);
+                m_animator.SetBool("Run", false);
+            }
+            if (toolstype == 3)
+            {
+                m_animator.SetBool("Run_wood", false);
                 //m_animator.SetBool("ham", true);
                 m_animator.SetBool("Run", false);
             }
@@ -354,21 +386,33 @@ public class HeroKnight : MonoBehaviour {
             //Invoke("delayOpen", 2f); //5秒后调用 delayOpen () 函数  ，只调用一次  do not need to goto hero_ax again
         }
 
-
-        // Block
-        else if (Input.GetMouseButtonDown(1) && !m_rolling)
+        if (toolstype == 0)
         {
-            m_animator.SetTrigger("Block");
-            m_animator.SetBool("IdleBlock", true);
+            m_animator.SetBool("ham", false);
+            m_animator.SetBool("axe", false);
+            m_animator.SetBool("wood", false);
+            m_animator.SetBool("Run_ham", false);
+            m_animator.SetBool("Run_ax", false);
+            m_animator.SetBool("Run_wood", false);
+            m_animator.SetBool("Attack_stop", false);
+            m_animator.SetInteger("Tool_type", 0);
         }
 
-        else if (Input.GetMouseButtonUp(1))
-            m_animator.SetBool("IdleBlock", false);
-        
+            /*
+            // Block
+            else if (Input.GetMouseButtonDown(1) && !m_rolling)
+            {
+                m_animator.SetTrigger("Block");
+                m_animator.SetBool("IdleBlock", true);
+            }
+
+            else if (Input.GetMouseButtonUp(1))
+                m_animator.SetBool("IdleBlock", false);
+            */
     }
 
-    // Animation Events
-    // Called in slide animation.
+        // Animation Events
+        // Called in slide animation.
     void AE_SlideDust()
     {
         Vector3 spawnPosition;
@@ -400,6 +444,7 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 1);
             m_animator.SetBool("ham", false);
+            m_animator.SetBool("wood", false);
             //toolstype = 1;
             //m_animator.SetTrigger("HeroKnight_ax");
             //toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
@@ -412,14 +457,30 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 2);
             m_animator.SetBool("axe", false);
+            m_animator.SetBool("wood", false);
+            //toolstype = 2;
+        }
+
+        //捡起木头
+        if (collision.gameObject.tag == "wood" && toolstype == 3)
+        {
+            m_animator.SetBool("wood", true);
+            m_animator.SetInteger("Tool_type", 3);
+            m_animator.SetBool("axe", false);
+            m_animator.SetBool("ham", false);
             //toolstype = 2;
         }
 
         //丢下工具
-        if (toolstype==0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
+        // if (toolstype == 0 && !(collision.gameObject.tag == "pickaxe") && !(collision.gameObject.tag == "axe"))
+        if (toolstype==0)
         {
             m_animator.SetBool("ham", false);
             m_animator.SetBool("axe", false);
+            m_animator.SetBool("wood", false);
+            m_animator.SetBool("Run_ham", false);
+            m_animator.SetBool("Run_ax", false);
+            m_animator.SetBool("Run_wood", false);
             m_animator.SetBool("Attack_stop", false);
             m_animator.SetInteger("Tool_type", 0);
             
