@@ -2,7 +2,7 @@
 
 ## 12/16 from sankonsky
 - 發布測試版本，可遊玩Ch1、Ch2
-  - 
+  - https://play.unity.com/mg/other/oblivion-fortress
 - 移除左下角手持物icon
 - 暫停鍵改為Esc與Tab鍵皆可操作，解決webgl版本Esc會跳出全螢幕的問題
 - 建立有技能的敵人Resource，可直接使用或自行修改
