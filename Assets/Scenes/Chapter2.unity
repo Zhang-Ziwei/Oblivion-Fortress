@@ -10829,6 +10829,9 @@ MonoBehaviour:
   NowLevelText: {fileID: 612133147}
   LevelStartAudio: {fileID: 199165954}
   BackgroundMusic: {fileID: 199165955}
+  isInfiniteMode: 0
+  randomGenerateEnemy: 
+  randomGenerateProbability: 0
 --- !u!4 &199165953
 Transform:
   m_ObjectHideFlags: 0
@@ -11736,7 +11739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: In this chapter, you will gain EXP when by completing certain levels. Use
+  m_Text: In this chapter, you will gain EXP when by completed certain levels. Use
     it to unlock tower upgrades and defend against stronger enemy invasions!
 --- !u!222 &248302538
 CanvasRenderer:
@@ -37217,6 +37220,8 @@ MonoBehaviour:
   parent: {fileID: 0}
   Tag: Base
   depositRange: 3
+  locking: 0
+  touchitem: 0
 --- !u!4 &1533083827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8753630203296474150, guid: 3e14bf7b39e2c2940a826eb72e6b8043, type: 3}

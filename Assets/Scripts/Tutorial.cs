@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
     public GameObject help10;
     public GameObject help11;
     public GameObject help12;
+    public GameObject help13;
 
     public GameObject towerinfo;
 
@@ -33,6 +34,8 @@ public class Tutorial : MonoBehaviour
     GameObject towerbase;
     GameObject tree;
     GameObject tower;
+    GameObject enemy;
+    bool hadspawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +60,6 @@ public class Tutorial : MonoBehaviour
                 base_locate.SetActive(false);
                 base_frame.SetActive(false);
                 help8.SetActive(true);
-                
                 stage = 8;
             }
         }
@@ -96,8 +98,19 @@ public class Tutorial : MonoBehaviour
             if(playerHP.HP < playerHP.maxHP || castle.health < castle.maxHealth)
             {
                 help12.SetActive(true);
-                stage = 13;
                 Invoke("closehelp12", 10);
+            }
+            enemy = GameObject.Find("Skeleton(Clone)");
+            if(enemy != null)
+            {
+                hadspawned = true;
+            }
+            if(enemy == null && hadspawned)
+            {
+                stage = 13;
+                closehelp12();
+                help13.SetActive(true);
+                Invoke("closehelp13", 10);
             }
         }
     }
@@ -150,5 +163,9 @@ public class Tutorial : MonoBehaviour
     void closehelp12()
     {
         help12.SetActive(false);
+    }
+    void closehelp13()
+    {
+        help13.SetActive(false);
     }
 }
