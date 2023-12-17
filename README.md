@@ -1,5 +1,19 @@
 # Oblivion-Fortress Update Log
 
+## 12/17 from kyleko56
+- 設計無盡模式
+  - 目前有 20 種敵人組合，分成四個難度: VeryEasy, Easy, Normal, Hard (可以再幫忙加一點不同的敵人組合)
+    - 每波都有機率額外生成特殊怪物 (目前為 20% 機率生成回血法師、緩速法師)
+  - 前五波會生成 VeryEasy, VeryEasy, Easy, Normal, Hard 的敵人組合，接下來每五波會生成 Easy, Easy, Normal, Normal, Hard 的敵人組合
+  - 每五波後敵人會加強，第一次翻倍血量，第二次增加一條命，第三次增加攻擊力，以此循環下去
+  - 目前資源生成間隔為 10~20 秒
+- 已知 bug
+  - 敵人無法同時復活，敵人復活可能會變成無敵待在原地不動
+    - 暫時先修改 Enemy.cs 中的 DeductHealth()，復活變成瞬間回滿生命
+- 修復 bug
+  - 在緩速效果時翻滾有機率造成玩家永久加速或減速
+  - 降MaxHP塔發動時有機率會卡死(出現Transform child out of bounds)
+
 ## 12/16 from sankonsky
 - 發布測試版本，可遊玩Ch1、Ch2
   - https://play.unity.com/mg/other/oblivion-fortress
