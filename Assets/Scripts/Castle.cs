@@ -17,10 +17,11 @@ public class Castle : MonoBehaviour
     public AudioSource BackgroundMusic;
 
     public void GameOver() {
-        Debug.Log("Game Over");
-        Time.timeScale = 0;
         GameOverUI.SetActive(true);
+        Animator UIani = GameOverUI.GetComponent<Animator>();
+        UIani.SetBool("open", true);
         BackgroundMusic.Stop();
+        Time.timeScale = 0;
     }
 
     public void DeductHealth(float damage) {

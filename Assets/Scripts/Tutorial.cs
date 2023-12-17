@@ -27,6 +27,7 @@ public class Tutorial : MonoBehaviour
     public GameObject base_locate;
     public GameObject base_frame;
     public GameObject LevelManager;
+    public GameObject BackgroundMusic;
     
     PickupSystem pickup;
     HPControl playerHP;
@@ -156,6 +157,7 @@ public class Tutorial : MonoBehaviour
 
     void EnemyStart()
     {
+        BackgroundMusic.SetActive(false);
         LevelManager.SetActive(true);
         help11.SetActive(false);
         stage = 12;

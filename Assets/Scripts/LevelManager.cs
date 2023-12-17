@@ -114,7 +114,7 @@ public class LevelManager : MonoBehaviour
         inLevel = false;
 
         Path = GameObject.Find("Path");
-
+        
         // get path locations
         Transform[] Locs = Path.GetComponentsInChildren<Transform>();
         PathLocations = new List<Transform>();
@@ -212,9 +212,11 @@ public class LevelManager : MonoBehaviour
     }
 
     private void GameWin() {
-        Time.timeScale = 0;
         WinUI.SetActive(true);
+        Animator UIani = WinUI.GetComponent<Animator>();
+        UIani.SetBool("open", true);
         BackgroundMusic.Stop();
+        Time.timeScale = 0;
     }
 
     private void UpdateTimerText()
