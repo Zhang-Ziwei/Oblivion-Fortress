@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a478a7b656ca61e448767629340c2dcb, type: 3}
-  m_Name: Level1_Enemies
+  m_Name: VeryEasy_Enemies 4
   m_EditorClassIdentifier: 
-  enemiesIDs: 0c000000010000000100000001000000090000000200000004000000030000000500000006000000
-  spawnInterval: 1
-  beforeSpawnInterval: 1
+  enemiesIDs: 030000000300000002000000
+  spawnInterval: 2.5
+  beforeSpawnInterval: 60
   isActive: 1
-  expGain: 0
+  expGain: 15

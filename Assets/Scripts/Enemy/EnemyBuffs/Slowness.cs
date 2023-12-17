@@ -21,7 +21,7 @@ public class Slowness: PlayerDebuff
         float originSpeed = playerController.movespeed;
         playerController.movespeed = originSpeed * ratio;
         yield return new WaitForSeconds(duration);
-        playerController.movespeed = originSpeed;
+        playerController.movespeed /= ratio;
         if (nowItem != null)
         {
             particle?.Stop();

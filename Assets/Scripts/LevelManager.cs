@@ -83,7 +83,11 @@ public class LevelManager : MonoBehaviour
 
     public Dictionary<string, EnemyAudio> enemyAudios;
 
+    public bool isInfiniteMode = false;
 
+    public List<int> randomGenerateEnemy;
+
+    public float randomGenerateProbability = 0f;
     // Tilemap GroundMap;
     // Grid grid;
 
@@ -97,6 +101,8 @@ public class LevelManager : MonoBehaviour
     private float timer;
 
     private int enemiesLeft;
+
+    private Dictionary<string, int> Ends = new Dictionary<string, int>();
 
     void Awake() {
         Instance = this;
@@ -131,17 +137,38 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (isInfiniteMode) {
+            
+            enemyLevelDatas = new List<EnemyLevelData>();
 
-        // get all enemy level data
-        EnemyLevelData[] temp = Resources.LoadAll<EnemyLevelData>($"Enemies/EnemyLevelData/{gameObject.scene.name}");
+            int levelNum = 0;
+            string[] difficulties = {"VeryEasy", "Easy", "Normal", "Hard"};
+            foreach (string d in difficulties) {
+                EnemyLevelData[] temp = Resources.LoadAll<EnemyLevelData>($"Enemies/EnemyLevelData/{gameObject.scene.name}/" + d);
 
-        // add in list if active
-        enemyLevelDatas = new List<EnemyLevelData>();
-        foreach (EnemyLevelData enemyLevelData in temp) {
-            if (enemyLevelData.isActive) {
-                enemyLevelDatas.Add(enemyLevelData);
+                // add in list if active
+                foreach (EnemyLevelData enemyLevelData in temp) {
+                    if (enemyLevelData.isActive) {
+                        enemyLevelDatas.Add(enemyLevelData);
+                    }
+                    levelNum ++;
+                }
+                Ends[d] = levelNum;
             }
         }
+        else {
+            // get all enemy level data
+            EnemyLevelData[] temp = Resources.LoadAll<EnemyLevelData>($"Enemies/EnemyLevelData/{gameObject.scene.name}");
+
+            // add in list if active
+            enemyLevelDatas = new List<EnemyLevelData>();
+            foreach (EnemyLevelData enemyLevelData in temp) {
+                if (enemyLevelData.isActive) {
+                    enemyLevelDatas.Add(enemyLevelData);
+                }
+            }
+        }
+        
         enemyAudios = new Dictionary<string, EnemyAudio>();
 
         // load audio
@@ -172,7 +199,7 @@ public class LevelManager : MonoBehaviour
         UpdateEnemiesLeaveText();
         // check whether LoadLevel is finished
         if (!inLevel) {
-            if (NowLevel < enemyLevelDatas.Count)  {
+            if (isInfiniteMode || NowLevel < enemyLevelDatas.Count)  {
                 NowLevel ++;
                 StartCoroutine(LoadLevel());
             } else {
@@ -206,9 +233,44 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadLevel() {
         inLevel = true;
-        Debug.Log("Load Level " + NowLevel);
 
-        EnemyLevelData enemyLevelData = enemyLevelDatas[NowLevel - 1];
+        Debug.Log("Load Level " + NowLevel);
+        //Debug.Log(" " + Ends["VeryEasy"] + Ends["Easy"] + Ends["Normal"] +Ends["Hard"]);
+        EnemyLevelData enemyLevelData;
+        if (isInfiniteMode) {
+
+            // random summon
+            if (NowLevel <= 5) {
+                if (NowLevel <= 2)  enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(0, Ends["VeryEasy"])]; // summon Very Easy level
+                else if (NowLevel == 3)  enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["VeryEasy"], Ends["Easy"])]; // summon Easy level
+                else if (NowLevel == 4)  enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["Easy"], Ends["Normal"])]; // summon Normal level
+                else enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["Normal"], Ends["Hard"])]; // summon Hard level
+            }
+            else {
+                if (NowLevel % 5 == 0)  enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["Normal"], Ends["Hard"])]; // summon Hard level
+                else if (NowLevel % 5 <= 2)  enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["VeryEasy"], Ends["Easy"])]; // summon Easy level
+                else enemyLevelData = enemyLevelDatas[UnityEngine.Random.Range(Ends["Easy"], Ends["Normal"])]; // summon Normal level
+            }
+
+            // boost enemy every 5 level
+            if (NowLevel >= 5 && NowLevel % 5 == 1) {
+                if (NowLevel % 15 == 1) {
+                    Difficulty.enemyDamageRate *= 1.5f;
+                }
+                else if (NowLevel % 15 == 6) {
+                    Difficulty.enemyHealthRate *= 2;
+                }
+                else {
+                    Difficulty.enemyAdditionLife += 1;
+                }
+            }
+        }
+        else {
+            enemyLevelData = enemyLevelDatas[NowLevel - 1];
+
+            // Increase enemy HP at level 6
+            if (NowLevel == 6) Difficulty.enemyHealthRate *= 2f;
+        }
 
         if (enemyLevelData == null) {
             Debug.Log("LevelManager.cs: enemyLevelData is null");
@@ -218,9 +280,6 @@ public class LevelManager : MonoBehaviour
         if (enemyLevelData.spawnInterval == 0) {
             Debug.Log("LevelManager.cs: spawnInterval is 0");
         }
-
-        // Increase enemy HP at level 6
-        if (NowLevel == 6) Difficulty.enemyHealthRate *= 2f;
 
         // set timer to beforeSpawnInterval
         timer = enemyLevelData.beforeSpawnInterval * Difficulty.levelIntervalRate;
@@ -253,6 +312,12 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(enemyLevelData.spawnInterval);
         }
         
+        foreach (int enemyIndx in randomGenerateEnemy) {
+            if (UnityEngine.Random.Range(0f, 1f) < randomGenerateProbability) {
+                EnqueEnemyToSummon(enemyIndx, null);
+                yield return new WaitForSeconds(enemyLevelData.spawnInterval);
+            } 
+        }
 
         inLevel = false;
 

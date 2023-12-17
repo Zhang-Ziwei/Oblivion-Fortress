@@ -24591,6 +24591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cec75251aa90140ba141003286652a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
-  cooldown: 0.5
+  duration: 1
+  cooldown: 0
   buffIcon: {fileID: -214298916, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}

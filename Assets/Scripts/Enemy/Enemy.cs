@@ -164,7 +164,11 @@ public class Enemy : MonoBehaviour
     public void Init(int enemyID, Vector3? position = null)
     {
         PathIndex = 1;
+
         maxHealth *= Difficulty.enemyHealthRate;
+        life += Difficulty.enemyAdditionLife;
+        damage *= Difficulty.enemyDamageRate;
+
         health = maxHealth;
         ID = enemyID;
         healthBar.value = health / maxHealth;
@@ -288,6 +292,10 @@ public class Enemy : MonoBehaviour
         // animator.Play("take_hit", -1, 0f);
         if (health <= 0) {
             life--;
+            if (life > 0) {
+                health += maxHealth;
+                return;
+            }
             deathEvent?.Invoke(this);
             enemyAudio?.death.PlayDelayed(delayTime.death);
             StartCoroutine(DeathAnimation());
@@ -335,7 +343,7 @@ public class Enemy : MonoBehaviour
             else if (debuffName == "reduceMaxHP"){
                 health *= debuffValue;
                 maxHealth *= debuffValue;
-                healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = new Color (0.6f, 0 , 1f);
+                healthBar.transform.GetChild(2).GetChild(0).GetComponent<Image>().color = new Color (0.6f, 0 , 1f);
             }
         }
     }
@@ -358,7 +366,7 @@ public class Enemy : MonoBehaviour
                 else if (Debuffs[i].debuffName == "reduceMaxHP"){
                     health /= Debuffs[i].debuffValue;
                     maxHealth /= Debuffs[i].debuffValue;
-                    healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = Color.red;
+                    healthBar.transform.GetChild(2).GetChild(0).GetComponent<Image>().color = Color.red;
                 }
                 Debuffs.RemoveAt(i);
                 DebuffTimers.RemoveAt(i);

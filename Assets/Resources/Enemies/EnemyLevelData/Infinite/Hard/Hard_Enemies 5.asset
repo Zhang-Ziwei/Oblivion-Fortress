@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a478a7b656ca61e448767629340c2dcb, type: 3}
-  m_Name: Level6_Enemies
+  m_Name: Hard_Enemies 5
   m_EditorClassIdentifier: 
-  enemiesIDs: 06000000
-  spawnInterval: 1.5
-  beforeSpawnInterval: 40
+  enemiesIDs: 0600000006000000060000000600000006000000
+  spawnInterval: 3
+  beforeSpawnInterval: 60
   isActive: 1
+  expGain: 15

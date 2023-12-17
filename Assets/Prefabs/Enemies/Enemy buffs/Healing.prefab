@@ -9694,7 +9694,7 @@ MonoBehaviour:
   buffIcon: {fileID: -651057808, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
   healAmount: 1
   interval: 0.5
-  healRange: 10
+  healRange: 30
   healHPPercent: 0.05
 --- !u!1 &5821598796187700788
 GameObject:

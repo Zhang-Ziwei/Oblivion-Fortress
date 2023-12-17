@@ -7,6 +7,8 @@ public class Difficulty: MonoBehaviour
 {
     public int difficultyId = 0;
     public static float enemyHealthRate = 1f;
+    public static int enemyAdditionLife = 0;
+    public static float enemyDamageRate = 1f;
     public static float levelIntervalRate = 1f;
     public static bool DebugMode = false;
 
