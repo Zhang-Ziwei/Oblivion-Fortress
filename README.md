@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## 12/17 from sankonsky
+- 修復 bug
+  - 修復撿起道具時動畫低機率卡住的問題
+
 ## 12/17 from kyleko56
 - 設計無盡模式
   - 目前有 20 種敵人組合，分成四個難度: VeryEasy, Easy, Normal, Hard (可以再幫忙加一點不同的敵人組合)

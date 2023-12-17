@@ -4,10 +4,6 @@ using System;
 
 public class HeroKnight : MonoBehaviour {
 
-    [SerializeField] float      m_speed = 4.0f;
-    [SerializeField] float      m_rollForce = 6.0f;
-    [SerializeField] GameObject m_slideDust;
-
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private Sensor_HeroKnight   m_groundSensor;
@@ -16,13 +12,8 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
     private bool                m_isWallSliding = false;
-    private bool                m_grounded = false;
-    private bool                m_rolling = false;
-    private int                 m_facingDirection = 1;
     private int                 m_currentAttack = 0;
     private float               m_timeSinceAttack = 0.0f;
-    private float               m_rollDuration = 8.0f / 14.0f;
-    private float               m_rollCurrentTime;
     private int toolstype = 0;
 
     // walk and rush in playcontroller
@@ -66,7 +57,6 @@ public class HeroKnight : MonoBehaviour {
             rushTimer = rushTime / 3 * 2;
             rushCoolDownTimer = rushTime;
             movespeed = movespeed * 3;
-            m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             isRush = true;
             isSpeedUp = true;
             if(toolstype == 0)
@@ -282,34 +272,14 @@ public class HeroKnight : MonoBehaviour {
     {
         // walk and rush in playcontroller
         update_totaltime++;
-        toolstype = GetComponent<PickupSystem>().type;
+        if(Input.GetKey(KeyCode.E)){
+            toolstype = GetComponent<PickupSystem>().type;
+        }
         //Move(toolstype);
         rush(toolstype);
 
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
-
-        // Increase timer that checks roll duration
-        if(m_rolling)
-            m_rollCurrentTime += Time.deltaTime;
-
-        // Disable rolling if timer extends duration
-        if(m_rollCurrentTime > m_rollDuration)
-            m_rolling = false;
-
-        //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State())
-        {
-            m_grounded = true;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
-
-        //Check if character just started falling
-        if (m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
 
         // -- Handle input and movement --
         float inputX = Input.GetAxis("Horizontal");
@@ -318,21 +288,12 @@ public class HeroKnight : MonoBehaviour {
         if (inputX > 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
-            m_facingDirection = 1;
         }
             
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
-            m_facingDirection = -1;
         }
-
-        // Move
-        if (!m_rolling )
-            m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
-
-        //Set AirSpeed in animator
-        m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
         // -- Handle Animations --
         //Wall Slide
@@ -340,7 +301,7 @@ public class HeroKnight : MonoBehaviour {
         m_animator.SetBool("WallSlide", m_isWallSliding);
 
         //Attack
-        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 0)
+        if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && toolstype == 0)
         {
             m_currentAttack++;
 
@@ -363,7 +324,7 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //Attack_ax
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 1)
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && toolstype == 1)
         {
             m_currentAttack++;
             m_animator.SetBool("Attack_stop", false);
@@ -390,7 +351,7 @@ public class HeroKnight : MonoBehaviour {
         }
 
         //Attack_ham
-        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && !m_rolling && toolstype == 2)
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > AttackInterval && toolstype == 2)
         {
             m_currentAttack++;
             m_animator.SetBool("Attack_stop", false);
@@ -429,92 +390,56 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("Attack_stop", false);
             m_animator.SetInteger("Tool_type", 0);
         }
-
-            /*
-            // Block
-            else if (Input.GetMouseButtonDown(1) && !m_rolling)
-            {
-                m_animator.SetTrigger("Block");
-                m_animator.SetBool("IdleBlock", true);
-            }
-
-            else if (Input.GetMouseButtonUp(1))
-                m_animator.SetBool("IdleBlock", false);
-            */
-    }
-
-        // Animation Events
-        // Called in slide animation.
-    void AE_SlideDust()
-    {
-        Vector3 spawnPosition;
-
-        if (m_facingDirection == 1)
-            spawnPosition = m_wallSensorR2.transform.position;
-        else
-            spawnPosition = m_wallSensorL2.transform.position;
-
-        if (m_slideDust != null)
-        {
-            // Set correct arrow spawn position
-            GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
-            // Turn arrow in correct direction
-            dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
-        }
     }
 
     //捡起
-    
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         //捡起斧头
         // UnityEngine.Debug.Log("持续碰撞:"+collision.gameObject.tag);
         toolstype = GetComponent<PickupSystem>().type;
         if (collision.gameObject.tag == "axe" && toolstype==1)
         {
+            Debug.Log("axe");
             m_animator.SetBool("axe", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 1);
             m_animator.SetBool("ham", false);
             m_animator.SetBool("wood", false);
             m_animator.SetBool("stone", false);
-            //toolstype = 1;
-            //m_animator.SetTrigger("HeroKnight_ax");
-            //toolstype = collision.GetComponent<PickUp>().toolstype;    // get the other other Collider2D involved in this collision's PickUp.cs toolstype parameter
-            //UnityEngine.Debug.Log(toolstype);
         }
         //捡起锤子
         if (collision.gameObject.tag == "pickaxe" && toolstype == 2)
         {
+            Debug.Log("pickaxe");
             m_animator.SetBool("ham", true);
             m_animator.SetBool("Attack_stop", true);
             m_animator.SetInteger("Tool_type", 2);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("wood", false);
             m_animator.SetBool("stone", false);
-            //toolstype = 2;
         }
 
         //捡起木头
         if (collision.gameObject.tag == "wood" && toolstype == 3)
         {
+            Debug.Log("wood");
             m_animator.SetBool("wood", true);
             m_animator.SetInteger("Tool_type", 3);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("ham", false);
             m_animator.SetBool("stone", false);
-            //toolstype = 2;
         }
 
         //捡起石头
         if (collision.gameObject.tag == "rock" && toolstype == 4)
         {
+            Debug.Log("stone");
             m_animator.SetBool("stone", true);
             m_animator.SetInteger("Tool_type", 4);
             m_animator.SetBool("axe", false);
             m_animator.SetBool("ham", false);
             m_animator.SetBool("wood", false);
-            //toolstype = 2;
         }
 
         //丢下工具

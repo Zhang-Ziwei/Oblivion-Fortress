@@ -21,8 +21,8 @@ public class PickupSystem : MonoBehaviour
 
     public string Tag = "Base";
     public float depositRange = 3;
-    bool locking = false;
-    bool touchitem = false;
+    public bool locking = false;
+    public bool touchitem = false;
 
 
     // Start is called before the first frame update
@@ -82,6 +82,7 @@ public class PickupSystem : MonoBehaviour
                 locking = true;
                 putdown(temp);
             }
+            touchitem = false;
         }
     }
 
@@ -90,6 +91,9 @@ public class PickupSystem : MonoBehaviour
         if(collision.gameObject.tag == "wood" || (collision.gameObject.tag == "pickaxe") || (collision.gameObject.tag == "axe") || (collision.gameObject.tag == "rock"))
         {
             touchitem = true;
+        }
+        else{
+            touchitem = false;
         }
     }
 
