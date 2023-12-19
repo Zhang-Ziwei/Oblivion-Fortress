@@ -1,5 +1,9 @@
 # Oblivion-Fortress Update Log
 
+## Final demo
+- Web版: https://play.unity.com/mg/other/oblivion-fortress
+- PC版: https://drive.google.com/file/d/1GKSFrKzyRePfYwqdUEVr2JdNgVZUJGaE
+
 ## 12/17 from sankonsky
 - chapter 3 編排完成
 - 修復 bug

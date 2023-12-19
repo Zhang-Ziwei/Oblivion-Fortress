@@ -1934,7 +1934,7 @@ MonoBehaviour:
   LevelStartAudio: {fileID: 199165954}
   BackgroundMusic: {fileID: 199165955}
   isInfiniteMode: 1
-  randomGenerateEnemy: 0800000009000000
+  randomGenerateEnemy: 0700000009000000
   randomGenerateProbability: 0.2
 --- !u!4 &199165953
 Transform:
@@ -6250,7 +6250,7 @@ MonoBehaviour:
   health: 0
   GameOverUI: {fileID: 1651409615}
   CastleHitAudio: {fileID: 8300000, guid: 57708e136d9c9724798de2ecfa2fed4d, type: 3}
-  BackgroundMusic: {fileID: 0}
+  BackgroundMusic: {fileID: 199165954}
 --- !u!212 &648813599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43895,8 +43895,8 @@ MonoBehaviour:
   stone: {fileID: 2228955041757129589, guid: 4e6e36842f274974b9b82ac4eadcaab0, type: 3}
   StonesDir: {fileID: 790007914}
   MapSize: 40
-  SpawnTimeUpper: 10
-  SpawnTimeLower: 20
+  SpawnTimeUpper: 15
+  SpawnTimeLower: 30
 --- !u!1 &1580124014
 GameObject:
   m_ObjectHideFlags: 0
