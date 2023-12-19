@@ -16,9 +16,9 @@ public class Freeze: PlayerDebuff
     }
     public override IEnumerator BuffCoroutine() {
         float originSpeed = playerController.movespeed;
-        playerController.movespeed = 0;
+        playerController.movespeed *= 0.001f;
         yield return new WaitForSeconds(duration);
-        playerController.movespeed = originSpeed;
+        playerController.movespeed /= 0.001f;
         if (nowItem != null)
         {
             particle?.Stop();

@@ -137,6 +137,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Difficulty.enemyHealthRateInChapter = 1f;
         if (isInfiniteMode) {
             
             enemyLevelDatas = new List<EnemyLevelData>();
@@ -260,7 +261,7 @@ public class LevelManager : MonoBehaviour
                     Difficulty.enemyDamageRate *= 1.5f;
                 }
                 else if (NowLevel % 15 == 6) {
-                    Difficulty.enemyHealthRate *= 2;
+                    Difficulty.enemyHealthRateInChapter *= 2;
                 }
                 else {
                     Difficulty.enemyAdditionLife += 1;
@@ -271,7 +272,7 @@ public class LevelManager : MonoBehaviour
             enemyLevelData = enemyLevelDatas[NowLevel - 1];
 
             // Increase enemy HP at level 6
-            if (NowLevel == 6) Difficulty.enemyHealthRate *= 2f;
+            if (NowLevel == 6) Difficulty.enemyHealthRateInChapter *= 2f;
         }
 
         if (enemyLevelData == null) {

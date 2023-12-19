@@ -431,7 +431,7 @@ public class Tower : MonoBehaviour
                             else enemy.GetComponent<Enemy>().GiveEnemyDebuff(0, slowDownTime, "slow", slowDownValue);
                         } 
                         else if(attackType == "AreaPoison") {
-                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(1, slowDownTime, "poison", Damage);
+                            enemy.GetComponent<Enemy>().GiveEnemyDebuff(1, slowDownTime, "poison", Damage, percentHPDamage);
                         }
                         else if(attackType == "AreaMaxHP") {
                             enemy.GetComponent<Enemy>().GiveEnemyDebuff(2, slowDownTime, "reduceMaxHP", slowDownValue);

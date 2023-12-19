@@ -55,11 +55,13 @@ public class Enemy : MonoBehaviour
         public int id;
         public String debuffName;
         public float debuffValue;
-        public Debuff(int id, String debuffName, float debuffValue)
+        public float debuffValue2;
+        public Debuff(int id, String debuffName, float debuffValue, float debuffValue2 = 0f)
         {
             this.id = id;
             this.debuffName = debuffName;
             this.debuffValue = debuffValue;
+            this.debuffValue2 = debuffValue2;
         }
     };
     private List<Debuff> Debuffs = new List<Debuff>();
@@ -165,7 +167,7 @@ public class Enemy : MonoBehaviour
     {
         PathIndex = 1;
 
-        maxHealth *= Difficulty.enemyHealthRate;
+        maxHealth *= Difficulty.enemyHealthRate * Difficulty.enemyHealthRateInChapter;
         life += Difficulty.enemyAdditionLife;
         damage *= Difficulty.enemyDamageRate;
 
@@ -314,7 +316,7 @@ public class Enemy : MonoBehaviour
         DeductHealth(percent * health);
     }
 
-    public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue) {
+    public void GiveEnemyDebuff(int id, float time, String debuffName, float debuffValue, float debuffValue2 = 0) {
         bool idExist = false;
 
         for(int i = Debuffs.Count - 1; i >= 0; i--){
@@ -335,7 +337,7 @@ public class Enemy : MonoBehaviour
         }
 
         if(!idExist){
-            Debuffs.Add(new Debuff(id, debuffName, debuffValue));
+            Debuffs.Add(new Debuff(id, debuffName, debuffValue, debuffValue2));
             DebuffTimers.Add(time);
             if (debuffName == "slow"){
                 speed *= debuffValue;
@@ -353,7 +355,7 @@ public class Enemy : MonoBehaviour
         for(int i = Debuffs.Count - 1; i >= 0; i--){
             DebuffTimers[i] -= Time.deltaTime;
             if (poisonTimer >= poisonAffectInterval && Debuffs[i].debuffName == "poison"){
-                DeductHealth(Debuffs[i].debuffValue);
+                DeductHealth(Debuffs[i].debuffValue, Debuffs[i].debuffValue2);
             }
             if (DebuffTimers[i] <= 0) {
                 if (Debuffs[i].debuffName == "slow"){
