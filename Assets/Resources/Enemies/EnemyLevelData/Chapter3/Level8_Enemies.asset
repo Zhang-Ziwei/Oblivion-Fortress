@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level8_Enemies
   m_EditorClassIdentifier: 
   enemiesIDs: 0500000004000000050000000400000007000000040000000700000004000000050000000400000005000000
-  spawnInterval: 2
+  spawnInterval: 1.5
   beforeSpawnInterval: 60
   isActive: 1
   expGain: 20

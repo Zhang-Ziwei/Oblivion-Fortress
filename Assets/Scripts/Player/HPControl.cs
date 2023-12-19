@@ -63,8 +63,9 @@ public class HPControl : MonoBehaviour
         {
             m_animator.SetTrigger("Hurt_stone");
         }
-
+        
         HP -= damage;
+        
         if (isCritical) {
             hurtUI.Init(damage, transform, true);
         } else {

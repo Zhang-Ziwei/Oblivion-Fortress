@@ -30,7 +30,9 @@ public class Poison: PlayerDebuff
         {
             timer += interval;
             playerHP = player.GetComponent<HPControl>();
-            playerHP.DeductHP(damage);
+            if(playerHP.HP > 0){
+                playerHP.DeductHP(damage);
+            }
             yield return new WaitForSeconds(interval);
             
         }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class ListButton : MonoBehaviour
 {
@@ -23,7 +25,10 @@ public class ListButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.Escape)){
+            SceneManager.LoadScene("Menu");
+            Time.timeScale = 1;
+        }
     }
 
     public void next_page()

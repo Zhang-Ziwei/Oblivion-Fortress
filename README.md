@@ -1,5 +1,13 @@
 # Oblivion-Fortress Update Log
 
+## 12/17 from sankonsky
+- chapter 3 編排完成
+- 修復 bug
+  - 網頁版在非全螢幕模式下計時器不會顯示毫秒
+  - 玩家死亡後中毒效果仍繼續判定
+  - 家機版無法登出
+
+
 ## 12/19 from kyleko56
 - 修復 bug
   - 冰凍時翻滾有機率造成玩家永久加速或減速
