@@ -1,5 +1,10 @@
 # Oblivion-Fortress Update Log
 
+## 12/19 from kyleko56
+- 修復 bug
+  - 冰凍時翻滾有機率造成玩家永久加速或減速
+  - 通過第五關難度加倍後，若按"Restart"重新開始關卡，難度仍保持兩倍沒有重置
+
 ## 12/17 from sankonsky
 - 新增主畫面音效
 - 新增遊戲結束視窗動畫
