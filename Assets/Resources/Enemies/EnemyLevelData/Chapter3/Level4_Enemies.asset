@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level4_Enemies
   m_EditorClassIdentifier: 
   enemiesIDs: 01000000010000000100000001000000080000000100000001000000010000000100000008000000
-  spawnInterval: 2
+  spawnInterval: 1
   beforeSpawnInterval: 60
   isActive: 1
   expGain: 20
