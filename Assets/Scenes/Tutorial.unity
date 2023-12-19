@@ -2386,7 +2386,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Press WASD to move;
 
-    press Shift to run;
+    press Shift to roll;
 
     and press Esc or Tab
     to pause.'
@@ -11672,7 +11672,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Now, use pickaxe to collect stones, and build another tower to defend against
-    the next wave of attacks !
+    the next wave of attacks!
 --- !u!222 &1077013674
 CanvasRenderer:
   m_ObjectHideFlags: 0
