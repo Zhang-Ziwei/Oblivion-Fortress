@@ -178,9 +178,6 @@ MonoBehaviour:
     death: 0
   surviveEvent:
     m_PersistentCalls:
-      m_Calls: []
-  attackEvent:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5561958983861293021, guid: 9a494d04fe0643e48a9350c05ac8bb61, type: 3}
         m_TargetAssemblyTypeName: Poison, Assembly-CSharp
@@ -194,6 +191,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  attackEvent:
+    m_PersistentCalls:
+      m_Calls: []
   deathEvent:
     m_PersistentCalls:
       m_Calls:
