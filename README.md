@@ -11,4 +11,4 @@ The game features three main episode and endless mode, each offering four diffic
 Go to the [release page](<https://github.com/Zhang-Ziwei/Oblivion-Fortress/releases>) to download the PC version.
 
 ## Preview
-![]()<https://github.com/Zhang-Ziwei/Oblivion-Fortress/blob/main/ReadmeImage.jpg>
+![](https://github.com/Zhang-Ziwei/Oblivion-Fortress/blob/main/ReadmeImage.jpg)
